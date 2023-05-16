@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
         <script src="https://kit.fontawesome.com/d101948c74.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" type="text/css" href="./resource/css/account.css">
+        <link rel="stylesheet" type="text/css" href="./resource/css/product.css">
         <title></title>
     </head>
     <body>
