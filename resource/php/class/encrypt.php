@@ -1,10 +1,8 @@
 <?php
     class encrypt {
-
         public function secure($text) {
-            // I used the password_hash() function instead of the standard encrypt method
-            $encrypted = password_hash("$text", PASSWORD_BCRYPT);
-            return $encrypted;
+            // I used this function instead of the openssl_encrypt method
+            return password_hash("$text", PASSWORD_BCRYPT);
         }
     }
 ?>

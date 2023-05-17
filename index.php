@@ -1,3 +1,6 @@
+<?php
+    require_once 'resource/php/init.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -24,20 +27,23 @@
         </header>
         <main class="row-fluid mt-5">
             <div class="card container p-3">
+                <?php
+                    loginMsg();                    
+                ?>
                 <div class="text-center">
                     <h1>Login</h1>
                 </div>
                 <form class="form" method="post">
                     <div class="form-group">
                         <label for="log_input_mail">Email</label>
-                        <input class="form-control" type="email" name="email_logbox" id="log_input_mail" placeholder="Email">
+                        <input class="form-control" type="email" name="email_logbox" id="log_input_mail">
                     </div>
                     <div class="form-group">
                         <label for="log_input_pass">Password</label>
-                        <input class="form-control" type="password" name="pass_logbox" id="log_input_pass" placeholder="Password">
+                        <input class="form-control" type="password" name="pass_logbox" id="log_input_pass">
                     </div>
                     <div class="text-center">
-                        <button class="btn btn-primary rounded-pill" type="submit">Login</button>
+                        <button class="btn btn-primary rounded-pill" type="submit" name="log_btn">Login</button>
                         <div class="text-center mt-5">
                             <small class="text-muted">Don't have an account?</small> <br>
                             <a href="./register.php">Register Now</a>

@@ -4,19 +4,21 @@
         public $fname;
         public $email;
         public $pass;
+        public $type;
         public $join;
 
-        public function __construct($lname, $fname, $email, $pass, $join) {            
+        public function __construct($lname, $fname, $email, $pass, $type, $join) {            
             $this->lname = $lname;
             $this->fname = $fname;
             $this->email = $email;
             $this->pass = $pass;
+            $this->type = $type;
             $this->join = $join;
         }
 
         public function addAcc() {
             $con = $this->con();
-            $sql = "INSERT INTO `tbl_user` (`u_lname`,`u_fname`,`u_email`,`u_pass`,`u_date_joined`) VALUES ('$this->lname','$this->fname','$this->email','$this->pass','$this->join')";
+            $sql = "INSERT INTO `tbl_user` (`u_lname`,`u_fname`,`u_email`,`u_pass`, `u_type`,`u_date_joined`) VALUES ('$this->lname','$this->fname','$this->email','$this->pass','$this->type','$this->join')";
             $data = $con->prepare($sql);
 
             if ($data->execute()) {

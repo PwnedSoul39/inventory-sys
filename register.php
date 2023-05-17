@@ -38,21 +38,28 @@
                 <form class="form" method="post">
                     <div class="form-group">
                         <label for="email_input" data-toggle="tooltip" data-placement="top" title="Required field">Email <span class="text-danger">*</span></label>
-                        <input class="form-control" type="email" name="email_box" id="email_input" placeholder="Email" required>
+                        <input class="form-control" type="email" name="email_box" id="email_input" required>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="fname_input" data-toggle="tooltip" data-placement="top" title="Required field">First Name <span class="text-danger">*</span></label>
-                            <input class="form-control" type="text" name="fname_box" id="fname_input" placeholder="First Name" required>
+                            <input class="form-control" type="text" name="fname_box" id="fname_input" required>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="lname_input" data-toggle="tooltip" data-placement="top" title="Required field">Last Name <span class="text-danger">*</span></label>
-                            <input class="form-control" type="text" name="lname_box" id="lname_input" placeholder="Last Name" required>
+                            <input class="form-control" type="text" name="lname_box" id="lname_input" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="pass_input" data-toggle="tooltip" data-placement="top" title="Required field">Password <span class="text-danger">*</span></label>
-                        <input class="form-control" type="password" name="pass_box" id="pass_input" placeholder="Password" required>
+                        <input class="form-control" type="password" name="pass_box" id="pass_input" required>
+                    </div>
+                    <div class="form-group">
+                        <select class="custom-select" name="type_choice" required>
+                            <option disabled selected>Choose your account type</option>
+                            <option value="user">User</option>
+                            <option value="admin">Administrator</option>
+                        </select>
                     </div>
                     <div class="text-center">
                         <button class="btn btn-primary rounded-pill" type="submit" name="reg_btn">Register</button>
