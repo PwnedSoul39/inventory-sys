@@ -6,7 +6,7 @@
         public $pass;
         public $join;
 
-        public function __construct($lname,$fname,$email,$pass,$join) {
+        public function __construct($lname, $fname, $email, $pass, $join) {            
             $this->lname = $lname;
             $this->fname = $fname;
             $this->email = $email;

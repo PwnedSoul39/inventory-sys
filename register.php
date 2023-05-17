@@ -1,3 +1,6 @@
+<?php
+    require_once 'resource/php/init.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -17,13 +20,18 @@
                 <span class="navbar-brand mr-auto">KriziaWare</span>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <i class="fa-solid fa-house"></i> Home>
+                        <a class="nav-link" href="./dashboard.php">
+                            <i class="fa-solid fa-house"></i> Home
+                        </a>
                     </li>
                 </ul>
             </nav>
         </header>
-        <main class="row-fluid mt-5">
+        <main class="container-fluid mt-5">
             <div class="card container p-3">
+                <?php 
+                    insertAccMsg();
+                ?>
                 <div class="text-center">
                     <h1>Register</h1>
                 </div>
