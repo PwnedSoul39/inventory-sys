@@ -17,10 +17,7 @@
                 <span class="navbar-brand mr-auto">KriziaWare</span>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="./dashboard.php">Dashboard</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./index.php">Login</a>
+                        <i class="fa-solid fa-house"></i> Home>
                     </li>
                 </ul>
             </nav>
@@ -32,25 +29,29 @@
                 </div>
                 <form class="form" method="post">
                     <div class="form-group">
-                        <label for="">Email</label>
-                        <input class="form-control" type="email" name="" placeholder="Enter your email">
+                        <label for="email_input" data-toggle="tooltip" data-placement="top" title="Required field">Email <span class="text-danger">*</span></label>
+                        <input class="form-control" type="email" name="email_box" id="email_input" placeholder="Email" required>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="">First Name</label>
-                            <input class="form-control" type="text" name="" placeholder="Enter your first name">
+                            <label for="fname_input" data-toggle="tooltip" data-placement="top" title="Required field">First Name <span class="text-danger">*</span></label>
+                            <input class="form-control" type="text" name="fname_box" id="fname_input" placeholder="First Name" required>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="">Last Name</label>
-                            <input class="form-control" type="text" name="" placeholder="Enter your last name">
+                            <label for="lname_input" data-toggle="tooltip" data-placement="top" title="Required field">Last Name <span class="text-danger">*</span></label>
+                            <input class="form-control" type="text" name="lname_box" id="lname_input" placeholder="Last Name" required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="">Password</label>
-                        <input class="form-control" type="password" name="" placeholder="Enter your password">
+                        <label for="pass_input" data-toggle="tooltip" data-placement="top" title="Required field">Password <span class="text-danger">*</span></label>
+                        <input class="form-control" type="password" name="pass_box" id="pass_input" placeholder="Password" required>
                     </div>
                     <div class="text-center">
-                        <button class="btn btn-primary rounded-pill" type="submit">Register</button>
+                        <button class="btn btn-primary rounded-pill" type="submit" name="reg_btn">Register</button>
+                        <div class="text-center mt-5">
+                            <small class="text-muted">Already have an account?</small> <br>
+                            <a href="./index.php">Login Now</a>
+                        </div>
                     </div>
                 </form>
             </div>

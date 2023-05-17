@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
         <script src="https://kit.fontawesome.com/d101948c74.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" type="text/css" href="./resource/css/product.css">
-        <title></title>
+        <title>KriziaWare Products</title>
     </head>
     <body>
         <!--
@@ -21,7 +21,7 @@
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="./dashboard.php">
-                            <i class="fa-solid fa-table-list"></i> Dashboard
+                            <i class="fa-solid fa-house"></i> Home
                         </a>
                     </li>
                     <li class="nav-item">
@@ -47,7 +47,7 @@
                         </button>
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-right bg-dark mt-1">
                             <a class="dropdown-item text-muted" href="./account.php">View Account</a>
-                            <a class="dropdown-item text-muted" href="#">Log-out</a>
+                            <a class="dropdown-item text-muted" href="./logout.php">Log-out</a>
                         </div>
                     </li>
                 </ul>

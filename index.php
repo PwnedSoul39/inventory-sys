@@ -29,12 +29,12 @@
                 </div>
                 <form class="form" method="post">
                     <div class="form-group">
-                        <label for="">Email</label>
-                        <input class="form-control" type="email" name="" placeholder="Enter your email">
+                        <label for="log_input_mail">Email</label>
+                        <input class="form-control" type="email" name="email_logbox" id="log_input_mail" placeholder="Email">
                     </div>
                     <div class="form-group">
-                        <label for="">Password</label>
-                        <input class="form-control" type="password" name="" placeholder="Enter your password">
+                        <label for="log_input_pass">Password</label>
+                        <input class="form-control" type="password" name="pass_logbox" id="log_input_pass" placeholder="Password">
                     </div>
                     <div class="text-center">
                         <button class="btn btn-primary rounded-pill" type="submit">Login</button>

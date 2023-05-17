@@ -21,7 +21,7 @@
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="./dashboard.php">
-                            <i class="fa-solid fa-table-list"></i> Dashboard
+                            <i class="fa-solid fa-house"></i> Home
                         </a>
                     </li>
                     <li class="nav-item">
@@ -46,8 +46,8 @@
                             ?>
                         </button>
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-right bg-dark mt-1">
-                            <a class="dropdown-item text-muted" href="#">View Account</a>
-                            <a class="dropdown-item text-muted" href="#">Log-out</a>
+                            <a class="dropdown-item text-muted" href="./account.php">View Account</a>
+                            <a class="dropdown-item text-muted" href="./logout.php">Log-out</a>
                         </div>
                     </li>
                 </ul>
