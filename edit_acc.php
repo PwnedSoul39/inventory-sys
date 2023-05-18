@@ -1,5 +1,7 @@
 <?php
-
+    require_once 'resource/php/init.php';
+    session_start();
+    logIn();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +11,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
         <script src="https://kit.fontawesome.com/d101948c74.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" type="text/css" href="./resource/css/account.css">
-        <title></title>
+        <title>Account Settings</title>
     </head>
     <body>
         <!--
@@ -46,15 +48,33 @@
                             ?>
                         </button>
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-right bg-dark mt-1">
-                            <a class="dropdown-item text-muted" href="./account.php">View Account</a>
+                            <a class="dropdown-item text-muted" href="#">View Account</a>
                             <a class="dropdown-item text-muted" href="./logout.php">Log-out</a>
                         </div>
                     </li>
                 </ul>
             </nav>
         </header>
-        <main>
-            
+        <main class="container-fluid mt-5">
+            <div class="card container p-3">
+                <?php
+
+                ?>
+                <div class="text-center">
+                    <h1>Change Password</h1>
+                </div>
+                <form class="form" method="post">
+                    <div class="form-group">
+                        <label for="edit_input">New Password</label>
+                        <input class="form-control" type="password" name="pass_editbox" id="edit_input" required>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-primary rounded-pill" type="submit" name="edit_btn">
+                            Update    
+                        </button>
+                    </div>
+                </form>
+            </div>
         </main>
     </body>
 

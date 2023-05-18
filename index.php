@@ -33,8 +33,8 @@
                 </div>
                 <form class="form" method="post">
                     <div class="form-group">
-                        <label for="log_input_mail">Email</label>
-                        <input class="form-control" type="email" name="email_logbox" id="log_input_mail">
+                        <label for="log_input_mail">Email/Username</label>
+                        <input class="form-control" type="text" name="email_logbox" id="log_input_mail">
                     </div>
                     <div class="form-group">
                         <label for="log_input_pass">Password</label>

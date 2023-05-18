@@ -1,5 +1,7 @@
 <?php
-
+    require_once 'resource/php/init.php';
+    session_start();
+    logIn();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +11,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
         <script src="https://kit.fontawesome.com/d101948c74.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" type="text/css" href="./resource/css/account.css">
-        <title></title>
+        <title>Account</title>
     </head>
     <body>
         <!--
@@ -57,14 +59,11 @@
             <div class="container">
                 <div class="card text-center">
                     <div class="card-body">
-                        <div class="mt-4 mb-3">
-                            <img class="acc-img img-fluid" src="#" alt="SADGE">
-                        </div>
                         <h4>Name</h4>
                         <h5>Email</h5>
                     </div>
                     <div class="my-3">
-                        <a class="btn btn-primary rounded-pill" href="./edit_acc.php">Edit Account</a>
+                        <a class="btn btn-primary rounded-pill" href="./edit_acc.php">Change Password</a>
                     </div>
                     <div class="d-flex justify-content-between m-5">
                         <div class="col">

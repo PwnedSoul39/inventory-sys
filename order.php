@@ -1,5 +1,7 @@
 <?php
-
+    require_once 'resource/php/init.php';
+    session_start();
+    logIn();
 ?>
 <!DOCTYPE html>
 <html lang="en">

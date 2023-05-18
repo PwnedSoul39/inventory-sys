@@ -47,12 +47,28 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="pass_input" data-toggle="tooltip" data-placement="top" title="Required field">Password <span class="text-danger">*</span></label>
+                        <label for="" data-toggle="tooltip" data-placement="top" title="Required field">
+                            Username                             
+                            <small class="text-muted">
+                                (must be between 4 to 30 characters)
+                                <span class="text-danger">*</span>
+                            </small>
+                        </label>
+                        <input class="form-control" type="text" name="uname_box" id="uname_input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pass_input" data-toggle="tooltip" data-placement="top" title="Required field">
+                            Password 
+                            <small class="text-muted">
+                                (must be at least 8 characters)
+                                <span class="text-danger">*</span>
+                            </small>
+                        </label>
                         <input class="form-control" type="password" name="pass_box" id="pass_input" required>
                     </div>
                     <div class="form-group">
                         <select class="custom-select" name="type_choice" required>
-                            <option disabled selected>Choose your account type</option>
+                            <option value="" disabled selected>Choose your account type</option>
                             <option value="user">User</option>
                             <option value="admin">Administrator</option>
                         </select>
