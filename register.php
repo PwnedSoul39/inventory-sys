@@ -19,11 +19,7 @@
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <span class="navbar-brand mr-auto">KriziaWare</span>
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="./dashboard.php">
-                            <i class="fa-solid fa-house"></i> Home
-                        </a>
-                    </li>
+
                 </ul>
             </nav>
         </header>
