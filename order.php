@@ -2,6 +2,7 @@
     require_once 'resource/php/init.php';
     session_start();
     logIn();
+    logPageCheck();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +33,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="./order.php">
                             <i class="fa-solid fa-truck"></i> Orders
                         </a>
                     </li>

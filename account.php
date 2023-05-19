@@ -21,26 +21,45 @@
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
                 <span class="navbar-brand mr-auto">KriziaWare</span>
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="./dashboard.php">
-                            <i class="fa-solid fa-house"></i> Home
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./product.php">
-                            <i class="fa-solid fa-toolbox"></i> Products
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./order.php">
+                <?php
+                        if ($_SESSION['user_level'] == 1) {
+                            echo '
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <i class="fa-solid fa-house"></i> Home
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./product.php">
+                                    <i class="fa-solid fa-toolbox"></i> Products
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                            <a class="nav-link" href="./order.php">
                             <i class="fa-solid fa-truck"></i> Orders
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./inventory.php">
+                            </a>
+                            </li>
+                            <li class="nav-item">
+                            <a class="nav-link" href="./inventory.php">
                             <i class="fa-solid fa-clipboard-list"></i> Inventory
-                        </a>
-                    </li>
+                            </a>
+                            </li>
+                            ';
+                        } else {
+                            echo '
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <i class="fa-solid fa-house"></i> Home
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./product.php">
+                                    <i class="fa-solid fa-toolbox"></i> Products
+                                </a>
+                            </li>
+                            ';
+                        }
+                    ?>
                     <li class="nav-item dropdown">
                         <button class="btn btn-transparent dropdown-toggle text-muted" type="button" data-toggle="dropdown" aria-expanded="false">
                             <?php

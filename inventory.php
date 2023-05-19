@@ -3,6 +3,7 @@
     $view = new view();
     session_start();
     logIn();
+    logPageCheck();
 ?>
 <!DOCTYPE html>
 <html lang="en">
