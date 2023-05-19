@@ -1,5 +1,5 @@
 <?php
-    include ('insert.php');
+    include ('insertAcc.php');
 
     class validate extends config {
         public function secure($text) {
@@ -47,9 +47,10 @@
                     foreach ($result as $data) {
                         if ($this->verifyPass($lpass, $data['u_pass'])) {
                             session_start();
-                            $_SESSION['user_name'] = $data['u_uname'];
-                            $_SESSION['user_type'] = $data['u_type'];
+                            $_SESSION['user'] = $data['u_uname'];
+                            $_SESSION['user_level'] = $data['u_type'];
                             header('location:dashboard.php');
+                            exit();
                         } elseif (!$this->verifyPass($lpass, $data['u_pass'])) {
                             echo '
                                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -270,7 +271,7 @@
             $p = $this->secure($p);
 
             if ($this->validEmail($e) == true && $this->validName($l,$f) == true && $this->validUname($u) == true && $this->validPass($p) == true ) {
-                $insert = new insert($l,$f,$u,$e,$p,$t,$d);
+                $insert = new insertAcc($l,$f,$u,$e,$p,$t,$d);
                 if ($insert->addAcc()) {
                     echo '
                         <div class="alert alert-success alert-dismissible fade show" role="alert">

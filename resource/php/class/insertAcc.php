@@ -1,5 +1,5 @@
 <?php
-    class insert extends config {
+    class insertAcc extends config {
         public $lname;
         public $fname;
         public $uname;

@@ -69,8 +69,8 @@
                     <div class="form-group">
                         <select class="custom-select" name="type_choice" required>
                             <option value="" disabled selected>Choose your account type</option>
-                            <option value="user">User</option>
-                            <option value="admin">Administrator</option>
+                            <option value="0">User</option>
+                            <option value="1">Administrator</option>
                         </select>
                     </div>
                     <div class="text-center">

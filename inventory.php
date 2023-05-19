@@ -1,5 +1,6 @@
 <?php
     require_once 'resource/php/init.php';
+    $view = new view();
     session_start();
     logIn();
 ?>
@@ -95,22 +96,64 @@
             </div>
         </div>
 
-        
-        <!-- Form Stuff -->
-        <div class="container mt-5">
-            <form class="form" method="post">
-                <div class="form-row">
-                    <div class="col-md-11">
-                        <input class="form-control" type="text" name="" placeholder="Search item">
-                    </div>
-                    <div class="col">
-                        <button class="btn btn-primary" type="submit">Submit</button>
+        <div class="container-fluid">
+            <div class="row">
+                <button class="btn btn-primary rounded-pill mx-auto my-4" type="button" data-toggle="modal" data-target="#additem_form">Add Item</button>
+            </div>
+            <div class="modal fade" id="additem_form" data-backdrop="static" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Add Item Form</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="post">
+                                <div class="form-group">
+                                    <label for="">Item Name</label>
+                                    <input class="form-control" type="text" name="" id="">
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control" type="text" name="" id="">
+                                        <option value="" disabled selected>Choose Item Type</option>
+                                        <option value="Keyboard">Keyboard</option>
+                                        <option value="Mouse">Mouse</option>
+                                        <option value="Controller">Controller</option>
+                                        <option value="HDD">HDD</option>
+                                        <option value="SSD">SSD</option>
+                                        <option value="RAM">RAM</option>
+                                        <option value="Laptop">Laptop</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Item Brand</label>
+                                    <input class="form-control" type="text" name="" id="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Item Price</label>
+                                    <input class="form-control" type="number" name="" id="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Item Quantity</label>
+                                    <input class="form-control" type="number" name="" id="">
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-primary rounded-pill" type="submit" name="a_item">Submit</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </form>
-            <?php
-
-            ?>
+            </div>
+        </div>
+        <div class="container-fluid w-75 mt-5" style="overflow: hidden;">
+            <div class="row" style="height:47.4vh; overflow-y: scroll">
+                <?php
+                    $view->viewInventory();
+                ?>
+            </div>
         </div>
     </body>
 
