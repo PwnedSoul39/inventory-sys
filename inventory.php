@@ -3,7 +3,7 @@
     $view = new view();
     session_start();
     logIn();
-    logPageCheck();
+    logLockUser();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
         <script src="https://kit.fontawesome.com/d101948c74.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" type="text/css" href="./resource/css/inventory.css">
-        <title>KriziaWare Inventory</title>
+        <title>Inventory</title>
     </head>
     <body>
         <!--
@@ -29,8 +29,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./product.php">
-                            <i class="fa-solid fa-toolbox"></i> Products
+                        <a class="nav-link" href="./user.php">
+                            <i class="fa-solid fa-users"></i> Users
                         </a>
                     </li>
                     <li class="nav-item">
@@ -39,67 +39,28 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="./inventory.php">
                             <i class="fa-solid fa-clipboard-list"></i> Inventory
                         </a>
                     </li>
                     <li class="nav-item dropdown">
-                        <button class="btn btn-transparent dropdown-toggle text-muted" type="button" data-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-transparent dropdown-toggle nav-link" type="button" data-toggle="dropdown" aria-expanded="false">
                             <?php
-                                echo '<i class="fa-solid fa-user"></i>';
+                                echo '
+                                    <i class="fa-solid fa-user"></i> '.$_SESSION['user'].'
+                                ';
                             ?>
                         </button>
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-right bg-dark mt-1">
-                            <a class="dropdown-item text-muted" href="./account.php">View Account</a>
                             <a class="dropdown-item text-muted" href="./logout.php">Log-out</a>
                         </div>
                     </li>
                 </ul>
             </nav>
         </header>
-
-        <!-- Card ICONs -->
-        <div class="container mt-5">
-            <div class="card-deck text-center mt-3">
-                <div class="card bg-info">
-                    <div class="card-body">
-                        <h5 class="card-title h1">
-                            <?php
-                                 
-                            ?>
-                        </h5>
-                        <p class="card-text">Users</p>
-                    </div>
-                    <img class="dash-img mx-auto mb-4" src="./resource/img/user.png" alt="SADGE">
-                </div>
-                <div class="card bg-success">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            <?php
-                            
-                            ?>
-                        </h5>
-                        <p class="card-text">Items</p>
-                    </div>
-                    <img class="dash-img mx-auto mb-4" src="./resource/img/item.png" alt="SADGE">
-                </div>
-                <div class="card bg-secondary">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            <?php
-                                 
-                            ?>
-                        </h5>
-                        <p class="card-text">Orders</p>
-                    </div>
-                    <img class="dash-img mx-auto mb-4" src="./resource/img/order.png" alt="SADGE">
-                </div>
-            </div>
-        </div>
-
         <div class="container-fluid">
             <div class="row">
-                <button class="btn btn-primary rounded-pill mx-auto my-4" type="button" data-toggle="modal" data-target="#additem_form">Add Item</button>
+                <button class="btn btn-primary rounded-pill mx-auto my-4" type="button" data-toggle="modal" data-target="#additem_form">Add an item</button>
             </div>
             <div class="modal fade" id="additem_form" data-backdrop="static" tabindex="-1">
                 <div class="modal-dialog">
@@ -142,6 +103,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button class="btn btn-primary rounded-pill" type="submit" name="a_item">Submit</button>
+                                    <button class="btn btn-primary rounded-pill" type="reset">Clear</button>
                                 </div>
                             </form>
                         </div>
@@ -149,7 +111,7 @@
                 </div>
             </div>
         </div>
-        <div class="container-fluid w-75 mt-5" style="overflow: hidden;">
+        <div class="container-fluid mt-5" style="overflow: hidden;">
             <div class="row" style="height:47.4vh; overflow-y: scroll">
                 <?php
                     $view->viewInventory();

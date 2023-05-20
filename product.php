@@ -2,6 +2,7 @@
     require_once 'resource/php/init.php';
     session_start();
     logIn();
+    logLockAdmin();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,50 +22,19 @@
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
                 <span class="navbar-brand mr-auto">KriziaWare</span>
                 <ul class="navbar-nav">
-                <?php
-                        if ($_SESSION['user_level'] == 1) {
-                            echo '
-                            <li class="nav-item">
-                                <a class="nav-link" href="./dashboard.php">
-                                    <i class="fa-solid fa-house"></i> Home
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./product.php">
-                                    <i class="fa-solid fa-toolbox"></i> Products
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                            <a class="nav-link" href="./order.php">
-                            <i class="fa-solid fa-truck"></i> Orders
-                            </a>
-                            </li>
-                            <li class="nav-item">
-                            <a class="nav-link" href="./inventory.php">
-                            <i class="fa-solid fa-clipboard-list"></i> Inventory
-                            </a>
-                            </li>
-                            ';
-                        } else {
-                            echo '
-                            <li class="nav-item">
-                                <a class="nav-link" href="./dashboard.php">
-                                    <i class="fa-solid fa-house"></i> Home
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./product.php">
-                                    <i class="fa-solid fa-toolbox"></i> Products
-                                </a>
-                            </li>
-                            ';
-                        }
-                    ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./home.php">
+                            <i class="fa-solid fa-house"></i> Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./product.php">
+                            <i class="fa-solid fa-cart-shopping"></i> Products
+                        </a>
+                    </li>
                     <li class="nav-item dropdown">
-                        <button class="btn btn-transparent dropdown-toggle text-muted" type="button" data-toggle="dropdown" aria-expanded="false">
-                            <?php
-                                echo '<i class="fa-solid fa-user"></i>';
-                            ?>
+                        <button class="btn btn-transparent dropdown-toggle nav-link" type="button" data-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-user"></i>
                         </button>
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-right bg-dark mt-1">
                             <a class="dropdown-item text-muted" href="./account.php">View Account</a>

@@ -2,6 +2,7 @@
     require_once 'resource/php/init.php';
     session_start();
     logIn();
+    logLockAdmin();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,50 +22,19 @@
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
                 <span class="navbar-brand mr-auto">KriziaWare</span>
                 <ul class="navbar-nav">
-                <?php
-                        if ($_SESSION['user_level'] == 1) {
-                            echo '
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="fa-solid fa-house"></i> Home
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./product.php">
-                                    <i class="fa-solid fa-toolbox"></i> Products
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                            <a class="nav-link" href="./order.php">
-                            <i class="fa-solid fa-truck"></i> Orders
-                            </a>
-                            </li>
-                            <li class="nav-item">
-                            <a class="nav-link" href="./inventory.php">
-                            <i class="fa-solid fa-clipboard-list"></i> Inventory
-                            </a>
-                            </li>
-                            ';
-                        } else {
-                            echo '
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="fa-solid fa-house"></i> Home
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./product.php">
-                                    <i class="fa-solid fa-toolbox"></i> Products
-                                </a>
-                            </li>
-                            ';
-                        }
-                    ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./home.php">
+                            <i class="fa-solid fa-house"></i> Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./product.php">
+                            <i class="fa-solid fa-cart-shopping"></i> Products
+                        </a>
+                    </li>
                     <li class="nav-item dropdown">
-                        <button class="btn btn-transparent dropdown-toggle text-muted" type="button" data-toggle="dropdown" aria-expanded="false">
-                            <?php
-                                echo '<i class="fa-solid fa-user"></i>';
-                            ?>
+                        <button class="btn btn-transparent dropdown-toggle nav-link" type="button" data-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-user"></i>
                         </button>
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-right bg-dark mt-1">
                             <a class="dropdown-item text-muted" href="./account.php">View Account</a>
@@ -74,25 +44,45 @@
                 </ul>
             </nav>
         </header>
-        <main class="row-fluid mt-5">
-            <div class="container">
-                <div class="card text-center">
-                    <div class="card-body">
-                        <h4>Name</h4>
-                        <h5>Email</h5>
+        <main class="container-fluid mt-5">
+            <div class="card w-50 mx-auto">
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col-md">
+                        <?php
+                            echo '
+                                <h3 class="h2 card-title my-0">'.$_SESSION['user_f'].'</h3>
+                                <h4 class="text-muted">'.$_SESSION['user_mail'].'</h4>
+                            ';
+                        ?>
+                        </div>
+                        <div class="col-md-4">
+                            <?php
+                                echo '
+                                <p class="font-weight-bold">Date Joined:
+                                    <span class="text-muted">'.$_SESSION['user_join'].'</span>
+                                </p>
+                                ';
+                            ?>
+                            <?php
+                                if ($_SESSION['user_level'] == 1) {
+                                    echo '
+                                    <p class="font-weight-bold">Account Type:
+                                        <span class="text-muted">Administrator</span>
+                                    </p>
+                                    ';
+                                } else {
+                                    echo '
+                                        <p class="font-weight-bold"> Account Type:
+                                            <span class="text-muted">User</span>
+                                        </p>
+                                    ';
+                                }
+                            ?>
+                        </div>
                     </div>
-                    <div class="my-3">
+                    <div class="d-flex justify-content-center">
                         <a class="btn btn-primary rounded-pill" href="./edit_acc.php">Change Password</a>
-                    </div>
-                    <div class="d-flex justify-content-between m-5">
-                        <div class="col">
-                            <p>Date Joined:</p>
-                            <p class="text-muted"></p>
-                        </div>
-                        <div class="col">
-                            <p>Account Type:</p>
-                            <p class="text-muted"></p>
-                        </div>
                     </div>
                 </div>
             </div>

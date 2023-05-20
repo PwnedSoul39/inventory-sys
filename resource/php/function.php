@@ -15,18 +15,34 @@
         }
     }
 
+    function newPassMsg() {
+        if (isset($_POST['edit_btn'])) {
+            $validate = new validate();
+            $validate->validNewPass($_POST['pass_editbox'],$_POST['confirm_pass_editbox']);
+        }
+    }
+
     function logStatus() {
         // Boolean function ichecheck ung status mo kung may nakaset ng values sa dalawang to
-        if (isset($_SESSION['user']) && isset($_SESSION['user_level'])) {
+        if (isset($_SESSION['user']) && isset($_SESSION['user_level']) && isset($_SESSION['user_f']) && isset($_SESSION['user_mail']) && isset($_SESSION['user_join'])) {
             return true;
         } else {
             return false;
         }
     }
 
-    function logPageCheck() {
-        // Will check user role/user level. If != 1 (admin), then you will be redirected to the homepage(dashboard)
-        if ($_SESSION['user_level'] !== 1) {
+    // Kapag nag lagay ako ng else statement dito magkakaerror ng too many redirects kasi ireredirect ka na nung validation after login
+    function logLockUser() {
+        // Will check user role/user level
+        if ($_SESSION['user_level'] == 0) {
+            header('location:home.php');
+            exit();
+        }
+    }
+
+    function logLockAdmin() {
+        // Will check user role/user level x2
+        if ($_SESSION['user_level'] == 1) {
             header('location:dashboard.php');
             exit();
         }

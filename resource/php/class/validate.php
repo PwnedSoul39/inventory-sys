@@ -1,5 +1,6 @@
 <?php
     include ('insertAcc.php');
+    include ('editPass.php');
 
     class validate extends config {
         public function secure($text) {
@@ -49,8 +50,17 @@
                             session_start();
                             $_SESSION['user'] = $data['u_uname'];
                             $_SESSION['user_level'] = $data['u_type'];
-                            header('location:dashboard.php');
-                            exit();
+                            $_SESSION['user_f'] = $data['u_fname'] .' '. $data['u_lname'];
+                            $_SESSION['user_mail'] = $data['u_email'];
+                            $_SESSION['user_join'] = $data['u_date_joined'];
+							
+							if ($_SESSION['user_level'] == 0) {
+								header('location:home.php');
+								exit();
+							} else {
+								header('location:dashboard.php');
+								exit();
+							}
                         } elseif (!$this->verifyPass($lpass, $data['u_pass'])) {
                             echo '
                                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -275,7 +285,7 @@
                 if ($insert->addAcc()) {
                     echo '
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            User has been added
+                            <i class="fa-solid fa-circle-check"></i> User has been added
                             <button class="close" type="button" data-dismiss="alert" aria-label="close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -284,8 +294,46 @@
                 } else {
                     echo '
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            Error adding user
+                            <i class="fa-solid fa-triangle-exclamation"></i> Error adding user
                             <button class="close" type="button" data-dismiss="alert" aria-label="close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    ';
+                }
+            }
+        }
+
+        public function validNewPass($a, $b) {
+            if ($this->validPass($a) == true) {
+                if ($a == $b) {
+                    $a = $this->secure($a);
+                    $update = new editPass($a);
+                    
+                    if ($update->editPassword()) {
+                        echo '
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <i class="fa-solid fa-circle-check"></i> Password has been updated
+                                <button class="close" type="button" data-dismiss="alert" aria-label="close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        ';
+                    } else {
+                        echo '
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <i class="fa-solid fa-triangle-exclamation"></i> Error updating password
+                                <button class="close" type="button" data-dismiss="alert" aria-label="close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        ';
+                    }
+                } else {
+                    echo '
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <i class="fa-solid fa-triangle-exclamation"></i> Password does not match
+                            <button class="close" type="button" data-dismiss="alert">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
