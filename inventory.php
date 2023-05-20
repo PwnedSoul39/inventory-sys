@@ -25,7 +25,7 @@
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="./dashboard.php">
-                            <i class="fa-solid fa-house"></i> Home
+                            <i class="fa-solid fa-table-columns"></i> Dashboard
                         </a>
                     </li>
                     <li class="nav-item">
@@ -58,14 +58,19 @@
                 </ul>
             </nav>
         </header>
-        <div class="container-fluid mt-5">
+        <div class="container-fluid mt-3">
+            <div class="row mx-auto w-50">
+                <div class="col">
+                    <?php
+
+                    ?>
+                </div>
+            </div>
             <div class="row">
-                <?php
-                    $view->viewInventory();
-                ?>
-                <div class="col my-3">
-                    <button class="btn btn-primary" type="submit" form="inventory_form">Submit</button>
-                    <button class="btn btn-info" type="reset" form="inventory_form">Clear</button>
+                <div class="mx-auto">
+                    <?php
+                        $view->viewInventory();
+                    ?>
                 </div>
             </div>
         </div>

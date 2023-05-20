@@ -18,5 +18,53 @@
                 return false;
             }
         }
+
+        public function editStatusO() {
+            $con = $this->con();
+            $sql = "UPDATE `tbl_order` SET `o_status` = '1' WHERE `o_id` = '$this->id'";
+            $data = $con->prepare($sql);
+
+            if ($data->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        
+        public function editStatusP() {
+            $con = $this->con();
+            $sql = "UPDATE `tbl_order` SET `o_status` = '2' WHERE `o_id` = '$this->id'";
+            $data = $con->prepare($sql);
+    
+            if ($data->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        
+        public function editStatusT() {
+            $con = $this->con();
+            $sql = "UPDATE `tbl_order` SET `o_status` = '3' WHERE `o_id` = '$this->id'";
+            $data = $con->prepare($sql);
+    
+            if ($data->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        
+        public function editStatusD() {
+            $con = $this->con();
+            $sql = "UPDATE `tbl_order` SET `o_status` = '4', `o_received` = NOW() WHERE `o_id` = '$this->id'";
+            $data = $con->prepare($sql);
+    
+            if ($data->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
 ?>

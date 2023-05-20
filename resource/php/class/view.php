@@ -9,7 +9,7 @@
             $result = $data->fetchAll(PDO::FETCH_ASSOC);
 
             echo '
-                <table class="table table-striped table-bordered">
+                <table class="table-sm table-striped table-bordered">
                     <thead>
                         <tr class="text-center">
                             <th>User ID</th>
@@ -27,7 +27,7 @@
             foreach ($result as $data) {
                 echo '
                         <tr>
-                            <td class="text-center">'.$data['u_id'].'</td>
+                            <td class="text-center font-weight-bold"> U-'.$data['u_id'].'</td>
                             <td>'.$data['u_uname'].'</td>
                             <td>'.$data['u_lname'].'</td>
                             <td>'.$data['u_fname'].'</td>
@@ -73,7 +73,7 @@
             $result = $data->fetchAll(PDO::FETCH_ASSOC);
             
             echo '
-                <table class="table table-striped table-bordered">
+                <table class="table-sm table-striped table-bordered">
                     <thead>
                         <tr class="text-center">
                             <th>Item ID</th>
@@ -82,27 +82,73 @@
                             <th>Item Brand</th>
                             <th>Item Price</th>
                             <th>Item Quantity</th>
+                            <th>Item Status</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
             ';
 
             foreach ($result as $data) {
+                if ($data['i_status'] == 1) {
+                    $b = 'Active';
+                } elseif ($data['i_status'] == 2) {
+                    $b = 'Inactive';
+                } else {
+                    $b = 'Discounted';
+                }
+                
                 echo '
                         <tr>
-                            <td class="text-center font-weight-bold">'.$data['i_id'].'</td>
+                            <td class="text-center font-weight-bold"> I-'.$data['i_id'].'</td>
                             <td>'.$data['i_name'].'</td>
                             <td class="text-center">'.$data['i_type'].'</td>
                             <td class="text-center">'.$data['i_brand'].'</td>
                             <td class="text-center">'.$data['i_price'].'</td>
                             <td class="text-center">'.$data['i_qty'].'</td>
+                            <td class="text-center">'.$b.'</td>
+                            <td class="text-center">
+                                <div class="dropwdown">
+                                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                        <i class="fa-solid fa-file-pen"></i> Edit Item
+                                    </button> 
+                                    <div class="dropdown-menu">';
+                                    
+                                        if ($data['i_status'] == 1) {
+                                            echo '
+                                                <a class="dropdown-item disabled" href="#">Active</a>
+                                                <a class="dropdown-item" href="inventory.php?inact='.$data['i_id'].'">Inactive</a>
+                                                <a class="dropdown-item" href="inventory.php?disc='.$data['i_id'].'">Discounted</a>
+                                            ';
+                                        } elseif ($data['i_status'] == 2) {
+                                            echo '
+                                                <a class="dropdown-item" href="inventory.php?act='.$data['i_id'].'">Active</a>
+                                                <a class="dropdown-item disabled" href="#">Inactive</a>
+                                                <a class="dropdown-item" href="inventory.php?disc='.$data['i_id'].'">Discounted</a>
+                                            ';
+                                        } else {
+                                            echo '
+                                                <a class="dropdown-item" href="inventory.php?act='.$data['i_id'].'">Active</a>
+                                                <a class="dropdown-item" href="inventory.php?inact='.$data['i_id'].'">Inactive</a>
+                                                <a class="dropdown-item disabled" href="#">Discounted</a>
+                                            ';  
+                                        }
+
+                echo '              </div>
+                                </div>
+                                <div class="mt-2">
+                                    <a class="btn btn-danger" href="inventory.php?remove='.$data['i_id'].'">
+                                        <i class="fa-solid fa-trash-can"></i> Delete Item
+                                    </a>
+                                </div>
+                            </td>
                         </tr>
                 ';
             }
 
             echo '
                         <tr>
-                            <form id="inventory_form">
+                            <form>
                                 <td class="text-center font-weight-bold">
                                     #
                                 </td>
@@ -130,6 +176,22 @@
                                 <td>
                                     <input class="form-control" type="number" value="1" required>
                                 </td>
+                                <td>
+                                    <select class="custom-select" required>
+                                        <option value="" disabled selected>Choose status</option>
+                                        <option value="1">Active</option>
+                                        <option value="2">Inactive</option>
+                                        <option value="3">Discounted</option>
+                                    </select>
+                                </td>
+                                <td class="text-center">
+                                    <button class="btn btn-primary" type="submit">
+                                        <i class="fa-solid fa-circle-plus"></i> Add Item
+                                    </button>
+                                    <button class="btn btn-info" type="reset">
+                                        <i class="fa-solid fa-broom"></i> Clear Item
+                                    </button>
+                                </td>
                             </form>
                         </tr>
                     </tbody>
@@ -145,7 +207,7 @@
             $result = $data->fetchAll(PDO::FETCH_ASSOC);
 
             echo '
-                <table class="table table-striped table-bordered">
+                <table class="table-sm table-striped table-bordered">
                     <thead>
                         <tr class="text-center">
                             <th>Order ID</th>
@@ -175,7 +237,7 @@
 
                 echo '
                     <tr>
-                        <td class="text-center font-weight-bold">'.$data['o_id'].'</td>
+                        <td class="text-center font-weight-bold"> O-'.$data['o_id'].'</td>
                         <td>'.$data['o_customer'].'</td>
                         <td>'.$data['o_name'].'</td>
                         <td class="text-center">'.$data['o_qty'].'</td>
@@ -186,44 +248,46 @@
                         <td class="text-center">
                             <div class="dropdown">
                                 <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                    Status
+                                    <i class="fa-solid fa-box"></i> Edit Status
                                 </button>
                                 <div class="dropdown-menu">';
 
-                                if ($data['o_status'] == 1) {
-                                    echo '
-                                        <a class="dropdown-item disabled" href="#">Ordered</a>
-                                        <a class="dropdown-item" href="">Packed</a>
-                                        <a class="dropdown-item" href="">In Transit</a>
-                                        <a class="dropdown-item" href="">Delivered</a>
-                                    ';
-                                } elseif ($data['o_status'] == 2) {
-                                    echo '
-                                        <a class="dropdown-item" href="">Ordered</a>
-                                        <a class="dropdown-item disabled" href="#">Packed</a>
-                                        <a class="dropdown-item" href="">In Transit</a>
-                                        <a class="dropdown-item" href="">Delivered</a>
-                                    ';
-                                } elseif ($data['o_status'] == 3) {
-                                    echo '
-                                        <a class="dropdown-item" href="">Ordered</a>
-                                        <a class="dropdown-item" href="">Packed</a>
-                                        <a class="dropdown-item disabled" href="#">In Transit</a>
-                                        <a class="dropdown-item" href="">Delivered</a>
-                                    ';
-                                } else {
-                                    echo '
-                                        <a class="dropdown-item" href="">Ordered</a>
-                                        <a class="dropdown-item" href="">Packed</a>
-                                        <a class="dropdown-item" href="">In Transit</a>
-                                        <a class="dropdown-item disabled" href="#">Delivered</a>
-                                    ';
-                                }
+                                    if ($data['o_status'] == 1) {
+                                        echo '
+                                            <a class="dropdown-item disabled" href="#">Ordered</a>
+                                            <a class="dropdown-item" href="order.php?packed='.$data['o_id'].'">Packed</a>
+                                            <a class="dropdown-item" href="order.php?transit='.$data['o_id'].'">In Transit</a>
+                                            <a class="dropdown-item" href="order.php?delivered='.$data['o_id'].'">Delivered</a>
+                                        ';
+                                    } elseif ($data['o_status'] == 2) {
+                                        echo '
+                                            <a class="dropdown-item" href="order.php?ordered='.$data['o_id'].'">Ordered</a>
+                                            <a class="dropdown-item disabled" href="#">Packed</a>
+                                            <a class="dropdown-item" href="order.php?transit='.$data['o_id'].'">In Transit</a>
+                                            <a class="dropdown-item" href="order.php?delivered='.$data['o_id'].'">Delivered</a>
+                                        ';
+                                    } elseif ($data['o_status'] == 3) {
+                                        echo '
+                                            <a class="dropdown-item" href="order.php?ordered='.$data['o_id'].'">Ordered</a>
+                                            <a class="dropdown-item" href="order.php?packed='.$data['o_id'].'">Packed</a>
+                                            <a class="dropdown-item disabled" href="#">In Transit</a>
+                                            <a class="dropdown-item" href="order.php?delivered='.$data['o_id'].'">Delivered</a>
+                                        ';
+                                    } else {
+                                        echo '
+                                            <a class="dropdown-item" href="order.php?ordered='.$data['o_id'].'">Ordered</a>
+                                            <a class="dropdown-item" href="order.php?packed='.$data['o_id'].'">Packed</a>
+                                            <a class="dropdown-item" href="order.php?transit='.$data['o_id'].'">In Transit</a>
+                                            <a class="dropdown-item disabled" href="#">Delivered</a>
+                                        ';
+                                    }
                 echo '
                                 </div>
                             </div>
-                            <div class="my-3">
-                                <a class="btn btn-danger" href="">Delete Order</a>
+                            <div class="mt-2">
+                                <a class="btn btn-danger" href="order.php?obl='.$data['o_id'].'">
+                                    <i class="fa-solid fa-trash-can"></i> Delete Order
+                                </a>
                             </div>
                         </td>
                     </tr>
@@ -234,6 +298,36 @@
                     </tbody>
                 </table>
             ';
+        }
+
+        public function viewCountInv() {
+            $con = $this->con();
+            $sql = "SELECT SUM(`i_qty`) FROM `tbl_inventory`";
+            $data = $con->prepare($sql);
+            $data->execute();
+            $result = $data->fetchColumn();
+
+            echo $result;
+        }
+
+        public function viewCountUser() {
+            $con = $this->con();
+            $sql = "SELECT COUNT(`u_id`) FROM `tbl_user`";
+            $data = $con->prepare($sql);
+            $data->execute();
+            $result = $data->fetchColumn();
+
+            echo $result;
+        }
+
+        public function viewCountOrder() {
+            $con = $this->con();
+            $sql = "SELECT COUNT(`o_id`) FROM `tbl_order`";
+            $data = $con->prepare($sql);
+            $data->execute();
+            $result = $data->fetchColumn();
+
+            echo $result;
         }
     }
 ?>

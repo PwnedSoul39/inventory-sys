@@ -25,7 +25,7 @@
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="./dashboard.php">
-                            <i class="fa-solid fa-house"></i> Home
+                            <i class="fa-solid fa-table-columns"></i> Dashboard
                         </a>
                     </li>
                     <li class="nav-item">
@@ -59,15 +59,15 @@
             </nav>
         </header>
         <div class="container-fluid mt-3">
-            <div class="row mx-auto">
+            <div class="row mx-auto w-50">
                 <div class="col">
                     <?php
-                        
+                        orderMsg();
                     ?>
                 </div>
             </div>
-            <div class="row mx-auto">
-                <div class="col">
+            <div class="row">
+                <div class="mx-auto">
                     <?php
                         $view->viewOrder();
                     ?>

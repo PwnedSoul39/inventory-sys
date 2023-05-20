@@ -305,7 +305,7 @@
         }
 
         public function validNewPass($a, $b) {
-            if ($this->validPass($a) == true) {
+            if ($this->validPass($a) == true && $this->validPass($b) == true) {
                 if ($a == $b) {
                     $a = $this->secure($a);
                     $update = new editPass($a);

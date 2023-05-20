@@ -59,6 +59,7 @@
     function logOut() {
         // dedestroy ung session para hindi magcarry out sa susunod na user
         session_start();
+        session_unset();
         session_destroy();
         header('Location:index.php');
         exit();
@@ -71,7 +72,7 @@
             if ($edit->editType()) {
                 echo '
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        User edited successfully
+                        <i class="fa-solid fa-circle-check"></i> User edited successfully
                         <button class="close" type="button" data-dismiss="alert" aria-label="close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -80,7 +81,7 @@
             } else {
                 echo '
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        Error while editing user
+                        <i class="fa-solid fa-triangle-exclamation"></i> Error while editing user
                         <button class="close" type="button" data-dismiss="alert" aria-label="close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -92,12 +93,12 @@
     
     function userDelete() {
         if (!empty($_GET['delete'])) {
-            $delete = new deleteUser($_GET['delete']);
+            $delete = new deleteStuff($_GET['delete']);
             
             if ($delete->delUser()) {
                 echo '
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        User deleted successfully
+                        <i class="fa-solid fa-circle-check"></i> User deleted successfully
                         <button class="close" type="button" data-dismiss="alert" aria-label="close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -106,7 +107,7 @@
             } else {
                 echo '
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        Error while deleting user
+                        <i class="fa-solid fa-triangle-exclamation"></i> Error while deleting user
                         <button class="close" type="button" data-dismiss="alert" aria-label="close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -119,5 +120,128 @@
     function userMsg(){
         userDelete();
         userUpdate();
+    }
+
+    function orderUpdate() {
+        if (!empty($_GET['ordered'])) {
+           $edit = new editStuff($_GET['ordered']); 
+
+           if ($edit->editStatusO()) {
+                echo '
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <i class="fa-solid fa-circle-check"></i> Order updated successfully
+                        <button class="close" type="button" data-dismiss="alert" aria-label="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                ';
+           } else {
+                echo '
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <i class="fa-solid fa-triangle-exclamation"></i> Error updating order
+                        <button class="close" type="button" data-dismiss="alert" aria-label="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                ';
+           } 
+        } elseif (!empty($_GET['packed'])) {
+            $edit = new editStuff($_GET['packed']);
+
+            if ($edit->editStatusP()) {
+                echo '
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <i class="fa-solid fa-circle-check"></i> Order updated successfully
+                        <button class="close" type="button" data-dismiss="alert" aria-label="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                ';
+            } else {
+                echo '
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <i class="fa-solid fa-triangle-exclamation"></i> Error updating order
+                        <button class="close" type="button" data-dismiss="alert" aria-label="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                ';
+            }
+        } elseif (!empty($_GET['transit'])) {
+            $edit = new editStuff($_GET['transit']);
+
+            if ($edit->editStatusT()) {
+                echo '
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <i class="fa-solid fa-circle-check"></i> Order updated successfully
+                        <button class="close" type="button" data-dismiss="alert" aria-label="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                ';
+            } else {
+                echo '
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <i class="fa-solid fa-triangle-exclamation"></i> Error updating order
+                        <button class="close" type="button" data-dismiss="alert" aria-label="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                ';
+            }
+        } elseif (!empty($_GET['delivered'])) {
+            $edit = new editStuff($_GET['delivered']);
+
+            if ($edit->editStatusD()) {
+                echo '
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <i class="fa-solid fa-circle-check"></i> Order updated successfully
+                        <button class="close" type="button" data-dismiss="alert" aria-label="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                ';
+            } else {
+                echo '
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <i class="fa-solid fa-triangle-exclamation"></i> Error updating order
+                        <button class="close" type="button" data-dismiss="alert" aria-label="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                ';                
+            }
+        }
+    }
+
+    function orderDelete() {
+        if (!empty($_GET['obl'])) {
+            $delete = new deleteStuff($_GET['obl']);
+            
+            if ($delete->delOrder()) {
+                echo '
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <i class="fa-solid fa-circle-check"></i> Order deleted successfully
+                        <button class="close" type="button" data-dismiss="alert" aria-label="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                ';
+            } else {
+                echo '
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <i class="fa-solid fa-triangle-exclamation"></i> Error while deleting order
+                        <button class="close" type="button" data-dismiss="alert" aria-label="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                ';
+            }
+        }
+    }
+
+    function orderMsg() {
+        orderUpdate();
+        orderDelete();
     }
 ?>

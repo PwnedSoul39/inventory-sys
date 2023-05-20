@@ -22,7 +22,7 @@
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="./dashboard.php">
-                            <i class="fa-solid fa-house"></i> Home
+                            <i class="fa-solid fa-table-columns"></i> Dashboard
                         </a>
                     </li>
                     <li class="nav-item">

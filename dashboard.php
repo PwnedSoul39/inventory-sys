@@ -2,7 +2,8 @@
 	require_once './resource/php/init.php';
 	session_start();
 	logIn();
-	logLockUser();
+    logLockUser();
+    $view = new view();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +22,7 @@
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="./dashboard.php">
-                            <i class="fa-solid fa-house"></i> Home
+                            <i class="fa-solid fa-table-columns"></i> Dashboard
                         </a>
                     </li>
                     <li class="nav-item">
@@ -61,34 +62,34 @@
                     <div class="card-body">
                         <h5 class="card-title h1">
                             <?php
-                                 
+                                 $view->viewCountUser();
                             ?>
                         </h5>
-                        <p class="card-text">Users</p>
+                        <p class="font-weight-bold card-text">Users</p>
+                        <img class="dash-img mx-auto" src="./resource/img/user.png" alt="SADGE">
                     </div>
-                    <img class="dash-img mx-auto mb-4" src="./resource/img/user.png" alt="SADGE">
                 </div>
                 <div class="card bg-success">
                     <div class="card-body">
-                        <h5 class="card-title">
+                        <h5 class="card-title h1">
                             <?php
-                            
+                                $view->viewCountInv();
                             ?>
                         </h5>
-                        <p class="card-text">Items</p>
+                        <p class="font-weight-bold card-text">Items</p>
+                        <img class="dash-img mx-auto" src="./resource/img/item.png" alt="SADGE">
                     </div>
-                    <img class="dash-img mx-auto mb-4" src="./resource/img/item.png" alt="SADGE">
                 </div>
                 <div class="card bg-secondary">
                     <div class="card-body">
-                        <h5 class="card-title">
+                        <h5 class="card-title h1">
                             <?php
-                                 
+                                $view->viewCountOrder(); 
                             ?>
                         </h5>
-                        <p class="card-text">Orders</p>
+                        <p class="font-weight-bold card-text">Orders</p>
+                        <img class="dash-img mx-auto" src="./resource/img/order.png" alt="SADGE">
                     </div>
-                    <img class="dash-img mx-auto mb-4" src="./resource/img/order.png" alt="SADGE">
                 </div>
             </div>
         </div>
