@@ -159,10 +159,10 @@
                     </div>
                 ';
                 return false;   
-            } elseif (strlen($pass) < 8) {
+            } elseif (strlen($pass) < 8 && strlen($pass) > 16) {
                 echo '
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <i class="fa-solid fa-triangle-exclamation"></i> Password should have at least 8 characters
+                        <i class="fa-solid fa-triangle-exclamation"></i> Password should have at least 8-16 characters
                         <button class="close" type="button" data-dismiss="alert" aria-label="close">
                             <span aria-hidden="true">&times;</span>
                         </button>

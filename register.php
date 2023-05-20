@@ -33,34 +33,34 @@
                 </div>
                 <form class="form" method="post">
                     <div class="form-group">
-                        <label for="email_input" data-toggle="tooltip" data-placement="top" title="Required field">Email <span class="text-danger">*</span></label>
+                        <label for="email_input">Email <span class="text-danger">*</span></label>
                         <input class="form-control" type="email" name="email_box" id="email_input" required>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="fname_input" data-toggle="tooltip" data-placement="top" title="Required field">First Name <span class="text-danger">*</span></label>
+                            <label for="fname_input">First Name <span class="text-danger">*</span></label>
                             <input class="form-control" type="text" name="fname_box" id="fname_input" required>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="lname_input" data-toggle="tooltip" data-placement="top" title="Required field">Last Name <span class="text-danger">*</span></label>
+                            <label for="lname_input">Last Name <span class="text-danger">*</span></label>
                             <input class="form-control" type="text" name="lname_box" id="lname_input" required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="" data-toggle="tooltip" data-placement="top" title="Required field">
+                        <label for="uname_input">
                             Username                             
                             <small class="text-muted">
-                                (must be between 4 to 30 characters)
+                                (must be between 4-30 characters)
                                 <span class="text-danger">*</span>
                             </small>
                         </label>
                         <input class="form-control" type="text" name="uname_box" id="uname_input" required>
                     </div>
                     <div class="form-group">
-                        <label for="pass_input" data-toggle="tooltip" data-placement="top" title="Required field">
+                        <label for="pass_input">
                             Password 
                             <small class="text-muted">
-                                (must be at least 8 characters)
+                                (must be at least 8-16 characters)
                                 <span class="text-danger">*</span>
                             </small>
                         </label>

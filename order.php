@@ -1,5 +1,6 @@
 <?php
     require_once 'resource/php/init.php';
+    $view = new view();
     session_start();
     logIn();
     logLockUser();
@@ -57,6 +58,22 @@
                 </ul>
             </nav>
         </header>
+        <div class="container-fluid mt-3">
+            <div class="row mx-auto">
+                <div class="col">
+                    <?php
+                        
+                    ?>
+                </div>
+            </div>
+            <div class="row mx-auto">
+                <div class="col">
+                    <?php
+                        $view->viewOrder();
+                    ?>
+                </div>
+            </div>
+        </div>
     </body>
 
     <!-- Bootstrap -->

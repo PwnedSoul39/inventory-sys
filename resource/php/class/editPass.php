@@ -2,6 +2,7 @@
     class editPass extends config {
         public $new_pass;
         public $user;
+        
         public function __construct($new_pass) {
             $this->new_pass = $new_pass;
             $this->user = $user = $_SESSION['user'];

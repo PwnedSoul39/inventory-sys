@@ -63,4 +63,61 @@
         header('Location:index.php');
         exit();
     }
+
+    function userUpdate() {
+        if (!empty($_GET['update'])) {
+            $edit = new editStuff($_GET['update']);
+
+            if ($edit->editType()) {
+                echo '
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        User edited successfully
+                        <button class="close" type="button" data-dismiss="alert" aria-label="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                ';
+            } else {
+                echo '
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        Error while editing user
+                        <button class="close" type="button" data-dismiss="alert" aria-label="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                ';
+            }
+        }
+    }
+    
+    function userDelete() {
+        if (!empty($_GET['delete'])) {
+            $delete = new deleteUser($_GET['delete']);
+            
+            if ($delete->delUser()) {
+                echo '
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        User deleted successfully
+                        <button class="close" type="button" data-dismiss="alert" aria-label="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                ';
+            } else {
+                echo '
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        Error while deleting user
+                        <button class="close" type="button" data-dismiss="alert" aria-label="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                ';
+            }
+        }
+    }
+
+    function userMsg(){
+        userDelete();
+        userUpdate();
+    }
 ?>

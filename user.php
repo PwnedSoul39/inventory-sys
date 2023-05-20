@@ -1,5 +1,6 @@
 <?php
     require_once './resource/php/init.php';
+    $view = new view();
     session_start();
     logIn();
     logLockUser();
@@ -54,6 +55,22 @@
                 </ul>
             </nav>
         </header>
+        <div class="container-fluid mt-3">
+            <div class="row mx-auto w-50">
+                <div class="col">
+                    <?php
+                        userMsg();
+                    ?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="mx-auto">
+                    <?php
+                        $view->viewUser();
+                    ?>
+                </div>
+            </div>
+        </div>
 	</body>
 	
 	<!-- Boostrap -->
