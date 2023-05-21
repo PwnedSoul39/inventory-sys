@@ -6,9 +6,17 @@
             $validate->validReg($_POST['lname_box'], $_POST['fname_box'], $_POST['uname_box'], $_POST['email_box'], $_POST['pass_box'], $_POST['type_choice']);
         }
     }
+    
+    function insertItemMsg() {
+        // Validation and error messages x2
+        if (isset($_POST['item_add_btn'])) {
+            $validate = new validate();
+            $validate->validNewItem($_POST['iname_box'],$_POST['itype_box'],$_POST['ibrand_box'],(int)$_POST['iprice_box'],(int)$_POST['iqty_box'],(int)$_POST['istat_box']);
+        }
+    }
 
     function loginMsg() {
-        // Validation and error messages x2
+        // Validation and error messages x3
         if (isset($_POST['log_btn'])) {
             $validate = new validate();
             $validate->validLog($_POST['email_logbox'], $_POST['pass_logbox']);
@@ -16,6 +24,7 @@
     }
 
     function newPassMsg() {
+        // Validation and error messages x4
         if (isset($_POST['edit_btn'])) {
             $validate = new validate();
             $validate->validNewPass($_POST['pass_editbox'],$_POST['confirm_pass_editbox']);
@@ -243,5 +252,106 @@
     function orderMsg() {
         orderUpdate();
         orderDelete();
+    }
+
+    function itemDelete() {
+        if (!empty($_GET['remove'])) {
+            $delete = new deleteStuff($_GET['remove']);
+            
+            if ($delete->delItem()) {
+                echo '
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <i class="fa-solid fa-circle-check"></i> Item deleted successfully
+                        <button class="close" type="button" data-dismiss="alert" aria-label="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                ';
+            } else {
+                echo '
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <i class="fa-solid fa-triangle-exclamation"></i> Error while deleting Item
+                        <button class="close" type="button" data-dismiss="alert" aria-label="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                ';
+            }
+        }
+    }
+
+    function itemUpdate() {
+        if (!empty($_GET['act'])) {
+           $edit = new editStuff($_GET['act']); 
+
+           if ($edit->editStatusAct()) {
+                echo '
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <i class="fa-solid fa-circle-check"></i> Item updated successfully
+                        <button class="close" type="button" data-dismiss="alert" aria-label="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                ';
+           } else {
+                echo '
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <i class="fa-solid fa-triangle-exclamation"></i> Error updating item
+                        <button class="close" type="button" data-dismiss="alert" aria-label="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                ';
+           } 
+        } elseif (!empty($_GET['inact'])) {
+            $edit = new editStuff($_GET['inact']);
+
+            if ($edit->editStatusIna()) {
+                echo '
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <i class="fa-solid fa-circle-check"></i> Item updated successfully
+                        <button class="close" type="button" data-dismiss="alert" aria-label="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                ';
+           } else {
+                echo '
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <i class="fa-solid fa-triangle-exclamation"></i> Error updating item
+                        <button class="close" type="button" data-dismiss="alert" aria-label="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                ';
+           } 
+        } elseif (!empty($_GET['disc'])) {
+            $edit = new editStuff($_GET['disc']);
+
+            if ($edit->editStatusDis()) {
+                echo '
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <i class="fa-solid fa-circle-check"></i> Item updated successfully
+                        <button class="close" type="button" data-dismiss="alert" aria-label="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                ';
+           } else {
+                echo '
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <i class="fa-solid fa-triangle-exclamation"></i> Error updating item
+                        <button class="close" type="button" data-dismiss="alert" aria-label="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                ';
+           } 
+        }
+    }
+
+    function itemMsg() {
+        itemDelete();
+        itemUpdate();
     }
 ?>

@@ -2,14 +2,36 @@
     class view extends config {
 
         public function viewUser() {
+            // DB Connect
             $con = $this->con();
-            $sql = "SELECT * FROM `tbl_user` ORDER BY `u_id` ASC";
+
+            // How many items per page
+            $items = 5;
+            
+            // Page Counter
+            $query = "SELECT * FROM `tbl_user`";
+            $counter = $con->prepare($query);
+            $counter->execute();
+            $num_rows = $counter->rowCount();
+
+            // Resulting Data
+            $pages = ceil($num_rows/$items);
+
+            if (!isset($_GET['page'])) {
+                $page = 1;
+            } else {
+                $page = $_GET['page'];
+            }
+
+
+            $start_limit = ($page-1) * $items;
+            $sql = "SELECT * FROM `tbl_user` LIMIT $start_limit, $items";
             $data = $con->prepare($sql);
             $data->execute();
             $result = $data->fetchAll(PDO::FETCH_ASSOC);
 
             echo '
-                <table class="table-sm table-striped table-bordered">
+                <table class="table table-striped table-bordered">
                     <thead>
                         <tr class="text-center">
                             <th>User ID</th>
@@ -63,17 +85,84 @@
                     </tbody>
                 </table>
             ';
+
+            echo '
+                <small class="text-info">Page '.$page.' of '.$pages.'</small>
+                <nav class="mt-4 d-flex justify-content-center">
+                    <ul class="pagination">';
+            
+                if ($page == 1) {
+                    echo '
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#">Previous</a>
+                        </li>
+                    ';
+                } else {
+                    echo '
+                        <li class="page-item">
+                            <a class="page-link" href="?page='.($page-1).'">Previous</a>
+                        </li>
+                    ';
+                }
+    
+                for ($i = 1; $i <= $pages; $i++) {
+                    echo '
+                        <li class="page-item">
+                            <a class="page-link" href="?page='.$i.'">'.$i.'</a>
+                        </li>
+                    ';
+                }
+                
+                if ($page == $pages) {
+                    echo '
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#">Next</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    ';
+                } else {
+                    echo '
+                                <li class="page-item">
+                                    <a class="page-link" href="?page='.($page+1).'">Next</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    ';
+                }
         }
 
         public function viewInventory() {
+            // DB connect
             $con = $this->con();
-            $sql = "SELECT * FROM `tbl_inventory`";
+
+            // How many items per page
+            $items = 5;
+
+            // Page Counter
+            $query = "SELECT * FROM `tbl_inventory`";
+            $counter = $con->prepare($query);
+            $counter->execute();
+            $num_rows = $counter->rowCount();
+            
+            // Resulting Data
+            $pages = ceil($num_rows/$items);
+            
+            if (!isset($_GET['page'])) {
+                $page = 1;
+            } else {
+                $page = $_GET['page'];
+            }
+
+            
+            $start_limit = ($page-1) * $items;
+            $sql = "SELECT * FROM `tbl_inventory` LIMIT $start_limit, $items";
             $data = $con->prepare($sql);
             $data->execute();
             $result = $data->fetchAll(PDO::FETCH_ASSOC);
             
             echo '
-                <table class="table-sm table-striped table-bordered">
+                <table class="table table-striped table-bordered">
                     <thead>
                         <tr class="text-center">
                             <th>Item ID</th>
@@ -148,15 +237,15 @@
 
             echo '
                         <tr>
-                            <form>
+                            <form method="post">
                                 <td class="text-center font-weight-bold">
                                     #
                                 </td>
                                 <td>
-                                    <input class="form-control" type="text" required>
+                                    <input class="form-control" type="text" name="iname_box" required>
                                 </td>
                                 <td>
-                                    <select class="custom-select" required>
+                                    <select class="custom-select" name="itype_box" required>
                                         <option value="" disabled selected>Choose a type</option>
                                         <option value="Keyboard">Keyboard</option>
                                         <option value="Mouse">Mouse</option>
@@ -168,16 +257,16 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <input class="form-control" type="text" required>
+                                    <input class="form-control" type="text" name="ibrand_box" required>
                                 </td>
                                 <td>
-                                    <input class="form-control" type="number" required>
+                                    <input class="form-control" type="number" name="iprice_box" required>
                                 </td>
                                 <td>
-                                    <input class="form-control" type="number" value="1" required>
+                                    <input class="form-control" type="number" name="iqty_box" value="1" required>
                                 </td>
                                 <td>
-                                    <select class="custom-select" required>
+                                    <select class="custom-select" name="istat_box" required>
                                         <option value="" disabled selected>Choose status</option>
                                         <option value="1">Active</option>
                                         <option value="2">Inactive</option>
@@ -185,10 +274,10 @@
                                     </select>
                                 </td>
                                 <td class="text-center">
-                                    <button class="btn btn-primary" type="submit">
+                                    <button class="btn btn-primary" type="submit name="item_add_btn">
                                         <i class="fa-solid fa-circle-plus"></i> Add Item
                                     </button>
-                                    <button class="btn btn-info" type="reset">
+                                    <button class="btn btn-info" type="reset" name="item_clear_btn">
                                         <i class="fa-solid fa-broom"></i> Clear Item
                                     </button>
                                 </td>
@@ -197,17 +286,83 @@
                     </tbody>
                 </table>
             ';
+            
+            echo '
+                <small class="text-info">Page '.$page.' of '.$pages.'</small>
+                <nav class="mt-4 d-flex justify-content-center">
+                    <ul class="pagination">';
+            
+                if ($page == 1) {
+                    echo '
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#">Previous</a>
+                        </li>
+                    ';
+                } else {
+                    echo '
+                        <li class="page-item">
+                            <a class="page-link" href="?page='.($page-1).'">Previous</a>
+                        </li>
+                    ';
+                }
+
+                for ($i = 1; $i <= $pages; $i++) {
+                    echo '
+                        <li class="page-item">
+                            <a class="page-link" href="?page='.$i.'">'.$i.'</a>
+                        </li>
+                    ';
+                }
+                
+                if ($page == $pages) {
+                    echo '
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#">Next</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    ';
+                } else {
+                    echo '
+                                <li class="page-item">
+                                    <a class="page-link" href="?page='.($page+1).'">Next</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    ';
+                }
         }
         
         public function viewOrder() {
+            // DB Connect
             $con = $this->con();
+
+            //How many items per page
+            $items = 5;
+
+            // Page Counter
+            $query = "SELECT * FROM `tbl_order`";
+            $counter = $con->prepare($query);
+            $counter->execute();
+            $num_rows = $counter->rowCount();
+
+            // Resulting Data
+            $pages = ceil($num_rows/$items);
+
+            if (!isset($_GET['page'])) {
+                $page = 1;
+            } else {
+                $page = $_GET['page'];
+            }
+
+            $start_limit = ($page-1) * $items;
             $sql = "SELECT * FROM `tbl_order`";
             $data = $con->prepare($sql);
             $data->execute();
             $result = $data->fetchAll(PDO::FETCH_ASSOC);
 
             echo '
-                <table class="table-sm table-striped table-bordered">
+                <table class="table table-striped table-bordered">
                     <thead>
                         <tr class="text-center">
                             <th>Order ID</th>
@@ -298,6 +453,50 @@
                     </tbody>
                 </table>
             ';
+            echo '
+                <small class="text-info">Page '.$page.' of '.$pages.'</small>
+                <nav class="mt-4 d-flex justify-content-center">
+                    <ul class="pagination">';
+            
+                if ($page == 1) {
+                    echo '
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#">Previous</a>
+                        </li>
+                    ';
+                } else {
+                    echo '
+                        <li class="page-item">
+                            <a class="page-link" href="?page='.($page-1).'">Previous</a>
+                        </li>
+                    ';
+                }
+    
+                for ($i = 1; $i <= $pages; $i++) {
+                    echo '
+                        <li class="page-item">
+                            <a class="page-link" href="?page='.$i.'">'.$i.'</a>
+                        </li>
+                    ';
+                }
+                
+                if ($page == $pages) {
+                    echo '
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#">Next</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    ';
+                } else {
+                    echo '
+                                <li class="page-item">
+                                    <a class="page-link" href="?page='.($page+1).'">Next</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    ';
+                }            
         }
 
         public function viewCountInv() {

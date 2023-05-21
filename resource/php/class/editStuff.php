@@ -66,5 +66,41 @@
                 return false;
             }
         }
+
+        public function editStatusAct() {
+            $con = $this->con();
+            $sql = "UPDATE `tbl_inventory` SET `i_status` = '1' WHERE `i_id` = '$this->id'";
+            $data = $con->prepare($sql);
+    
+            if ($data->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        public function editStatusIna() {
+            $con = $this->con();
+            $sql = "UPDATE `tbl_inventory` SET `i_status` = '2' WHERE `i_id` = '$this->id'";
+            $data = $con->prepare($sql);
+    
+            if ($data->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        public function editStatusDis() {
+            $con = $this->con();
+            $sql = "UPDATE `tbl_inventory` SET `i_status` = '3' WHERE `i_id` = '$this->id'";
+            $data = $con->prepare($sql);
+    
+            if ($data->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
 ?>

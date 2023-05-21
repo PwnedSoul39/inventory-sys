@@ -1,6 +1,7 @@
 <?php
-    include ('insertAcc.php');
-    include ('editPass.php');
+    include 'insertAcc.php';
+    include 'insertItem.php';
+    include 'editPass.php';
 
     class validate extends config {
         public function secure($text) {
@@ -24,6 +25,11 @@
             $string = stripslashes ($string);
             $string = htmlspecialchars($string);
             return $string;
+        }
+
+        public function sanitizeNum($num) {
+            // Removes other characters except for numbers, + and - signs then converts them into an integer.
+            return (int)filter_var($num, FILTER_SANITIZE_NUMBER_INT);
         }
 
         public function validLog($lmail, $lpass) {
@@ -340,6 +346,41 @@
                     ';
                 }
             }
+        }
+
+        public function validNewItem($a,$b,$c,$d,$e,$f) {
+            // Item price and quantity. This converts string to integer. textbox values are always in string you need to convert it first to desired data type
+            $a = $this->checkName($a);
+            $c = $this->checkName($c);
+            $d = $this->sanitizeNum($d);
+            $e = $this->sanitizeNum($e);
+            $f = $this->sanitizeNum($f);
+
+            if (is_int($d) == true && is_int($e) == true) {
+                $insert = new insertItem($a,$b,$c,$d,$e,$f);
+
+                if ($insert->addItem()) {
+                    echo '
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <i class="fa-solid fa-circle-check"></i> Item has been added
+                            <button class="close" type="button" data-dismiss="alert" aria-label="close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    ';                    
+                } else {
+                    echo '
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <i class="fa-solid fa-triangle-exclamation"></i> Error adding item
+                            <button class="close" type="button" data-dismiss="alert" aria-label="close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    ';                    
+                }
+                  
+            }
+
         }
     }
 ?>

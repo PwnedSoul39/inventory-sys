@@ -62,7 +62,8 @@
             <div class="row mx-auto w-50">
                 <div class="col">
                     <?php
-
+                        insertItemMsg();
+                        itemMsg();
                     ?>
                 </div>
             </div>
