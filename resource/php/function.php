@@ -9,9 +9,15 @@
     
     function insertItemMsg() {
         // Validation and error messages x2
-        if (isset($_POST['item_add_btn'])) {
+        if (isset($_POST['item_add'])) {
             $validate = new validate();
-            $validate->validNewItem($_POST['iname_box'],$_POST['itype_box'],$_POST['ibrand_box'],(int)$_POST['iprice_box'],(int)$_POST['iqty_box'],(int)$_POST['istat_box']);
+            $iname = $_POST['iname_box'];
+            $itype = $_POST['itype_box'];
+            $ibrand = $_POST['ibrand_box'];
+            $iprice = intval($_POST['iprice_box']);
+            $iqty = intval($_POST['iqty_box']);
+            $istat = intval($_POST['istat_box']);
+            $validate->validNewItem($iname,$itype,$ibrand,$iprice,$iqty,$istat);
         }
     }
 

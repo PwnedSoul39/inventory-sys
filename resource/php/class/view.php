@@ -237,10 +237,10 @@
 
             echo '
                         <tr>
-                            <form method="post">
-                                <td class="text-center font-weight-bold">
-                                    #
-                                </td>
+                            <td class="text-center font-weight-bold">
+                                #
+                            </td>
+                            <form class="form" method="post"> 
                                 <td>
                                     <input class="form-control" type="text" name="iname_box" required>
                                 </td>
@@ -254,6 +254,8 @@
                                         <option value="SSD">SSD</option>
                                         <option value="RAM">RAM</option>
                                         <option value="Laptop">Laptop</option>
+                                        <option value="Desktop">Desktop</option>
+                                        <option value="Accessories">Accessories</option>
                                     </select>
                                 </td>
                                 <td>
@@ -263,7 +265,7 @@
                                     <input class="form-control" type="number" name="iprice_box" required>
                                 </td>
                                 <td>
-                                    <input class="form-control" type="number" name="iqty_box" value="1" required>
+                                    <input class="form-control" type="number" name="iqty_box" required>
                                 </td>
                                 <td>
                                     <select class="custom-select" name="istat_box" required>
@@ -274,10 +276,10 @@
                                     </select>
                                 </td>
                                 <td class="text-center">
-                                    <button class="btn btn-primary" type="submit name="item_add_btn">
+                                    <button class="btn btn-primary" type="submit" name="item_add">
                                         <i class="fa-solid fa-circle-plus"></i> Add Item
                                     </button>
-                                    <button class="btn btn-info" type="reset" name="item_clear_btn">
+                                    <button class="btn btn-info" type="reset">
                                         <i class="fa-solid fa-broom"></i> Clear Item
                                     </button>
                                 </td>
@@ -515,6 +517,14 @@
             $data = $con->prepare($sql);
             $data->execute();
             $result = $data->fetchColumn();
+            // Pedeng ganito o kaya $data->rowCount() para makuha lahat nung user
+            /*
+                rowCount() example:
+                    $sql = "SELECT * FROM `tbl_user`";
+                    $data = $con->prepare($sql);
+                    $data->execute();
+                    $result = $data->rowCount();
+            */
 
             echo $result;
         }

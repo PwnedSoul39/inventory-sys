@@ -5,7 +5,7 @@
 
     class validate extends config {
         public function secure($text) {
-            // I used this function instead of the openssl_encrypt method
+            // I used this function instead of the openssl_encrypt method. Finuction ko na kasi nakakatamad itype ung buo (￣▽￣)
             return password_hash($text, PASSWORD_BCRYPT);
         }
 
@@ -16,6 +16,7 @@
 
         public function sanitizeMail($mail) {
             // Boolean ata to na titignan kung valid ba yung email
+            $mail = trim($mail);
             return filter_var($mail, FILTER_SANITIZE_EMAIL);
         }
 
@@ -29,7 +30,8 @@
 
         public function sanitizeNum($num) {
             // Removes other characters except for numbers, + and - signs then converts them into an integer.
-            return (int)filter_var($num, FILTER_SANITIZE_NUMBER_INT);
+            $num = trim($num);
+            return filter_var($num, FILTER_SANITIZE_NUMBER_INT);
         }
 
         public function validLog($lmail, $lpass) {
@@ -349,14 +351,10 @@
         }
 
         public function validNewItem($a,$b,$c,$d,$e,$f) {
-            // Item price and quantity. This converts string to integer. textbox values are always in string you need to convert it first to desired data type
-            $a = $this->checkName($a);
-            $c = $this->checkName($c);
-            $d = $this->sanitizeNum($d);
-            $e = $this->sanitizeNum($e);
-            $f = $this->sanitizeNum($f);
-
-            if (is_int($d) == true && is_int($e) == true) {
+            $a = trim($a);
+            $b = trim($b);
+            $c = trim($c);
+            if (is_int($d) == 1 && is_int($e) == 1 && is_int($f) == 1) {                
                 $insert = new insertItem($a,$b,$c,$d,$e,$f);
 
                 if ($insert->addItem()) {
