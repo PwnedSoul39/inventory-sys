@@ -6,11 +6,7 @@
 
         public function con() {
             try {
-<<<<<<< Updated upstream
-                $this->pdo = new PDO('mysql:host=localhost:3307;dbname=db_inventory_sys',$this->user, $this->pass);
-=======
-                $this->pdo = new PDO('mysql:host=127.0.0.1:3306;dbname=inventory_sys',$this->user, $this->pass);
->>>>>>> Stashed changes
+                $this->pdo = new PDO('mysql:host=localhost:3307;dbname=inventory-sys',$this->user, $this->pass);
             } catch (PDOException $e) {
                 die($e->getMessage());
             }

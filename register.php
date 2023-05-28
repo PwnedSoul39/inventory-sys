@@ -8,6 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
         <script src="https://kit.fontawesome.com/d101948c74.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,500&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="./resource/css/register.css">
         <title>KriziaWare Register</title>
     </head>
@@ -16,8 +17,8 @@
             NOTE: Pwede nyong baguhin tong mga to tinest ko lng mga webpage
          -->
         <header class="row-fluid">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <span class="navbar-brand mr-auto">KriziaWare</span>
+            <nav class="navbar navbar-expand-lg navbar-dark">
+            <a class="title navbar-brand mr-auto" href="./home.php">KriziaWare</a>
                 <ul class="navbar-nav">
 
                 </ul>
@@ -25,30 +26,30 @@
         </header>
         <main class="container-fluid mt-5">
             <div class="card container p-3">
-                <?php 
+                <?php
                     insertAccMsg();
                 ?>
-                <div class="text-center">
+                <div class="text-center text-white">
                     <h1>Register</h1>
                 </div>
                 <form class="form" method="post">
-                    <div class="form-group">
+                    <div class="form-group text-white">
                         <label for="email_input">Email <span class="text-danger">*</span></label>
                         <input class="form-control" type="email" name="email_box" id="email_input" required>
                     </div>
                     <div class="form-row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-6 text-white">
                             <label for="fname_input">First Name <span class="text-danger">*</span></label>
                             <input class="form-control" type="text" name="fname_box" id="fname_input" required>
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-6 text-white">
                             <label for="lname_input">Last Name <span class="text-danger">*</span></label>
                             <input class="form-control" type="text" name="lname_box" id="lname_input" required>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group text-white">
                         <label for="uname_input">
-                            Username                             
+                            Username
                             <small class="text-muted">
                                 (must be between 4-30 characters)
                                 <span class="text-danger">*</span>
@@ -56,9 +57,9 @@
                         </label>
                         <input class="form-control" type="text" name="uname_box" id="uname_input" required>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group text-white">
                         <label for="pass_input">
-                            Password 
+                            Password
                             <small class="text-muted">
                                 (must be at least 8-16 characters)
                                 <span class="text-danger">*</span>
@@ -66,7 +67,7 @@
                         </label>
                         <input class="form-control" type="password" name="pass_box" id="pass_input" required>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group pt-3">
                         <select class="custom-select" name="type_choice" required>
                             <option value="" disabled selected>Choose your account type</option>
                             <option value="0">User</option>
@@ -74,19 +75,19 @@
                         </select>
                     </div>
                     <div class="text-center">
-                        <button class="btn btn-primary rounded-pill" type="submit" name="reg_btn">Register</button>
+                        <button class="btn rounded-pill mt-3 text-white" type="submit" name="reg_btn">Submit</button>
                         <div class="text-center mt-5">
                             <small class="text-muted">Already have an account?</small> <br>
-                            <a href="./index.php">Login Now</a>
+                            <a class="log" href="./index.php">Login Now</a>
                         </div>
                     </div>
                 </form>
             </div>
         </main>
-        <footer class="row-fluid bg-dark text-muted fixed-bottom">
+        <footer class="row-fluid text-muted fixed-bottom">
             <div class="container d-flex justify-content-between">
                 <div class="col">
-                    <small>Copyright &copy;Westview University</small> <br>
+                    <small>Copyright &copy;KriziaWare</small> <br>
                     <small>All Rights Reserved 2023</small>
                 </div>
                 <div class="col">

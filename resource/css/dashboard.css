@@ -8,3 +8,6 @@ html {
     text-rendering: optimizeLegibility;
     scroll-behavior: smooth;
 }
+.navbar{
+  background-color: red;
+}

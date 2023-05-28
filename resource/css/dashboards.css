@@ -1,0 +1,47 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+.section1{
+  height: 100vh;
+  /* background-image: url(../img/3.jpg); */
+  background-color: #050505;
+  /* background-size: cover;
+  background-position: center; */
+}
+.nav-dash{
+  height: 15vh;
+  background-color: #1c1c1c;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: 'Sen';
+}
+
+img {
+  width: 200px;
+  height: 500px;
+  object-fit: cover;
+}
+.carousel-indicators{
+  height: -500px;
+}
+.section2{
+  height: 100vh;
+  /* background-image: url(../img/3.jpg); */
+  background-color: black;
+  /* background-size: cover;
+  background-position: center; */
+}
+.section2 img{
+  padding: 5px;
+  height: 300px;
+  width: 500px;
+}
+.project-image{
+  margin-top: 15%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
