@@ -42,11 +42,78 @@
                 </ul>
             </nav>
         </header>
-       <main> <div class="container-fluid bg-trasparent my-4 p-3" style="position: relative;"> <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3"> <div class="col"> <div class="card h-100 shadow-sm"> <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRFizzjtNKpTdgDAlP3n6iZBefNBsqVlfM3FJKksnjpMxO85AeYFUAw5wGLvCduRnvaB59nxyTfXbX0DzkVq9eHbemNGV5Ya5TVJEB-FJIbh106p9suoEbcO_PnvAPlqYcNoA&usqp=CAc" class="card-img-top" alt="..."> <div class="card-body"> <div class="clearfix mb-3"> <span class="float-end price-hp">5.76&dollar;</span> </div> <h5 class="card-title">Gaming Keyboard And Mouse Combo Bundle Rainbow LED Game Equipment USB Wired PC Laptop T-WOLF TF200.</h5> <div class="text-center my-4"> <a href="#" class="btn btn-warning">Check offer</a> </div> </div> </div> </div> <div class="col"> <div class="card h-100 shadow-sm"> 
-        <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcS0QSmJquTuPuFEryCTFiQYTRiPJ4K4IYEgv9pHxGk33K6Ov7M0uSHk6XKTx6bDbM6mc0oQKDGP1CN1hbJ0FSx7ABT4rhBIqArqNBruy7b9i_pzQolrwdEO-9fMMaeTwL4J4w&usqp=CAc" 
-       class="card-img-top" alt="..."> <div class="card-body"> <div class="clearfix mb-3"> <span class="float-end price-hp">3.56-16.98&dollar;</span></div> <h5 class="card-title">K880 104Key Mechanical Hot swappable Keyboard wired RGB Gaming Office PC computer keycaps for mecha.</h5> <div class="d-grid gap-2 my-4"> <a href="#" class="btn btn-warning">Check offer</a> </div> </div> </div> </div> 
-       <div class="col"> <div class="card h-100 shadow-sm"> <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcR1UOJkFmQdgKPstK1m1QkwwcdSE6VCTUKMA8xmYc2YExlCe0VnpTgqJYCJfVC5aMsEWjnvxUiVbBKpJ9tgtATXMcpd3Vivp2uWbnjibbYyla4R1wAqZ8jMag&usqp=CAc" class="card-img-top" alt="..."> < <div class="card-body"> <div class="clearfix mb-3"> <span class="float-end price-hp">3.88&dollar;</span> <span class="float-end"><a href="#" class="small text-muted">Reviews</a></span> </div> <h5 class="card-title">USB wired keyboard office style for PC laptop DK500.</h5> <div class="text-center my-4"> <a href="#" class="btn btn-warning">Check offer</a> </div> <div class="clearfix mb-1"> <span class="float-start"><i class="far fa-question-circle"></i></span> <span class="float-end"><i class="fas fa-plus"></i></span> </div> </div> </div> </div> <div class="col"> 
-        <div class="card h-100 shadow-sm"> <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSdWDHaDrrPIJrUC4xp8-Ki6FPgHiZrz9t2GuIW6MnzTYIEtqQ7sh3Z7VCgku-LuPx-kycsO1h72buRRShpPOZq9Thi0HdQH4I6NLYkElWB-4dRCWnrvHo2yRVMochKMD5YXA&usqp=CAc" class="card-img-top" alt="..."> <div class="card-body"> <div class="clearfix mb-3"> <span class="float-end price-hp">8.93.-17.87&dollar;</span> <span class="float-end"><a class="text-muted small" href="#">Reviews</a></span> </div> <h5 class="card-title">✅100% AMZ Keyboard set 104 keys Rainbow Gaming USB Wired Keyboard colorful button Mouse Suit LED.</h5> <div class="text-center my-4"> <a href="#" class="btn btn-warning">Check offer</a> </div> <div class="clearfix mb-1"> <span class="float-start"><i class="far fa-question-circle"></i></span> <span class="float-end"><i class="fas fa-plus"></i></span> </div> </div> </div> </div> </div> </div> </main>
+        <main>
+            <div class="container-fluid bg-trasparent my-4 p-3" style="position: relative;">
+                <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                    <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRFizzjtNKpTdgDAlP3n6iZBefNBsqVlfM3FJKksnjpMxO85AeYFUAw5wGLvCduRnvaB59nxyTfXbX0DzkVq9eHbemNGV5Ya5TVJEB-FJIbh106p9suoEbcO_PnvAPlqYcNoA&usqp=CAc" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <div class="clearfix mb-3">
+                        <span class="float-end price-hp">4.83&dollar;</span>
+                        </div>
+                        <h5 class="card-title">Dc 12v/15v/16v/18v/19v/20v/24v 4-5a 96w Laptop Ac Universal Power Adapter Charger For Laptop.</h5>
+                        <div class="text-center my-4">
+                        <a href="#" class="btn btn-warning">Check offer</a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                    <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcS0QSmJquTuPuFEryCTFiQYTRiPJ4K4IYEgv9pHxGk33K6Ov7M0uSHk6XKTx6bDbM6mc0oQKDGP1CN1hbJ0FSx7ABT4rhBIqArqNBruy7b9i_pzQolrwdEO-9fMMaeTwL4J4w&usqp=CAc" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <div class="clearfix mb-3">
+                        <span class="float-end price-hp">7.56&dollar;</span>
+                        </div>
+                        <h5 class="card-title">HP Laptop Charger Adapter Elitebook 210 G1 250 G3 250 G4 250 G5 255 G4 255 G5 255 G6 355 G2 455 G3</h5>
+                        <div class="d-grid gap-2 my-4">
+                        <a href="#" class="btn btn-warning">Check offer</a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                    <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcR1UOJkFmQdgKPstK1m1QkwwcdSE6VCTUKMA8xmYc2YExlCe0VnpTgqJYCJfVC5aMsEWjnvxUiVbBKpJ9tgtATXMcpd3Vivp2uWbnjibbYyla4R1wAqZ8jMag&usqp=CAc" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <div class="clearfix mb-3">
+                        <span class="float-end price-hp">3.18&dollar;</span>
+                        <span class="float-end"><a href="#" class="small text-muted">Reviews</a></span>
+                        </div>
+                        <h5 class="card-title">96W 8in1 UNIVERSAL PowerSupply LAPTOP CHARGER For Laptop Notebook.</h5>
+                        <div class="text-center my-4">
+                        <a href="#" class="btn btn-warning">Check offer</a>
+                        </div>
+                        <div class="clearfix mb-1">
+                        <span class="float-start"><i class="far fa-question-circle"></i></span>
+                        <span class="float-end"><i class="fas fa-plus"></i></span>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                    <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSdWDHaDrrPIJrUC4xp8-Ki6FPgHiZrz9t2GuIW6MnzTYIEtqQ7sh3Z7VCgku-LuPx-kycsO1h72buRRShpPOZq9Thi0HdQH4I6NLYkElWB-4dRCWnrvHo2yRVMochKMD5YXA&usqp=CAc" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <div class="clearfix mb-3">
+                        <span class="float-end price-hp">8.57&dollar;</span>
+                        <span class="float-end"><a class="text-muted small" href="#">Reviews</a></span>
+                        </div>
+                        <h5 class="card-title">HP Compaq Laptop Charger 18.5V 3.5A for NX6140 NX7400 NX9420 3115M 3125 630 635 650 655 Mini 2140 colorful button Mouse Suit LED.</h5>
+                        <div class="text-center my-4">
+                        <a href="#" class="btn btn-warning">Check offer</a>
+                        </div>
+                        <div class="clearfix mb-1">
+                        <span class="float-start"><i class="far fa-question-circle"></i></span>
+                        <span class="float-end"><i class="fas fa-plus"></i></span>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </main>
     </body>
 
     <!-- Bootstrap -->
