@@ -44,7 +44,7 @@
                 </ul>
             </nav>
         </header>
-        <a href ="resource/accessory/accessory.php">
+        <a href ="./accessory.php">
         <img src="resource/img/product.png" class="rounded float-left" alt="..."></a>
     </body>
 
