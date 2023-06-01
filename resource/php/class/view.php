@@ -7,7 +7,7 @@
 
             // How many items per page
             $items = 5;
-            
+
             // Page Counter
             $query = "SELECT * FROM `tbl_user`";
             $counter = $con->prepare($query);
@@ -70,7 +70,7 @@
                                 } else {
                                     echo '<i class="fa-solid fa-user-pen"></i> Edit to Admin';
                                 }
-            
+
                         echo  '</a>
                             <a class="btn btn-danger" href="user.php?delete='.$data['u_id'].'">
                                 <i class="fa-solid fa-user-xmark"></i> Delete User
@@ -90,7 +90,7 @@
                 <small class="text-info">Page '.$page.' of '.$pages.'</small>
                 <nav class="mt-4 d-flex justify-content-center">
                     <ul class="pagination">';
-            
+
                 if ($page == 1) {
                     echo '
                         <li class="page-item disabled">
@@ -104,7 +104,7 @@
                         </li>
                     ';
                 }
-    
+
                 for ($i = 1; $i <= $pages; $i++) {
                     echo '
                         <li class="page-item">
@@ -112,7 +112,7 @@
                         </li>
                     ';
                 }
-                
+
                 if ($page == $pages) {
                     echo '
                                 <li class="page-item disabled">
@@ -144,25 +144,25 @@
             $counter = $con->prepare($query);
             $counter->execute();
             $num_rows = $counter->rowCount();
-            
+
             // Resulting Data
             $pages = ceil($num_rows/$items);
-            
+
             if (!isset($_GET['page'])) {
                 $page = 1;
             } else {
                 $page = $_GET['page'];
             }
 
-            
+
             $start_limit = ($page-1) * $items;
             $sql = "SELECT * FROM `tbl_inventory` LIMIT $start_limit, $items";
             $data = $con->prepare($sql);
             $data->execute();
             $result = $data->fetchAll(PDO::FETCH_ASSOC);
-            
+
             echo '
-                <table class="table table-striped table-bordered">
+                <table class="table table-striped table-bordered text-white">
                     <thead>
                         <tr class="text-center">
                             <th>Item ID</th>
@@ -186,23 +186,23 @@
                 } else {
                     $b = 'Discounted';
                 }
-                
+
                 echo '
                         <tr>
-                            <td class="text-center font-weight-bold"> I-'.$data['i_id'].'</td>
-                            <td>'.$data['i_name'].'</td>
-                            <td class="text-center">'.$data['i_type'].'</td>
-                            <td class="text-center">'.$data['i_brand'].'</td>
-                            <td class="text-center">'.$data['i_price'].'</td>
-                            <td class="text-center">'.$data['i_qty'].'</td>
-                            <td class="text-center">'.$b.'</td>
+                            <td class="text-center font-weight-bold text-white"> I-'.$data['i_id'].'</td>
+                            <td class="text-white">'.$data['i_name'].'</td>
+                            <td class="text-center text-white">'.$data['i_type'].'</td>
+                            <td class="text-center text-white">'.$data['i_brand'].'</td>
+                            <td class="text-center text-white">'.$data['i_price'].'</td>
+                            <td class="text-center text-white">'.$data['i_qty'].'</td>
+                            <td class="text-center text-white">'.$b.'</td>
                             <td class="text-center">
                                 <div class="dropwdown">
-                                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                    <button class="btn1 btn dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
                                         <i class="fa-solid fa-file-pen"></i> Edit Item
-                                    </button> 
+                                    </button>
                                     <div class="dropdown-menu">';
-                                    
+
                                         if ($data['i_status'] == 1) {
                                             echo '
                                                 <a class="dropdown-item disabled" href="#">Active</a>
@@ -220,13 +220,13 @@
                                                 <a class="dropdown-item" href="inventory.php?act='.$data['i_id'].'">Active</a>
                                                 <a class="dropdown-item" href="inventory.php?inact='.$data['i_id'].'">Inactive</a>
                                                 <a class="dropdown-item disabled" href="#">Discounted</a>
-                                            ';  
+                                            ';
                                         }
 
                 echo '              </div>
                                 </div>
                                 <div class="mt-2">
-                                    <a class="btn btn-danger" href="inventory.php?remove='.$data['i_id'].'">
+                                    <a class="btn2 btn text-white" href="inventory.php?remove='.$data['i_id'].'">
                                         <i class="fa-solid fa-trash-can"></i> Delete Item
                                     </a>
                                 </div>
@@ -240,12 +240,12 @@
                             <td class="text-center font-weight-bold">
                                 #
                             </td>
-                            <form class="form" method="post"> 
+                            <form class="form" method="post">
                                 <td>
-                                    <input class="form-control" type="text" name="iname_box" required>
+                                    <input class="form-control bg-dark text-white" type="text" name="iname_box" required>
                                 </td>
                                 <td>
-                                    <select class="custom-select" name="itype_box" required>
+                                    <select class="custom-select bg-dark text-white" name="itype_box" required>
                                         <option value="" disabled selected>Choose a type</option>
                                         <option value="Keyboard">Keyboard</option>
                                         <option value="Mouse">Mouse</option>
@@ -259,16 +259,16 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <input class="form-control" type="text" name="ibrand_box" required>
+                                    <input class="form-control bg-dark text-white" type="text" name="ibrand_box" required>
                                 </td>
                                 <td>
-                                    <input class="form-control" type="number" name="iprice_box" required>
+                                    <input class="form-control bg-dark text-white" type="number" name="iprice_box" required>
                                 </td>
                                 <td>
-                                    <input class="form-control" type="number" name="iqty_box" required>
+                                    <input class="form-control bg-dark text-white" type="number" name="iqty_box" required>
                                 </td>
                                 <td>
-                                    <select class="custom-select" name="istat_box" required>
+                                    <select class="custom-select bg-dark text-white" name="istat_box" required>
                                         <option value="" disabled selected>Choose status</option>
                                         <option value="1">Active</option>
                                         <option value="2">Inactive</option>
@@ -276,10 +276,10 @@
                                     </select>
                                 </td>
                                 <td class="text-center">
-                                    <button class="btn btn-primary" type="submit" name="item_add">
+                                    <button class="btn3 btn text-white" type="submit" name="item_add">
                                         <i class="fa-solid fa-circle-plus"></i> Add Item
                                     </button>
-                                    <button class="btn btn-info" type="reset">
+                                    <button class="btn4 btn text-white" type="reset">
                                         <i class="fa-solid fa-broom"></i> Clear Item
                                     </button>
                                 </td>
@@ -288,22 +288,22 @@
                     </tbody>
                 </table>
             ';
-            
+
             echo '
-                <small class="text-info">Page '.$page.' of '.$pages.'</small>
+                <small class="text-secondary">Page '.$page.' of '.$pages.'</small>
                 <nav class="mt-4 d-flex justify-content-center">
                     <ul class="pagination">';
-            
+
                 if ($page == 1) {
                     echo '
                         <li class="page-item disabled">
-                            <a class="page-link" href="#">Previous</a>
+                            <a class="page-link bg-dark text-white" href="#">Previous</a>
                         </li>
                     ';
                 } else {
                     echo '
                         <li class="page-item">
-                            <a class="page-link" href="?page='.($page-1).'">Previous</a>
+                            <a class="pg page-link text-white" href="?page='.($page-1).'">Previous</a>
                         </li>
                     ';
                 }
@@ -311,15 +311,15 @@
                 for ($i = 1; $i <= $pages; $i++) {
                     echo '
                         <li class="page-item">
-                            <a class="page-link" href="?page='.$i.'">'.$i.'</a>
+                            <a class="pg page-link text-white" href="?page='.$i.'">'.$i.'</a>
                         </li>
                     ';
                 }
-                
+
                 if ($page == $pages) {
                     echo '
                                 <li class="page-item disabled">
-                                    <a class="page-link" href="#">Next</a>
+                                    <a class="page-link bg-dark text-white" href="#">Next</a>
                                 </li>
                             </ul>
                         </nav>
@@ -327,14 +327,14 @@
                 } else {
                     echo '
                                 <li class="page-item">
-                                    <a class="page-link" href="?page='.($page+1).'">Next</a>
+                                    <a class="pg page-link text-white" href="?page='.($page+1).'">Next</a>
                                 </li>
                             </ul>
                         </nav>
                     ';
                 }
         }
-        
+
         public function viewOrder() {
             // DB Connect
             $con = $this->con();
@@ -364,9 +364,9 @@
             $result = $data->fetchAll(PDO::FETCH_ASSOC);
 
             echo '
-                <table class="table table-striped table-bordered">
+                <table class="table table-striped table-bordered mt-5">
                     <thead>
-                        <tr class="text-center">
+                        <tr class="text-center text-white">
                             <th>Order ID</th>
                             <th>Customer Name</th>
                             <th>Item Name</th>
@@ -394,17 +394,17 @@
 
                 echo '
                     <tr>
-                        <td class="text-center font-weight-bold"> O-'.$data['o_id'].'</td>
-                        <td>'.$data['o_customer'].'</td>
-                        <td>'.$data['o_name'].'</td>
-                        <td class="text-center">'.$data['o_qty'].'</td>
-                        <td class="text-center">'.$data['o_total_price'].'</td>
-                        <td class="text-center">'.$a.'</td>
-                        <td class="text-center">'.$data['o_date'].'</td>
-                        <td class="text-center">'.$data['o_received'].'</td>
-                        <td class="text-center">
+                        <td class="text-center font-weight-bold text-white"> O-'.$data['o_id'].'</td>
+                        <td class="text-white">'.$data['o_customer'].'</td>
+                        <td class="text-white">'.$data['o_name'].'</td>
+                        <td class="text-center text-white">'.$data['o_qty'].'</td>
+                        <td class="text-center text-white">'.$data['o_total_price'].'</td>
+                        <td class="text-center text-white">'.$a.'</td>
+                        <td class="text-center text-white">'.$data['o_date'].'</td>
+                        <td class="text-center text-white">'.$data['o_received'].'</td>
+                        <td class="text-center text-white">
                             <div class="dropdown">
-                                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                <button class="btno1 btn text-white dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
                                     <i class="fa-solid fa-box"></i> Edit Status
                                 </button>
                                 <div class="dropdown-menu">';
@@ -442,7 +442,7 @@
                                 </div>
                             </div>
                             <div class="mt-2">
-                                <a class="btn btn-danger" href="order.php?obl='.$data['o_id'].'">
+                                <a class="btno2 btn text-white" href="order.php?obl='.$data['o_id'].'">
                                     <i class="fa-solid fa-trash-can"></i> Delete Order
                                 </a>
                             </div>
@@ -456,14 +456,14 @@
                 </table>
             ';
             echo '
-                <small class="text-info">Page '.$page.' of '.$pages.'</small>
+                <small class="text-secondary">Page '.$page.' of '.$pages.'</small>
                 <nav class="mt-4 d-flex justify-content-center">
                     <ul class="pagination">';
-            
+
                 if ($page == 1) {
                     echo '
                         <li class="page-item disabled">
-                            <a class="page-link" href="#">Previous</a>
+                            <a class="page-link bg-dark text-white" href="#">Previous</a>
                         </li>
                     ';
                 } else {
@@ -473,19 +473,19 @@
                         </li>
                     ';
                 }
-    
+
                 for ($i = 1; $i <= $pages; $i++) {
                     echo '
                         <li class="page-item">
-                            <a class="page-link" href="?page='.$i.'">'.$i.'</a>
+                            <a class="pg page-link text-white" href="?page='.$i.'">'.$i.'</a>
                         </li>
                     ';
                 }
-                
+
                 if ($page == $pages) {
                     echo '
                                 <li class="page-item disabled">
-                                    <a class="page-link" href="#">Next</a>
+                                    <a class="page-link bg-dark text-white" href="#">Next</a>
                                 </li>
                             </ul>
                         </nav>
@@ -498,7 +498,7 @@
                             </ul>
                         </nav>
                     ';
-                }            
+                }
         }
 
         public function viewCountInv() {
