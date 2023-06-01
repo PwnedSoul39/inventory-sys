@@ -7,7 +7,7 @@
 
             // How many items per page
             $items = 5;
-            
+
             // Page Counter
             $query = "SELECT * FROM `tbl_user`";
             $counter = $con->prepare($query);
@@ -31,7 +31,7 @@
             $result = $data->fetchAll(PDO::FETCH_ASSOC);
 
             echo '
-                <table class="table table-striped table-bordered">
+                <table class="table table-striped table-bordered table-dark">
                     <thead>
                         <tr class="text-center">
                             <th>User ID</th>
@@ -70,7 +70,7 @@
                                 } else {
                                     echo '<i class="fa-solid fa-user-pen"></i> Edit to Admin';
                                 }
-            
+
                         echo  '</a>
                             <a class="btn btn-danger" href="user.php?delete='.$data['u_id'].'">
                                 <i class="fa-solid fa-user-xmark"></i> Delete User
@@ -90,7 +90,7 @@
                 <small class="text-info">Page '.$page.' of '.$pages.'</small>
                 <nav class="mt-4 d-flex justify-content-center">
                     <ul class="pagination">';
-            
+
                 if ($page == 1) {
                     echo '
                         <li class="page-item disabled">
@@ -100,19 +100,19 @@
                 } else {
                     echo '
                         <li class="page-item">
-                            <a class="page-link" href="?page='.($page-1).'">Previous</a>
+                            <a class="page-link text-white" href="?page='.($page-1).'">Previous</a>
                         </li>
                     ';
                 }
-    
+
                 for ($i = 1; $i <= $pages; $i++) {
                     echo '
                         <li class="page-item">
-                            <a class="page-link" href="?page='.$i.'">'.$i.'</a>
+                            <a class="table-dark page-link" href="?page='.$i.'">'.$i.'</a>
                         </li>
                     ';
                 }
-                
+
                 if ($page == $pages) {
                     echo '
                                 <li class="page-item disabled">
@@ -144,23 +144,23 @@
             $counter = $con->prepare($query);
             $counter->execute();
             $num_rows = $counter->rowCount();
-            
+
             // Resulting Data
             $pages = ceil($num_rows/$items);
-            
+
             if (!isset($_GET['page'])) {
                 $page = 1;
             } else {
                 $page = $_GET['page'];
             }
 
-            
+
             $start_limit = ($page-1) * $items;
             $sql = "SELECT * FROM `tbl_inventory` LIMIT $start_limit, $items";
             $data = $con->prepare($sql);
             $data->execute();
             $result = $data->fetchAll(PDO::FETCH_ASSOC);
-            
+
             echo '
                 <table class="table table-striped table-bordered">
                     <thead>
@@ -186,7 +186,7 @@
                 } else {
                     $b = 'Discounted';
                 }
-                
+
                 echo '
                         <tr>
                             <td class="text-center font-weight-bold"> I-'.$data['i_id'].'</td>
@@ -200,9 +200,9 @@
                                 <div class="dropwdown">
                                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
                                         <i class="fa-solid fa-file-pen"></i> Edit Item
-                                    </button> 
+                                    </button>
                                     <div class="dropdown-menu">';
-                                    
+
                                         if ($data['i_status'] == 1) {
                                             echo '
                                                 <a class="dropdown-item disabled" href="#">Active</a>
@@ -220,7 +220,7 @@
                                                 <a class="dropdown-item" href="inventory.php?act='.$data['i_id'].'">Active</a>
                                                 <a class="dropdown-item" href="inventory.php?inact='.$data['i_id'].'">Inactive</a>
                                                 <a class="dropdown-item disabled" href="#">Discounted</a>
-                                            ';  
+                                            ';
                                         }
 
                 echo '              </div>
@@ -240,7 +240,7 @@
                             <td class="text-center font-weight-bold">
                                 #
                             </td>
-                            <form class="form" method="post"> 
+                            <form class="form" method="post">
                                 <td>
                                     <input class="form-control" type="text" name="iname_box" required>
                                 </td>
@@ -288,12 +288,12 @@
                     </tbody>
                 </table>
             ';
-            
+
             echo '
                 <small class="text-info">Page '.$page.' of '.$pages.'</small>
                 <nav class="mt-4 d-flex justify-content-center">
                     <ul class="pagination">';
-            
+
                 if ($page == 1) {
                     echo '
                         <li class="page-item disabled">
@@ -315,7 +315,7 @@
                         </li>
                     ';
                 }
-                
+
                 if ($page == $pages) {
                     echo '
                                 <li class="page-item disabled">
@@ -334,7 +334,7 @@
                     ';
                 }
         }
-        
+
         public function viewOrder() {
             // DB Connect
             $con = $this->con();
@@ -459,7 +459,7 @@
                 <small class="text-info">Page '.$page.' of '.$pages.'</small>
                 <nav class="mt-4 d-flex justify-content-center">
                     <ul class="pagination">';
-            
+
                 if ($page == 1) {
                     echo '
                         <li class="page-item disabled">
@@ -473,7 +473,7 @@
                         </li>
                     ';
                 }
-    
+
                 for ($i = 1; $i <= $pages; $i++) {
                     echo '
                         <li class="page-item">
@@ -481,7 +481,7 @@
                         </li>
                     ';
                 }
-                
+
                 if ($page == $pages) {
                     echo '
                                 <li class="page-item disabled">
@@ -498,7 +498,7 @@
                             </ul>
                         </nav>
                     ';
-                }            
+                }
         }
 
         public function viewCountInv() {

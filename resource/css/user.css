@@ -7,3 +7,10 @@ html {
     text-rendering: optimizeLegibility;
     scroll-behavior: smooth;
 }
+body{
+	background-image: url(../img/3.jpg);
+	background-size: cover;
+}
+.table{
+  margin-top: 70px;
+}
