@@ -88,18 +88,14 @@
                 echo '
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         <i class="fa-solid fa-circle-check"></i> User edited successfully
-                        <button class="close" type="button" data-dismiss="alert" aria-label="close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                        <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
                     </div>
                 ';
             } else {
                 echo '
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
                         <i class="fa-solid fa-triangle-exclamation"></i> Error while editing user
-                        <button class="close" type="button" data-dismiss="alert" aria-label="close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                        <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
                     </div>
                 ';
             }
@@ -114,18 +110,14 @@
                 echo '
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         <i class="fa-solid fa-circle-check"></i> User deleted successfully
-                        <button class="close" type="button" data-dismiss="alert" aria-label="close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                        <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
                     </div>
                 ';
             } else {
                 echo '
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         <i class="fa-solid fa-triangle-exclamation"></i> Error while deleting user
-                        <button class="close" type="button" data-dismiss="alert" aria-label="close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                        <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
                     </div>
                 ';
             }

@@ -12,8 +12,6 @@
 		  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 		  <title>Admin Dashboard</title>
-		  <link rel="stylesheet" type="text/css"  href="vendor/css/bootstrap.min.css">
-		  <link href="vendor/css/all.css" rel="stylesheet">
 		  <link rel="stylesheet" type="text/css"  href="./resource/css/adm_dashboard.css">
 		  <script src="https://kit.fontawesome.com/9622798f89.js"></script>
 		  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +19,7 @@
 		  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
 	</head>
 	<body>
-		<nav class="nav-dash navbar navbar-expand-lg  ">
+		<nav class="nav-dash navbar navbar-expand-lg">
 			<div class="container-fluid">
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
@@ -29,20 +27,20 @@
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 						<li class="nav-item">
-							<a class="nav-link text-white active" aria-current="page" href="#home">Home</a>
+							<a class="nav-link text-white active" aria-current="page" href="dashboard.php">Home</a>
 						</li>
 						<li class="nav-item dropdown">
 							<a class="nav-link text-white dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 							See more
 							</a>
 							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="#">Users</a></li>
-								<li><a class="dropdown-item" href="#">Orders</a></li>
-								<li><a class="dropdown-item" href="#">Inventory</a></li>
+								<li><a class="dropdown-item" href="user.php">Users</a></li>
+								<li><a class="dropdown-item" href="order.php">Orders</a></li>
+								<li><a class="dropdown-item" href="inventory.php">Inventory</a></li>
 								<li><hr class="dropdown-divider"></li>
-								<li><a class="dropdown-item" href="#">Logout</a></li>
-								<li class="nav-item dropdown">
-										<button class="btn btn-transparent dropdown-toggle nav-link" type="button" data-toggle="dropdown" aria-expanded="false">
+								<li><a class="dropdown-item" href="logout.php">Logout</a></li>
+								<li class="dropdown">
+										<button class="btn btn-transparent dropdown-toggle nav-link" type="button" data-bs-toggle="dropdown" aria-expanded="false">
 												<?php
 														echo '
 																<i class="fa-solid fa-user"></i> '.$_SESSION['user'].'

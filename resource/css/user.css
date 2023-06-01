@@ -14,3 +14,11 @@ body{
 .table{
   margin-top: 70px;
 }
+.nav-dash{
+  height: 15vh;
+  background-color: #1c1c1c;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: 'Sen';
+}

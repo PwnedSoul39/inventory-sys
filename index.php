@@ -31,7 +31,9 @@ require_once 'resource/php/init.php';
     <div class="row p-3">
       <div class="col-md-4 mx-auto card">
         <?php
+        echo '<div class="pt-4">';
         loginMsg();
+        echo '</div>';
         ?>
         <h1 class="log text-center">Login</h1>
         <form class="form login-form" method="post">
@@ -46,7 +48,7 @@ require_once 'resource/php/init.php';
           <div class="form-group text-center">
             <button class="btn btn-clue rounded-pill" type="submit" name="log_btn">Login</button>
             <div class="text-center mt-5">
-              <small class="reg text-muted">Don't have an account?</small> <br>
+              <small class="reg">Don't have an account?</small> <br>
               <a href="./register.php">Register Now</a>
             </div>
           </div>
