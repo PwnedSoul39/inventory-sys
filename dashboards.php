@@ -138,52 +138,52 @@
           <i class="fa-solid fa-location-dot text-white"></i>
           <span class="text-white">Lot 19 Block 1, St.Paul Village, Sumapang Matanda, Malolos Bulacan </span>
         </div>
-          <div class="icons col-md-6" data-aos="fade-left" data-aos-duration="3000">
-            <div class="row">
-              <div class="col-md-4 text-center">
-                <div class="facebook">
-                  <i class="fa-brands fa-facebook"></i>
-                  <h4 class="icon">Facebook</h4>
-                </div>
+        <div class="icons col-md-6" data-aos="fade-left" data-aos-duration="3000">
+          <div class="row">
+            <div class="col-md-4 text-center">
+              <div class="facebook">
+                <i class="fa-brands fa-facebook"></i>
+                <h4 class="icon">Facebook</h4>
               </div>
-              <div class="col-md-4 text-center">
-                <div class="instagram">
-                  <i class="fa-brands fa-instagram"></i>
-                  <h4 class="icon">Instagram</h4>
-                </div>
+            </div>
+            <div class="col-md-4 text-center">
+              <div class="instagram">
+                <i class="fa-brands fa-instagram"></i>
+                <h4 class="icon">Instagram</h4>
               </div>
-              <div class="col-md-4 text-center">
-                <div class="twitter">
-                  <i class="fa-brands fa-twitter"></i>
-                  <h4 class="icon">Twitter</h4>
-                </div>
+            </div>
+            <div class="col-md-4 text-center">
+              <div class="twitter">
+                <i class="fa-brands fa-twitter"></i>
+                <h4 class="icon">Twitter</h4>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <footer class="row-fluid bg-dark text-white">
-      <div class="container d-flex justify-content-between">
-        <div class="col">
-          <small>Copyright &copy;Westview University</small> <br>
-          <small>All Rights Reserved 2023</small>
-        </div>
-        <div class="col">
-          <small>Group 4: Marcus Bustos, Ralph Cruz, Angelique Gabriel, Krizia Lleva, Roderick Nucup Jr, Emman Siva</small>
-        </div>
+  <footer class="row-fluid bg-dark text-white">
+    <div class="container d-flex justify-content-between">
+      <div class="col">
+        <small>Copyright &copy;Westview University</small> <br>
+        <small>All Rights Reserved 2023</small>
       </div>
-    </footer>
+      <div class="col">
+        <small>Group 4: Marcus Bustos, Ralph Cruz, Angelique Gabriel, Krizia Lleva, Roderick Nucup Jr, Emman Siva</small>
+      </div>
+    </div>
+  </footer>
 
-    <!-- bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
+  <!-- bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
 
-    <!-- animations -->
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-    AOS.init();
-    </script>
-  </body>
-  </html>
+  <!-- animations -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+  AOS.init();
+  </script>
+</body>
+</html>
