@@ -312,6 +312,7 @@ function itemUpdate() {
   } elseif (!empty($_GET['inact'])) {
     $edit = new editStuff($_GET['inact']);
 
+<<<<<<< HEAD
     if ($edit->editStatusIna()) {
       echo '
       <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -352,6 +353,50 @@ function itemUpdate() {
       </button>
       </div>
       ';
+=======
+    function userUpdate() {
+        if (!empty($_GET['update'])) {
+            $edit = new editStuff($_GET['update']);
+
+            if ($edit->editType()) {
+                echo '
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <i class="fa-solid fa-circle-check"></i> User edited successfully
+                        <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
+                    </div>
+                ';
+            } else {
+                echo '
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <i class="fa-solid fa-triangle-exclamation"></i> Error while editing user
+                        <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
+                    </div>
+                ';
+            }
+        }
+    }
+    
+    function userDelete() {
+        if (!empty($_GET['delete'])) {
+            $delete = new deleteStuff($_GET['delete']);
+            
+            if ($delete->delUser()) {
+                echo '
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <i class="fa-solid fa-circle-check"></i> User deleted successfully
+                        <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
+                    </div>
+                ';
+            } else {
+                echo '
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <i class="fa-solid fa-triangle-exclamation"></i> Error while deleting user
+                        <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
+                    </div>
+                ';
+            }
+        }
+>>>>>>> 55b51dce8510605d7da017fef97e693f554ef1bf
     }
   }
 }
