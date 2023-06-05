@@ -8,3 +8,58 @@ html {
     text-rendering: optimizeLegibility;
     scroll-behavior: smooth;
 }
+.login{
+    height: 100vh;
+    background-image: url(../img/3.jpg);
+    background-size: cover;
+    background-position: center;
+}
+.login h1{
+    padding-top: 7%;
+    font-family: "Raleway";
+}
+.form{
+    height: 50%;
+}
+.login-form{
+    height: 70vh;
+}
+.grpform{
+    padding-top: 20%;
+}
+.card{
+    background: linear-gradient(rgba(255, 255, 255, 0.55),rgba(255, 255, 255, 0.1));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    }
+.form-group{
+    font-family: "Sen";
+}
+.btn-clue{
+    padding: 2px;
+    width: 200px;
+    color: white;
+    background-color: #343a40;
+}
+.form-group{
+
+}
+.log{
+    text-transform: uppercase;
+}
+.form-group .form-control{
+    border-radius: 50px;
+}
+.btn-clue:hover,
+.btn-clue:active{
+    background-color: #495057;
+    color: #fff;
+    transition: 0.5s;
+    border: none;
+}
+a {
+    color: #1c1c1c;
+}
+a:hover{
+color: #212529;
+}

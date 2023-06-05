@@ -3,8 +3,83 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
 }
 html {
     text-rendering: optimizeLegibility;
     scroll-behavior: smooth;
+}
+
+nav{
+    background-color: #141716;
+}
+
+body{
+    background-position: center;
+    background-size: cover;
+    background-image:linear-gradient(rgba(20, 20, 20, 0.69),rgba(20, 20, 20, 0.69)),url(../img/regbg.jpg);
+}
+
+
+.card{
+    background: linear-gradient(rgba(255, 255, 255, 0.20),rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,1);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,1);
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,1);
+    animation: Slide_Up 1.8s ease;
+}
+
+label{
+    animation: Slide_Up 1.4s ease;
+}
+
+.form-control{
+    border-radius: 20px;
+    animation: Slide_Up 1.6s ease;
+}
+
+.custom-select{
+    border-radius: 20px;
+    animation: Slide_Up 1.6s ease;
+}
+
+.btn{
+    background-color: #343a40;
+    text-decoration: none;
+    animation: Slide_Up 1.6s ease;
+}
+
+.btn:hover{
+    background-color: #495057;
+    text-decoration: none;
+    transition: 0.9s;
+    animation: Slide_Up 1.6s ease;
+}
+
+.log{
+    font-weight: bolder;
+    color: #858585;
+    animation: Slide_Up 1.6s ease;
+}
+
+.log:hover{
+    color: #343a40;
+    transition: 0.9s;
+    animation: Slide_Up 1.4s ease;
+}
+
+@keyframes Slide_Up{
+    0%{
+            transform: translateY(250px);
+    }
+    100%{
+            transform: translateY(0);
+    }
+}
+
+footer{
+    background-color: #141716;
 }
