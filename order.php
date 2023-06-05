@@ -70,8 +70,7 @@ $result = $data->fetchAll(PDO::FETCH_ASSOC);
             </div>
         </header>
         <?php
-        OrderMsg();
-        AdminMsg();
+        OrderComboMsg();
         ?>
         <div class="container-fluid mt-5">
             <table class="table table-striped table-bordered">
@@ -127,7 +126,7 @@ $result = $data->fetchAll(PDO::FETCH_ASSOC);
                                 </select>
                             </td>
                             <td><input class="form-control" type="date" name="odate_box" required></td>
-                            <td><input class="form-control" type="date" name="oreceive_box"></td>
+                            <td class="fw-bold">NULL</td>
                             <td>
                                 <input class="btn btn-primary" type="submit" value="Add Order" name="order_add">
                                 <input class="btn btn-secondary" type="reset" value="Clear Order">

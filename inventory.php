@@ -70,8 +70,7 @@ $result = $data->fetchAll(PDO::FETCH_ASSOC);
             </div>
         </header>     
         <?php
-        ItemMsg();
-        AdminMsg();
+        InventComboMsg();
         ?>
         <div class="container-fluid mt-5">
             <table class="table table-striped table-bordered">

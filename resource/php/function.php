@@ -361,8 +361,22 @@ function insertItemMsg() {
         $ibrand = $_POST['ibrand_box'];
         $iprice = intval($_POST['iprice_box']);
         $iqty = intval($_POST['iqty_box']);
-        $istat = intval($_POST['istat_box']);
+        $istat = intval($_POST['itype_box']);
         $validate->validNewItem($iname,$itype,$ibrand,$iprice,$iqty,$istat);
+    }
+}
+
+function insertOrderMsg() {
+    if (isset($_POST['order_add'])) {
+        $validate = new validate();
+        $ocus = $_POST['ocus_box'];
+        $oname = $_POST['oname_box'];
+        $oqty = intval($_POST['oqty_box']);
+        $oprice = intval($_POST['oprice_box']);
+        $ostatus = intval($_POST['ostatus_box']);
+        $odate = $_POST['odate_box'];
+        $oreceive = $_POST['oreceive_box'];
+        $validate->validNewOrder($ocus,$oname,$oqty,$oprice,$ostatus,$odate,$oreceive);
     }
 }
 
@@ -378,5 +392,17 @@ function newPassMsg() {
         $validate = new validate();
         $validate->validNewPass($_POST['pass_editbox'],$_POST['confirm_pass_editbox']);
     }
+}
+
+function InventComboMsg() {
+    ItemMsg();
+    AdminMsg();
+    insertItemMsg();
+}
+
+function OrderComboMsg() {
+    OrderMsg();
+    AdminMsg();
+    insertOrderMsg();
 }
 ?>

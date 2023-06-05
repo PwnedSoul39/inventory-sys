@@ -47,10 +47,10 @@ class validate extends config {
             if (!$result) {
                 echo '
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <i class="fa-solid fa-triangle-exclamation"></i> Invalid email or username
-                <button class="close" type="button" data-dismiss="alert" aria-label="close">
-                <span aria-hidden="true">&times;</span>
-                </button>
+                    <i class="fa-solid fa-triangle-exclamation"></i> Invalid email or username
+                    <button class="close" type="button" data-dismiss="alert" aria-label="close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 ';
             } else {
@@ -73,19 +73,19 @@ class validate extends config {
                     } elseif (!$this->verifyPass($lpass, $data['u_pass'])) {
                         echo '
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <i class="fa-solid fa-triangle-exclamation"></i> Invalid password
-                        <button class="close" type="button" data-dismiss="alert" aria-label="close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
+                            <i class="fa-solid fa-triangle-exclamation"></i> Invalid password
+                            <button class="close" type="button" data-dismiss="alert" aria-label="close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
                         ';
                     } else {
                         echo '
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <i class="fa-solid fa-triangle-exclamation"></i> Invalid email or username
-                        <button class="close" type="button" data-dismiss="alert" aria-label="close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
+                            <i class="fa-solid fa-triangle-exclamation"></i> Invalid email or username
+                            <button class="close" type="button" data-dismiss="alert" aria-label="close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
                         ';
                     }
@@ -94,28 +94,28 @@ class validate extends config {
         } elseif (empty($lmail)) {
             echo '
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <i class="fa-solid fa-triangle-exclamation"></i> Pleaser enter your email or username
-            <button class="close" type="button" data-dismiss="alert" aria-label="close">
-            <span aria-hidden="true">&times;</span>
-            </button>
+                <i class="fa-solid fa-triangle-exclamation"></i> Pleaser enter your email or username
+                <button class="close" type="button" data-dismiss="alert" aria-label="close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             ';
         } elseif (empty($lpass)) {
             echo '
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <i class="fa-solid fa-triangle-exclamation"></i> Pleaser enter your password
-            <button class="close" type="button" data-dismiss="alert" aria-label="close">
-            <span aria-hidden="true">&times;</span>
-            </button>
+                <i class="fa-solid fa-triangle-exclamation"></i> Pleaser enter your password
+                <button class="close" type="button" data-dismiss="alert" aria-label="close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             ';
         } else {
             echo '
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <i class="fa-solid fa-triangle-exclamation"></i> Invalid information
-            <button class="close" type="button" data-dismiss="alert" aria-label="close">
-            <span aria-hidden="true">&times;</span>
-            </button>
+                <i class="fa-solid fa-triangle-exclamation"></i> Invalid information
+                <button class="close" type="button" data-dismiss="alert" aria-label="close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             ';
         }
@@ -131,50 +131,50 @@ class validate extends config {
         if (!$upper) {
             echo '
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <i class="fa-solid fa-triangle-exclamation"></i> Password should have at least one uppercase letter
-            <button class="close" type="button" data-dismiss="alert" aria-label="close">
-            <span aria-hidden="true">&times;</span>
-            </button>
+                <i class="fa-solid fa-triangle-exclamation"></i> Password should have at least one uppercase letter
+                <button class="close" type="button" data-dismiss="alert" aria-label="close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             ';
             return false;
         } elseif (!$lower) {
             echo '
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <i class="fa-solid fa-triangle-exclamation"></i> Password should have at least one lowercase letter
-            <button class="close" type="button" data-dismiss="alert" aria-label="close">
-            <span aria-hidden="true">&times;</span>
-            </button>
+                <i class="fa-solid fa-triangle-exclamation"></i> Password should have at least one lowercase letter
+                <button class="close" type="button" data-dismiss="alert" aria-label="close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             ';
             return false;
         } elseif (!$num) {
             echo '
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <i class="fa-solid fa-triangle-exclamation"></i> Password should have at least one number
-            <button class="close" type="button" data-dismiss="alert" aria-label="close">
-            <span aria-hidden="true">&times;</span>
-            </button>
+                <i class="fa-solid fa-triangle-exclamation"></i> Password should have at least one number
+                <button class="close" type="button" data-dismiss="alert" aria-label="close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             ';
             return false;
         } elseif (!$sp) {
             echo '
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <i class="fa-solid fa-triangle-exclamation"></i> Password should have at leastone special character
-            <button class="close" type="button" data-dismiss="alert" aria-label="close">
-            <span aria-hidden="true">&times;</span>
-            </button>
+                <i class="fa-solid fa-triangle-exclamation"></i> Password should have at leastone special character
+                <button class="close" type="button" data-dismiss="alert" aria-label="close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             ';
             return false;
         } elseif (strlen($pass) < 8 && strlen($pass) > 16) {
             echo '
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <i class="fa-solid fa-triangle-exclamation"></i> Password should have at least 8-16 characters
-            <button class="close" type="button" data-dismiss="alert" aria-label="close">
-            <span aria-hidden="true">&times;</span>
-            </button>
+                <i class="fa-solid fa-triangle-exclamation"></i> Password should have at least 8-16 characters
+                <button class="close" type="button" data-dismiss="alert" aria-label="close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             ';
         } else {
@@ -192,10 +192,10 @@ class validate extends config {
             if (!preg_match('/^[a-zA-Z\s-]*$/', $v_lname) && !preg_match('/^[a-zA-Z\s.?]*$/', $v_fname)) {
                 echo '
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <i class="fa-solid fa-triangle-exclamation"></i> The Name shouldn&#39;t contain any numbers
-                <button class="close" type="button" data-dismiss="alert" aria-label="close">
-                <span aria-hidden="true">&times;</span>
-                </button>
+                    <i class="fa-solid fa-triangle-exclamation"></i> The Name shouldn&#39;t contain any numbers
+                    <button class="close" type="button" data-dismiss="alert" aria-label="close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 ';
                 return false;
@@ -217,10 +217,10 @@ class validate extends config {
         if ($result) {
             echo '
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <i class="fa-solid fa-triangle-exclamation"></i> Email has already been taken
-            <button class="close" type="button" data-dismiss="alert" aria-label="close">
-            <span aria-hidden="true">&times;</span>
-            </button>
+                <i class="fa-solid fa-triangle-exclamation"></i> Email has already been taken
+                <button class="close" type="button" data-dismiss="alert" aria-label="close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             ';
             return false;
@@ -228,10 +228,10 @@ class validate extends config {
             if (!filter_var($vmail, FILTER_VALIDATE_EMAIL)) {
                 echo '
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <i class="fa-solid fa-triangle-exclamation"></i> Invalid Email
-                <button class="close" type="button" data-dismiss="alert" aria-label="close">
-                <span aria-hidden="true">&times;</span>
-                </button>
+                    <i class="fa-solid fa-triangle-exclamation"></i> Invalid Email
+                    <button class="close" type="button" data-dismiss="alert" aria-label="close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 ';
                 return false;
@@ -251,10 +251,10 @@ class validate extends config {
         if ($result) {
             echo '
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <i class="fa-solid fa-triangle-exclamation"></i> Username has already been taken
-            <button class="close" type="button" data-dismiss="alert" aria-label="close">
-            <span aria-hidden="true">&times;</span>
-            </button>
+                <i class="fa-solid fa-triangle-exclamation"></i> Username has already been taken
+                <button class="close" type="button" data-dismiss="alert" aria-label="close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             ';
             return false;
@@ -262,20 +262,20 @@ class validate extends config {
             if (strlen($text) > 30 || strlen($text) < 4) {
                 echo '
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <i class="fa-solid fa-triangle-exclamation"></i> Invalid Username
-                <button class="close" type="button" data-dismiss="alert" aria-label="close">
-                <span aria-hidden="true">&times;</span>
-                </button>
+                    <i class="fa-solid fa-triangle-exclamation"></i> Invalid Username
+                    <button class="close" type="button" data-dismiss="alert" aria-label="close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 ';
                 return false;
             } elseif (empty($text)) {
                 echo '
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <i class="fa-solid fa-triangle-exclamation"></i> Please enter a username
-                <button class="close" type="button" data-dismiss="alert" aria-label="close">
-                <span aria-hidden="true">&times;</span>
-                </button>
+                    <i class="fa-solid fa-triangle-exclamation"></i> Please enter a username
+                    <button class="close" type="button" data-dismiss="alert" aria-label="close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 ';
                 return false;
@@ -294,19 +294,19 @@ class validate extends config {
             if ($insert->addAcc()) {
                 echo '
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <i class="fa-solid fa-circle-check"></i> User has been added
-                <button class="close" type="button" data-dismiss="alert" aria-label="close">
-                <span aria-hidden="true">&times;</span>
-                </button>
+                    <i class="fa-solid fa-circle-check"></i> User has been added
+                    <button class="close" type="button" data-dismiss="alert" aria-label="close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 ';
             } else {
                 echo '
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <i class="fa-solid fa-triangle-exclamation"></i> Error adding user
-                <button class="close" type="button" data-dismiss="alert" aria-label="close">
-                <span aria-hidden="true">&times;</span>
-                </button>
+                    <i class="fa-solid fa-triangle-exclamation"></i> Error adding user
+                    <button class="close" type="button" data-dismiss="alert" aria-label="close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 ';
             }
@@ -354,14 +354,14 @@ class validate extends config {
 
             if ($insert->addItem()) {
                 echo '
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
                     <i class="fa-solid fa-circle-check"></i> Item has been added
                     <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
                 </div>
                 ';
             } else {
                 echo '
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
                     <i class="fa-solid fa-triangle-exclamation"></i> Error adding item
                     <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
                 </div>
@@ -371,8 +371,30 @@ class validate extends config {
         }
     }
     
-    public function validNewOrder() {
-        
+    public function validNewOrder($a,$b,$c,$d,$e,$f) {
+        $a = trim($a);
+        $b = trim($b);
+        $f = date('Y-m-d H:i:s', strtotime($f));
+
+        if (is_int($c) == 1 && is_int($d) == 1 && is_int($e) == 1) {
+            $insert = new insertOrder($a,$b,$c,$d,$e,$f);
+
+            if ($insert->addOrder()) {
+                echo '
+                    <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+                        <i class="fa-solid fa-circle-check"></i> Order has been added
+                        <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
+                    </div>
+                ';
+            } else {
+                echo '
+                <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+                    <i class="fa-solid fa-triangle-exclamation"></i> Error adding order
+                    <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
+                </div>
+                ';
+            }
+        }
     }
 }
 ?>
