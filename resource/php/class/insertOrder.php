@@ -20,7 +20,7 @@ class insertOrder extends config {
 
     public function addOrder() {
         $con = $this->con();
-        $sql = "INSERT INTO `tbl_order` ";
+        $sql = "INSERT INTO `tbl_order` (`o_customer`,`o_name`,`o_qty`,`o_total_price`,`o_status`,`o_date`,`o_received`) VALUES ('$this->ocus','$this->oname',$this->oqty,$this->oprice,$this->ostatus,'$this->odate','$this->oreceive')";
         $data = $con->prepare($sql);
         
         if ($data->execute()) {

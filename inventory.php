@@ -50,18 +50,18 @@ $result = $data->fetchAll(PDO::FETCH_ASSOC);
                     </button>
                     <div class="collapse navbar-collapse" id="navList">
                         <ul class="navbar-nav ms-auto me-3"> 
-                            <li class="nav-item"><a class="nav-link text-white" href="dashboard.php">Dashboard</a></li>
-                            <li class="nav-item"><a class="nav-link text-white" href="user.php">User</a></li>
-                            <li class="nav-item"><a class="nav-link text-white" href="inventory.php">Inventory</a></li>
-                            <li class="nav-item"><a class="nav-link text-white" href="order.php">Order</a></li>
+                            <li class="nav-item"><a class="nav-link text-white link-secondary" href="dashboard.php">Dashboard</a></li>
+                            <li class="nav-item"><a class="nav-link text-white link-secondary" href="user.php">User</a></li>
+                            <li class="nav-item"><a class="nav-link text-white link-secondary" href="inventory.php">Inventory</a></li>
+                            <li class="nav-item"><a class="nav-link text-white link-secondary" href="order.php">Order</a></li>
                             <li class="nav-item dropdown">
-                                <button class="nav-link text-white dropdown-toggle text-uppercase" data-bs-toggle="dropdown" aria-expanded="false">
+                                <button class="nav-link text-white link-secondary dropdown-toggle text-uppercase" data-bs-toggle="dropdown" aria-expanded="false">
                                     Account
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end bg-dark">
-                                    <li class="dropdown-item text-center disabled"><?php echo $_SESSION['user']; ?></li>
+                                    <li class="dropdown-item text-center text-white h5 disabled"><?php echo $_SESSION['user']; ?></li>
                                     <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item text-white" href="logout.php">Logout</a></li>
+                                    <li><a class="dropdown-item text-white link-secondary" href="logout.php">Logout</a></li>
                                 </ul>
                             </li>
                         </ul>

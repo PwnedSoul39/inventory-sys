@@ -42,6 +42,14 @@ function UserEdit($a, $b, $c, $d) {
     ';
 }
 
+function UserType($a) {
+    if ($a == 1) {
+        echo '<h5 class="fw-normal text-muted"><span class="text-white fw-bold">Account Type: </span>Administrator</h5>';
+    } else {
+        echo '<h5 class="fw-normal text-muted"><span class="text-white fw-bold">Account Type: </span>User</h5>';
+    }
+}
+
 function ItemStat($a) {
     if ($a == 1) {
         echo '<td>Active</td>';
@@ -339,40 +347,36 @@ function logOut() {
 }
 
 function insertAccMsg() {
-  // Validation and error messages
-  if (isset($_POST['reg_btn'])) {
-    $validate = new validate();
-    $validate->validReg($_POST['lname_box'], $_POST['fname_box'], $_POST['uname_box'], $_POST['email_box'], $_POST['pass_box'], $_POST['type_choice']);
-  }
+    if (isset($_POST['reg_btn'])) {
+        $validate = new validate();
+        $validate->validReg($_POST['lname_box'], $_POST['fname_box'], $_POST['uname_box'], $_POST['email_box'], $_POST['pass_box'], $_POST['type_choice']);
+    }
 }
 
 function insertItemMsg() {
-  // Validation and error messages x2
-  if (isset($_POST['item_add'])) {
-    $validate = new validate();
-    $iname = $_POST['iname_box'];
-    $itype = $_POST['itype_box'];
-    $ibrand = $_POST['ibrand_box'];
-    $iprice = intval($_POST['iprice_box']);
-    $iqty = intval($_POST['iqty_box']);
-    $istat = intval($_POST['istat_box']);
-    $validate->validNewItem($iname,$itype,$ibrand,$iprice,$iqty,$istat);
-  }
+    if (isset($_POST['item_add'])) {
+        $validate = new validate();
+        $iname = $_POST['iname_box'];
+        $itype = $_POST['itype_box'];
+        $ibrand = $_POST['ibrand_box'];
+        $iprice = intval($_POST['iprice_box']);
+        $iqty = intval($_POST['iqty_box']);
+        $istat = intval($_POST['istat_box']);
+        $validate->validNewItem($iname,$itype,$ibrand,$iprice,$iqty,$istat);
+    }
 }
 
 function loginMsg() {
-  // Validation and error messages x3
-  if (isset($_POST['log_btn'])) {
-    $validate = new validate();
-    $validate->validLog($_POST['email_logbox'], $_POST['pass_logbox']);
-  }
+    if (isset($_POST['log_btn'])) {
+        $validate = new validate();
+        $validate->validLog($_POST['email_logbox'], $_POST['pass_logbox']);
+    }
 }
 
 function newPassMsg() {
-  // Validation and error messages x4
-  if (isset($_POST['edit_btn'])) {
-    $validate = new validate();
-    $validate->validNewPass($_POST['pass_editbox'],$_POST['confirm_pass_editbox']);
-  }
+    if (isset($_POST['edit_btn'])) {
+        $validate = new validate();
+        $validate->validNewPass($_POST['pass_editbox'],$_POST['confirm_pass_editbox']);
+    }
 }
 ?>

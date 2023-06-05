@@ -1,8 +1,8 @@
 <?php
-    require_once './resource/php/init.php';
-    session_start();
-    logIn();
-    logLockAdmin();
+require_once './resource/php/init.php';
+session_start();
+logIn();
+logLockAdmin();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,23 +26,24 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navList">
                         <ul class="navbar-nav ps-2 me-auto"> 
-                            <li class="nav-item"><a class="nav-link text-white" href="#home">Home</a></li>
-                            <li class="nav-item"><a class="nav-link text-white" href="#products">Products</a></li>
-                            <li class="nav-item"><a class="nav-link text-white" href="#aboutus">About Us</a></li>
+                            <li class="nav-item"><a class="nav-link text-white link-secondary" href="#home">Home</a></li>
+                            <li class="nav-item"><a class="nav-link text-white link-secondary" href="#products">Products</a></li>
+                            <li class="nav-item"><a class="nav-link text-white link-secondary" href="#aboutus">About Us</a></li>
                             <li class="nav-item dropdown">
-                                <button class="nav-link text-white dropdown-toggle text-uppercase" data-bs-toggle="dropdown" aria-expanded="false">
+                                <button class="nav-link text-white dropdown-toggle link-secondary text-uppercase" data-bs-toggle="dropdown" aria-expanded="false">
                                     Account
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-center bg-dark">
-                                    <li class="dropdown-item disabled text-center"><?php echo $_SESSION['user']; ?></li>
+                                    <li class="dropdown-item disabled text-center text-white h5"><?php echo $_SESSION['user']; ?></li>
                                     <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item text-white" href="account.php">View Profile</a></li>
-                                    <li><a class="dropdown-item text-white" href="logout.php">Logout</a></li>
+                                    <li><a class="dropdown-item text-white link-secondary" href="account.php">View Profile</a></li>
+                                    <li><a class="dropdown-item text-white link-secondary" href="logout.php">Logout</a></li>
                                 </ul>
                             </li>
                         </ul>
                         <form class="d-flex me-3" role="search">
                             <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                            <input class="btn btn-secondary ms-2 me-3" type="submit" value="Go">
                         </form>
                     </div>
                 </nav>
@@ -88,28 +89,28 @@
                     <div class="row">
                     <h1 class="text-white featured-text" data-aos="fade-up" data-aos-duration="3000">Featured Products</h1>
                     <div class="col-md-4 centre">
-                        <div class="card">
-                        <a href ="#">
-                            <img class="object-fit-cover brdr" src="./resource/img/lt.jpg" alt=" " class="project-image" data-aos="fade-up" data-aos-duration="3000">
-                        </a>
+                        <div class="card" data-aos="fade-up" data-aos-duration="3000">
+                            <a href="#">
+                                <img class="object-fit-cover brdr" src="./resource/img/lt.jpg" alt=" " class="project-image" data-aos="fade-up" data-aos-duration="3000">
+                            </a>
                         </div>
-                        <button class="btn btn-submit" type="submit" name="button" data-aos="fade-up" data-aos-duration="3000">See more</button>
+                        <a class="btn btn-submit" data-aos="fade-up" data-aos-duration="3000" type="submit" name="button" href="#">See more</a>
                     </div>
                     <div class="col-md-4 centre">
-                        <div class="card">
-                        <a href ="resource/restobar/index.html">
-                            <img class="object-fit-cover brdr" src="./resource/img/desktop.png" alt=" " class="project-image" data-aos="fade-up" data-aos-duration="3000">
-                        </a>
+                        <div class="card" data-aos="fade-up" data-aos-duration="3000">
+                            <a href="#">
+                                <img class="object-fit-cover brdr" src="./resource/img/desktop.png" alt=" " class="project-image" data-aos="fade-up" data-aos-duration="3000">
+                            </a>
                         </div>
-                        <button class="btn btn-submit" type="submit" name="button" data-aos="fade-up" data-aos-duration="3000">See more</button>
+                        <a class="btn btn-submit" data-aos="fade-up" data-aos-duration="3000" type="submit" name="button" href="#">See more</a>
                     </div>
                     <div class="col-md-4 centre">
-                        <div class="card">
-                        <a href ="resource/restobar/index.html">
-                            <img class="object-fit-cover brdr" src="./resource/img/mouse.png" alt=" " class="project-image" data-aos="fade-up" data-aos-duration="3000">
-                        </a>
+                        <div class="card" data-aos="fade-up" data-aos-duration="3000">
+                            <a href="#">
+                                <img class="object-fit-cover brdr" src="./resource/img/mouse.png" alt=" " class="project-image" data-aos="fade-up" data-aos-duration="3000">
+                            </a>
                         </div>
-                        <button class="btn btn-submit" data-aos="fade-up" data-aos-duration="3000" type="submit" name="button">See more</button>
+                        <a class="btn btn-submit" data-aos="fade-up" data-aos-duration="3000" type="submit" name="button" href="#">See more</a>
                     </div>
                     </div>
                 </div>
@@ -126,7 +127,7 @@
                                 We continually update our inventory to reflect the newest releases <br>and cutting-edge technologies in an effort to stay ahead of the curve. We are dedicated <br>to assisting our customers in locating the ideal technology to fulfill their demands <br> and improve their digital lifestyles. Our staff is informed and pleasant.
                             </p>
                         </div>
-                        <div class="loc col-md-6">
+                        <div class="loc col-md-6" data-aos="fade-right" data-aos-duration="3000">
                             <i class="fa-solid fa-location-dot text-white"></i>
                             <span class="text-white">Lot 19 Block 1, St.Paul Village, Sumapang Matanda, Malolos Bulacan </span>
                         </div>
@@ -157,11 +158,10 @@
             </section>
         </main>
 
-        <footer class="row-fluid bg-dark text-white">
+        <footer class="row-fluid text-white py-3" style="background-color:#1c1c1c;">
             <div class="container d-flex justify-content-between">
                 <div class="col">
-                    <small>Copyright &copy; KriziaWare</small> <br>
-                    <small>All Rights Reserved 2023</small>
+                    <small>Copyright &copy; KriziaWare. <strong>All Rights Reserved 2023</strong></small>
                 </div>
                 <div class="col">
                     <small>Group 4: Marcus Bustos, Ralph Cruz, Angelique Gabriel, Krizia Lleva, Roderick Nucup Jr, Emman Siva</small>
