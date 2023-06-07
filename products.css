@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+}
+body{
+  font-family: 'DM Sans', sans-serif;
+  background-color: #000000;
+}
+.navbar{
+  background-color: #1c1c1c;
+}
+
+.navbar img{
+  width: 150px;
+}
+
+.btn:not(.nav-btns button){
+    color: rgb(85, 85, 85);
+    padding: 10px 28px;
+    border-radius: 25px;
+    border: 1px solid rgb(85, 85, 85);
+}
+.btn:not(.nav-btns button):hover{
+    background-color: #000000;
+    color: #fff;
+    border-color: #fff;
+}
+
+.small-img{
+  display: flex;
+  justify-content: space-between;
+}
+
+.small-img-col{
+  flex-basis: 32%;
+  cursor: pointer;
+}
+
+.buy-btn{
+  background:  #EA3C53;
+  opacity: 1;
+  transition: 0.5s;
+  border-radius: 10px;
+  width: 200px;
+  height: 40px;
+}
+
+.buy-btn:hover{
+  background: #FF5E0E;
+}
+
+.row-fluid{
+  background: #1c1c1c;
+}

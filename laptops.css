@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+}
+body{
+  font-family: 'DM Sans', sans-serif;
+  background-color: #000000;
+}
+.navbar{
+  background-color: #1c1c1c;
+}
+
+.navbar img{
+  width: 150px;
+}
+
+.btn:not(.nav-btns button){
+    color: rgb(85, 85, 85);
+    padding: 10px 28px;
+    border-radius: 25px;
+    border: 1px solid rgb(85, 85, 85);
+}
+.btn:not(.nav-btns button):hover{
+    background-color: #000000;
+    color: #fff;
+    border-color: #fff;
+}
+
+#header{
+    background: url(img/bg1.jpg) top/cover no-repeat;
+}
+.carousel-inner h1{
+    font-size: 60px;
+}
+.carousel-item .btn{
+    border-color: #fff!important;
+}
+.carousel-item .btn:hover{
+    border-color: #fff;
+}
+
+.active-filter-btn{
+    background-color: #000000;
+    color: #fff!important;
+    border-color: #fff;
+}
+.filter-button-group .btn:hover{
+    color: #fff;
+}
+.collection-img span{
+    top: 20px;
+    right: 20px;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+}
+
+#offers{
+    background: url(img/bg2.jpg) center/cover no-repeat;
+}
+#offers .row{
+    min-height: 60vh;
+}
+.offers-content span{
+    font-size: 28px;
+}
+.offers-content h2{
+    font-size: 60px;
+}
