@@ -1,408 +1,434 @@
 <?php
-function PrevPage($a) {
-    if ($a == 1) {
-        echo '<li class="page-item disabled"><a class="page-link text-white" href="#">Previous</a></li>';
-    } else {
-        echo '<li class="page-item"><a class="page-link text-white" href="?page='.($a-1).'">Previous</a></li>';
-    }
+function PrevPage($page) {
+	if ($page == 1) {
+		echo '<li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>';
+	} else {
+		echo '<li class="page-item"><a class="page-link link-body-emphasis" href="?page='.($page-1).'">Previous</a></li>';
+	}
 }
 
-function NextPage($a, $b) {
-    if ($a == $b) {
-        echo ' <li class="page-item disabled"><a class="page-link text-white" href="#">Next</a></li>';
-    } else {
-        echo '<li class="page-item"><a class="page-link text-white" href="?page='.($a+1).'">Next</a></li>';
-    }
+function NextPage($page,$pages) {
+	if ($page == $pages) {
+		echo '<li class="page-item disabled"><a class="page-link" href="#">Next</a></li>';
+	} else {
+		echo '<li class="page-item"><a class="page-link link-body-emphasis" href="?page='.($page+1).'">Next</a></li>';
+	}
 }
 
-function UserEdit($a, $b, $c, $d) {
-    echo '<td>';
+function regUsrMsg() {
+	if (isset($_POST['reg_btn'])) {
+		$valid = new validate();
+		$user = $_POST['user_reg'];
+		$email = $_POST['email_reg'];
+		$pass = $_POST['pass_reg'];
+		$type = $_POST['type_reg'];
 
-    if ($a == $b) {
-        echo '<a class="btn btn-primary disabled" href="#"><i class="fa-solid fa-hourglass-start"></i> Currently Using this account</a>';
-    } else {
-        echo '
-            <a class="btn btn-primary" href="?update='.$d.'">
-        ';
-       if ($c == 1) {
-            echo '
-            <i class="fa-solid fa-user-pen"></i> Edit to User</a>
-            <a class="btn btn-danger" href="?delete='.$d.'"> <i class="fa-solid fa-user-xmark"></i> Delete User</a>
-            ';
-        } else {
-            echo '
-            <i class="fa-solid fa-user-pen"></i> Edit to Admin</a>
-            <a class="btn btn-danger" href="?delete='.$d.'"> <i class="fa-solid fa-user-xmark"></i> Delete User</a>
-            ';
-        }
-    }
+		$valid->validReg($user,$email,$pass,$type);
+	}
 
-    echo '
-        </td>
-    ';
 }
 
-function UserType($a) {
-    if ($a == 1) {
-        echo '<h5 class="fw-normal text-muted"><span class="text-white fw-bold">Account Type: </span>Administrator</h5>';
-    } else {
-        echo '<h5 class="fw-normal text-muted"><span class="text-white fw-bold">Account Type: </span>User</h5>';
-    }
+function logUsrMsg() {
+	if (isset($_POST['log_btn'])) {
+		$valid = new validate();
+		$user = $_POST['user_log'];
+		$pass = $_POST['pass_log'];
+
+		$valid->validLog($user,$pass);
+	}
 }
 
-function ItemStat($a) {
-    if ($a == 1) {
-        echo '<td>Active</td>';
-    } elseif ($a == 2) {
-        echo '<td>Inactive</td>';
-    } else {
-        echo '<td>Discounted</td>';
-    }
+function UsrEdit($user,$sesh_user,$type,$id) {
+	echo '<td class="d-flex flex-column">';
+
+	if ($user == $sesh_user) {
+		echo '<a class="btn btn-primary p-1 my-1 disabled" href="#">Currently used</a>';
+	} elseif ($type !== 1) {
+		echo '
+		<a class="btn btn-primary p-1 my-1" href="?updUsr='.$id.'">Change to User</a>
+		<a class="btn btn-danger p-1 my-1" href="?delUsr='.$id.'">Delete User</a>    
+		';
+	} else {
+		echo '
+		<a class="btn btn-primary p-1 my-1" href="?updUsr='.$id.'">Change to Admin</a>
+		<a class="btn btn-danger p-1 my-1" href="?delUsr='.$id.'">Delete User</a>    
+		';
+	}
+
+	echo '</td>';
 }
 
-function ItemEdit($a, $b) {
-    echo '
-    <td>
-        <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fa-solid fa-file-pen"></i> Edit Item
-            </button>
-            <ul class="dropdown-menu">
-    ';
-
-    if ($a == 1) {
-        echo '
-        <li><a class="dropdown-item disabled" href="#">Acive</a></li>
-        <li><a class="dropdown-item" href="?inact='.$b.'">Inactive</a></li>
-        <li><a class="dropdown-item" href="?disc='.$b.'">Discounted</a></li>
-        ';
-    } elseif ($a == 2) {
-        echo '
-        <li><a class="dropdown-item" href="?act='.$b.'">Active</a></li>
-        <li><a class="dropdown-item disabled" href="#">Inactive</a></li>
-        <li><a class="dropdown-item" href="?disc='.$b.'">Discounted</a></li>
-        ';
-    } else {
-        echo '
-        <li><a class="dropdown-item" href="?act='.$b.'">Active</a></li>
-        <li><a class="dropdown-item" href="?inact='.$b.'">Inactive</a></li>
-        <li><a class="dropdown-item disabled" href="#">Discounted</a></li>
-        ';
-    }
-
-    echo '
-            </ul>
-        </div>
-        <a class="btn btn-danger mt-2" href="?remove='.$b.'"> <i class="fa-solid fa-trash-can"></i> Delete Item</a>
-    </td>
-    ';
+function UsrType($type) {
+	if ($type == 1) {
+		echo '<td>User</td>';
+	} else {
+		echo '<td>Administrator</td>';
+	}
 }
 
-function OrderStat($a) {
-    if ($a == 1) {
-        echo '<td>Ordered</td>';
-    } elseif ($a == 2) {
-        echo '<td>Packed</td>';
-    } elseif ($a == 3) {
-        echo '<td>In Transit</td>';
-    } else {
-        echo '<td>Delivered</td>';
-    }
+function AccType($type) {
+	if ($type == 1) {
+		echo '<h4 class="fw-bolder">Account Type: <span class="fw-light">User</span></h4>';
+	} else {
+		echo '<h4 class="fw-bolder">Account Type: <span class="fw-light">Administrator</span></h4>';
+	}
 }
 
-function OrderEdit($a,$b) {
-    echo '
-    <td>
-        <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="fa-solid fa-box"></i> Edit Item
-            </button>
-            <ul class="dropdown-menu">
-    ';
-    
-    if ($a == 1) {
-        echo '
-        <li><a class="dropdown-item disabled" href="#">Ordered</a></li>
-        <li><a class="dropdown-item" href="?pack='.$b.'">Packed</a></li>
-        <li><a class="dropdown-item" href="?transit='.$b.'">In Transit</a></li>
-        <li><a class="dropdown-item" href="?deliver='.$b.'">Delivered</a></li>
-        ';
-    } elseif ($a == 2) {
-        echo '
-        <li><a class="dropdown-item" href="?order='.$b.'">Ordered</a></li>
-        <li><a class="dropdown-item disabled" href="#">Packed</a></li>
-        <li><a class="dropdown-item" href="?transit='.$b.'">In Transit</a></li>
-        <li><a class="dropdown-item" href="?deliver='.$b.'">Delivered</a></li>
-        ';
-    } elseif ($a == 3) {
-        echo '
-        <li><a class="dropdown-item " href="?order='.$b.'">Ordered</a></li>
-        <li><a class="dropdown-item" href="?pack='.$b.'">Packed</a></li>
-        <li><a class="dropdown-item disabled" href="#">In Transit</a></li>
-        <li><a class="dropdown-item" href="?deliver='.$b.'">Delivered</a></li>
-        ';
-    } else {
-        echo '
-        <li><a class="dropdown-item " href="?order='.$b.'">Ordered</a></li>
-        <li><a class="dropdown-item" href="?pack='.$b.'">Packed</a></li>
-        <li><a class="dropdown-item" href="?transit='.$b.'">In Transit</a></li>
-        <li><a class="dropdown-item disabled" href="#">Delivered</a></li>
-        ';
-    }
-
-    echo '
-            </ul>
-        </div>
-        <a class="btn btn-danger mt-2" href="?obl='.$b.'"> <i class="fa-solid fa-trash-can"></i> Delete Order</a>
-    </td>
-    ';
+function NewPassMsg() {
+	if (isset($_POST['up-pw_btn'])) {
+		$validate = new validate();
+		$npass = $_POST['new_pw'];
+		$cnpass = $_POST['cnew_pw'];
+		$user = $_SESSION['username'];
+		$validate->newPass($npass,$cnpass,$user);
+	}
 }
 
-function UserMsg() {
-    if (!empty($_GET['update'])) {
-        $user_upd = $_GET['update'];
-        $edit = new editStuff($user_upd);
-        
-        if ($edit->editType()) {
-            header('location:user.php?done=3');
-            exit();
-        }
-    } elseif (!empty($_GET['delete'])) {
-        $user_del = $_GET['delete'];
-        $del = new deleteStuff($user_del);
+function UsrMsg() {
+	if (!empty($_GET['updUsr'])) {
+		$user_upd = $_GET['updUsr'];
+		$edit = new edit($user_upd,null);
 
-        if ($del->delUser()) {
-            header('location:user.php?fin=3');
-            exit();
-        }
-    }
+		if ($edit->editUsrType()) {
+			header('location:user.php?upd=1');
+			exit();
+		}
+	} elseif (!empty($_GET['delUsr'])) {
+		$user_del = $_GET['delUsr'];
+		$del = new delete($user_del);
+		
+		if ($del->delUsr()) {
+			header('location:user.php?obl=1');
+			exit();
+		}
+	}
 }
 
-function ItemMsg() {
-    if (!empty($_GET['act'])) {
-        $item_upd1 = $_GET['act'];
-        $edit = new editStuff($item_upd1);
+function ItmEdit($status, $id) {
+	echo '
+	<td class="d-flex flex-column">
+		<div class="dropdown">
+			<a class="btn btn-primary p-1 w-100 my-1 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Change Status</a>
+			<ul class="dropdown-menu">
+	';
 
-        if ($edit->editStatusAct()) {
-            header('location:inventory.php?done=1');
-            exit();
-        } 
-    } elseif (!empty($_GET['remove'])) {
-        $item_del = $_GET['remove'];
-        $del = new deleteStuff($item_del);
-        
-        if ($del->delItem()) {
-            header('location:inventory.php?fin=1');
-            exit();
-        }
-    } elseif (!empty($_GET['inact'])) {
-        $item_upd2 = $_GET['inact'];
-        $edit = new editStuff($item_upd2);
+	if ($status == 1) {
+		echo '
+		<li><a class="dropdown-item disabled" href="#">Active</a></li>
+		<li><a class="dropdown-item" href="?ItmSt2='.$id.'">Sold Out</a></li>
+		<li><a class="dropdown-item" href="?ItmSt3='.$id.'">On Discount</a></li>
+		';
+	} elseif ($status == 2) {
+		echo '
+		<li><a class="dropdown-item" href="?ItmSt1='.$id.'">Active</a></li>
+		<li><a class="dropdown-item disabled" href="#">Sold Out</a></li>
+		<li><a class="dropdown-item" href="?ItmSt3='.$id.'">On Discount</a></li>
+		';
+	} else {
+		echo '
+		<li><a class="dropdown-item" href="?ItmSt1='.$id.'">Active</a></li>
+		<li><a class="dropdown-item" href="?ItmSt2='.$id.'">Sold Out</a></li>
+		<li><a class="dropdown-item disabled" href="#">On Discount</a></li>
+		';
+	}
 
-        if ($edit->editStatusIna()) {
-            header('location:inventory.php?done=1');
-            exit();
-        }
-    } elseif (!empty($_GET['disc'])) {
-        $item_upd3 = $_GET['disc'];
-        $edit = new editStuff($item_upd3);
-
-        if ($edit->editStatusDis()) {
-            header('location:inventory.php?done=1');
-            exit();
-        }
-    }
+	echo '
+			</ul>
+		</div>
+		<a class="btn btn-danger p-1 w-100 my-1" href="?delItm='.$id.'">Delete Item</a>
+	</td>
+	';
 }
 
-function OrderMsg() {
-    if (!empty($_GET['order'])) {
-        $order_upd1 = $_GET['order'];
-        $edit = new editStuff($order_upd1);
+function ItmStatus($status) {
+	if ($status == 1) {
+		echo '<td>Active</td>';
+	} elseif ($status == 2) {
+		echo '<td>Sold Out</td>';
+	} else {
+		echo '<td>On Discount</td>';
+	}
+}
 
-        if ($edit->editStatusO()) {
-            header('location:order.php?done=2');
-            exit();
-        }
-    } elseif (!empty($_GET['obl'])) {
-        $order_del = $_GET['obl'];
-        $del = new deleteStuff($order_del);
-        if ($del->delOrder()) {
-            header('location:order.php?fin=2');
-            exit();
-        }
-    } elseif (!empty($_GET['pack'])) {
-        $order_upd2 = $_GET['pack'];
-        $edit = new editStuff($order_upd2);
+function ItmMsg() {
+	if (!empty($_GET['ItmSt1'])) {
+		$item_upd1 = $_GET['ItmSt1'];
+		$edit = new edit($item_upd1, 1);
 
-        if ($edit->editStatusP()) {
-            header('location:order.php?done=2');
-            exit();
-        }
+		if ($edit->editItmStatus()) {
+			header('location:inventory.php?upd=2');
+			exit();
+		}
+	} elseif (!empty($_GET['delItm'])) {
+		$item_del = $_GET['delItm'];
+		$del = new delete($item_del);
 
-    } elseif (!empty($_GET['transit'])) {
-        $order_upd3 = $_GET['transit'];
-        $edit = new editStuff($order_upd3);
+		if ($del->delItm()) {
+			header('location:inventory.php?obl=2');
+			exit();
+		}
+	} elseif (!empty($_GET['ItmSt2'])) {
+		$item_upd2 = $_GET['ItmSt2'];
+		$edit = new edit($item_upd2, 2);
 
-        if ($edit->editStatusT()) {
-            header('location:order.php?done=2');
-            exit();
-        }
+		if ($edit->editItmStatus()) {
+			header('location:inventory.php?upd=2');
+			exit();
+		}
+	} elseif (!empty($_GET['ItmSt3'])) {
+		$item_upd3 = $_GET['ItmSt3'];
+		$edit = new edit($item_upd3, 3);
 
-    } elseif (!empty($_GET['deliver'])) {
-        $order_upd4 = $_GET['deliver'];
-        $edit = new editStuff($order_upd4);
+		if ($edit->editItmStatus()) {
+			header('location:inventory.php?upd=2');
+			exit();
+		}
+	}
+}
 
-        if ($edit->editStatusD()) {
-            header('location:order.php?done=2');
-            exit();
-        }
-    }
+function InsItmMsg() {
+	if (isset($_POST['itm_add'])) {
+		$validate = new validate();
+		$name = $_POST['inm_box'];
+		$type = $_POST['itp_box'];
+		$brand = $_POST['ibd_box'];
+		$price = intval($_POST['ipr_box']);
+		$qty = intval($_POST['iqt_box']);
+		$status = intval($_POST['ist_box']);
+		$date = $_POST['idt_box'];
+		$validate->validItm($name,$type,$brand,$price,$qty,$status,$date);
+	}
+}
+
+function OrdEdit($status, $id) {
+	echo '
+	<td class="d-flex flex-column">
+		<div class="dropdown">
+			<a class="btn btn-primary p-3 w-100 my-1 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Change Status</a>
+			<ul class="dropdown-menu">
+	';
+
+	if ($status == 1) {
+		echo '
+		<li><a class="dropdown-item disabled" href="#">Ordered</a></li>
+		<li><a class="dropdown-item" href="?OrdSt2='.$id.'">Packaged</a></li>
+		<li><a class="dropdown-item" href="?OrdSt3='.$id.'">Shipped</a></li>
+		<li><a class="dropdown-item" href="?OrdSt4='.$id.'">In Transit</a></li>
+		<li><a class="dropdown-item" href="?OrdSt5='.$id.'">Delivered</a></li>
+		';
+	} elseif ($status == 2) {
+		echo '
+		<li><a class="dropdown-item" href="?OrdSt1='.$id.'">Ordered</a></li>
+		<li><a class="dropdown-item disabled" href="#">Packaged</a></li>
+		<li><a class="dropdown-item" href="?OrdSt3='.$id.'">Shipped</a></li>
+		<li><a class="dropdown-item" href="?OrdSt4='.$id.'">In Transit</a></li>
+		<li><a class="dropdown-item" href="?OrdSt5='.$id.'">Delivered</a></li>
+		';
+	} elseif ($status == 3) {
+		echo '
+		<li><a class="dropdown-item" href="?OrdSt1='.$id.'">Ordered</a></li>
+		<li><a class="dropdown-item" href="?OrdSt2='.$id.'">Packaged</a></li>
+		<li><a class="dropdown-item disabled" href="#">Shipped</a></li>
+		<li><a class="dropdown-item" href="?OrdSt4='.$id.'">In Transit</a></li>
+		<li><a class="dropdown-item" href="?OrdSt5='.$id.'">Delivered</a></li>
+		';
+	} elseif ($status == 4) {
+		echo '
+		<li><a class="dropdown-item" href="?OrdSt1='.$id.'">Ordered</a></li>
+		<li><a class="dropdown-item" href="?OrdSt2='.$id.'">Packaged</a></li>
+		<li><a class="dropdown-item" href="?OrdSt3='.$id.'">Shipped</a></li>
+		<li><a class="dropdown-item disabled" href="#">In Transit</a></li>
+		<li><a class="dropdown-item" href="?OrdSt5='.$id.'">Delivered</a></li>
+		';
+	} else {
+		echo '
+		<li><a class="dropdown-item" href="?OrdSt1='.$id.'">Ordered</a></li>
+		<li><a class="dropdown-item" href="?OrdSt2='.$id.'">Packaged</a></li>
+		<li><a class="dropdown-item" href="?OrdSt3='.$id.'">Shipped</a></li>
+		<li><a class="dropdown-item" href="?OrdSt4='.$id.'">In Transit</a></li>
+		<li><a class="dropdown-item disabled" href="#">Delivered</a></li>
+		';
+	}
+
+	echo '
+			</ul>
+		</div>
+		<a class="btn btn-danger p-1 w-100 my-1" href="?delOrd='.$id.'">Delete Order</a>
+	</td>
+	';
+}
+
+function OrdStatus($status) {
+	if ($status == 1) {
+		echo '<td>Ordered</td>';
+	} elseif ($status == 2) {
+		echo '<td>Packaged</td>';
+	} elseif ($status == 3) {
+		echo '<td>Shipped</td>';
+	} elseif ($status == 4) {
+		echo '<td>In Transit</td>';
+	} else {
+		echo '<td>Delivered</td>';
+	}
+}
+
+function OrdMsg() {
+	if (!empty($_GET['OrdSt1'])) {
+		$order_upd1 = $_GET['OrdSt1'];
+		$edit = new edit($order_upd1,1);
+
+		if ($edit->editOrdStatus()) {
+			header('location:order.php?upd=3');
+			exit();
+		}
+	} elseif (!empty($_GET['delOrd'])) {
+		$order_del = $_GET['delOrd'];
+		$del = new delete($order_del);
+
+		if ($del->delOrd()) {
+			header('location:order.php?obl=3');
+			exit();
+		}
+	} elseif (!empty($_GET['OrdSt2'])) {
+		$order_upd2 = $_GET['OrdSt2'];
+		$edit = new edit($order_upd2,2);
+
+		if ($edit->editOrdStatus()) {
+			header('location:order.php?upd=3');
+			exit();
+		}
+	} elseif (!empty($_GET['OrdSt3'])) {
+		$order_upd3 = $_GET['OrdSt3'];
+		$edit = new edit($order_upd3,3);
+
+		if ($edit->editOrdStatus()) {
+			header('location:order.php?upd=3');
+			exit();
+		}
+	} elseif (!empty($_GET['OrdSt4'])) {
+		$order_upd4 = $_GET['OrdSt4'];
+		$edit = new edit($order_upd4,4);
+
+		if ($edit->editOrdStatus()) {
+			header('location:order.php?upd=3');
+			exit();
+		}
+	} elseif (!empty($_GET['OrdSt5'])) {
+		$order_upd5 = $_GET['OrdSt5'];
+		$edit = new edit($order_upd5,5);
+
+		if ($edit->editOrdStatus()) {
+			header('location:order.php?upd=3');
+			exit();
+		}
+	}
+}
+
+function InsOrdMsg() {
+	if (isset($_POST['ord_add'])) {
+		$validate = new validate();
+		$cname = $_POST['ocn_box'];
+		$iname = $_POST['oin_box'];
+		$qty = intval($_POST['oiq_box']);
+		$total = intval($_POST['otp_box']);
+		$status = intval($_POST['oos_box']);
+		$order = $_POST['odo_box'];
+		$receive = $_POST['odr_box'];
+		$validate->validOrd($cname,$iname,$qty,$total,$status,$order,$receive);
+	}
 }
 
 function AdminMsg() {
-    if (isset($_GET['done'])) {
-        if ($_GET['done'] == 1) {
-            echo '
-            <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
-                <i class="fa-solid fa-circle-check"></i> Item updated successfully
-                <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
-            </div>
-            ';
-        } elseif ($_GET['done'] == 2) {
-            echo '
-            <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
-                <i class="fa-solid fa-circle-check"></i> Order updated successfully
-                <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
-            </div>
-            ';
-        } elseif ($_GET['done'] == 3) {
-            echo '
-            <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
-                <i class="fa-solid fa-circle-check"></i> User updated successfully
-                <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
-            </div>
-            ';
-        }
-    } elseif (isset($_GET['fin'])) {
-        if ($_GET['fin'] == 1) {
-            echo '
-            <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
-                <i class="fa-solid fa-circle-check"></i> Successfully deleted item
-                <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
-            </div>
-            ';
-        } elseif ($_GET['fin'] == 2) {
-            echo '
-            <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
-                <i class="fa-solid fa-circle-check"></i> Successfully deleted order
-                <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
-            </div>
-            ';
-        } elseif ($_GET['fin'] == 3) {
-            echo '
-            <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
-                <i class="fa-solid fa-circle-check"></i> Successfully deleted user
-                <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
-            </div>
-            ';
-        }
-    }
+	if (isset($_GET['upd'])) {
+		if ($_GET['upd'] == 1) {
+			echo '
+			<div class="alert alert-success alert-dismissible fade show" role="alert">
+				User updated successfully!
+				<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
+			</div>
+			';
+		} elseif ($_GET['upd'] == 2) {
+			echo '
+			<div class="alert alert-success alert-dismissible fade show" role="alert">
+				Item updated successfully!
+				<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
+			</div>
+			';
+		} elseif ($_GET['upd'] == 3) {
+			echo '
+			<div class="alert alert-success alert-dismissible fade show" role="alert">
+				Order updated successfully!
+				<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
+			</div>
+			';
+		}
+	} elseif (isset($_GET['obl'])) {
+		if ($_GET['obl'] == 1) {
+			echo '
+			<div class="alert alert-warning alert-dismissible fade show" role="alert">
+				User deleted successfully!
+				<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
+			</div>
+			';
+		} elseif ($_GET['obl'] == 2) {
+			echo '
+			<div class="alert alert-warning alert-dismissible fade show" role="alert">
+				Item deleted successfully!
+				<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
+			</div>
+			';
+		} elseif ($_GET['obl'] == 3) {
+			echo '
+			<div class="alert alert-warning alert-dismissible fade show" role="alert">
+				Order deleted successfully!
+				<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
+			</div>
+			';
+		}
+	}
+}
+
+function OrdComboMsg() {
+	OrdMsg();
+	AdminMsg();
+	InsOrdMsg();
+}
+
+function ItmComboMsg() {
+	ItmMsg();
+	AdminMsg();
+	InsItmMsg();
+}
+
+function UsrComboMsg() {
+	UsrMsg();
+	AdminMsg();
 }
 
 function logStatus() {
-    if (isset($_SESSION['user']) && isset($_SESSION['user_level']) && isset($_SESSION['user_f']) && isset($_SESSION['user_mail']) && isset($_SESSION['user_join'])) {
-        return true;
-    } else {
-        return false;
-    }
+	if (isset($_SESSION['username']) && isset($_SESSION['user_type']) && isset($_SESSION['user_mail']) && isset($_SESSION['user_date'])) {
+		return true;
+	} else {
+		return false;
+	}
 }
 
 function logIn() {
-    if (logStatus() == false) {
-        header('location:index.php');
-        exit();
-    }
+	if (logStatus() == false) {
+		header('location:index.php');
+		exit();
+	}
 }
 
-function logLockUser() {
-    if ($_SESSION['user_level'] == 0) {
-        header('location:home.php');
-        exit();
-    }
+function logLockUsr() {
+	if ($_SESSION['user_type'] == 1) {
+		header('location:home.php');
+		exit();
+	}
 }
 
-function logLockAdmin() {
-    if ($_SESSION['user_level'] == 1) {
-        header('location:dashboard.php');
-        exit();
-    }
-}
-
-function logOut() {
-    session_start();
-    session_unset();
-    session_destroy();
-    header('location:index.php');
-    exit();
-}
-
-function insertAccMsg() {
-    if (isset($_POST['reg_btn'])) {
-        $validate = new validate();
-        $validate->validReg($_POST['lname_box'], $_POST['fname_box'], $_POST['uname_box'], $_POST['email_box'], $_POST['pass_box'], $_POST['type_choice']);
-    }
-}
-
-function insertItemMsg() {
-    if (isset($_POST['item_add'])) {
-        $validate = new validate();
-        $iname = $_POST['iname_box'];
-        $itype = $_POST['itype_box'];
-        $ibrand = $_POST['ibrand_box'];
-        $iprice = intval($_POST['iprice_box']);
-        $iqty = intval($_POST['iqty_box']);
-        $istat = intval($_POST['itype_box']);
-        $validate->validNewItem($iname,$itype,$ibrand,$iprice,$iqty,$istat);
-    }
-}
-
-function insertOrderMsg() {
-    if (isset($_POST['order_add'])) {
-        $validate = new validate();
-        $ocus = $_POST['ocus_box'];
-        $oname = $_POST['oname_box'];
-        $oqty = intval($_POST['oqty_box']);
-        $oprice = intval($_POST['oprice_box']);
-        $ostatus = intval($_POST['ostatus_box']);
-        $odate = $_POST['odate_box'];
-        $oreceive = $_POST['oreceive_box'];
-        $validate->validNewOrder($ocus,$oname,$oqty,$oprice,$ostatus,$odate,$oreceive);
-    }
-}
-
-function loginMsg() {
-    if (isset($_POST['log_btn'])) {
-        $validate = new validate();
-        $validate->validLog($_POST['email_logbox'], $_POST['pass_logbox']);
-    }
-}
-
-function newPassMsg() {
-    if (isset($_POST['edit_btn'])) {
-        $validate = new validate();
-        $validate->validNewPass($_POST['pass_editbox'],$_POST['confirm_pass_editbox']);
-    }
-}
-
-function InventComboMsg() {
-    ItemMsg();
-    AdminMsg();
-    insertItemMsg();
-}
-
-function OrderComboMsg() {
-    OrderMsg();
-    AdminMsg();
-    insertOrderMsg();
+function logCombo() {
+	logIn();
+	logLockUsr();
 }
 ?>

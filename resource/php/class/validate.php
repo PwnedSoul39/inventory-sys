@@ -1,400 +1,320 @@
 <?php
-include 'insertAcc.php';
-include 'insertItem.php';
-include 'insertOrder.php';
-include 'editPass.php';
+include 'insertUsr.php';
+include 'edit.php';
 
 class validate extends config {
-    public function secure($text) {
-        // I used this function instead of the openssl_encrypt method. Finuction ko na kasi nakakatamad itype ung buo (￣▽￣)
-        return password_hash($text, PASSWORD_BCRYPT);
-    }
+	public function viewer($a) {
+		$con = $this->con();
+		$sql = $a;
+		$data = $con->prepare($sql);
+		$data->execute();
+		$result = $data->fetchAll(PDO::FETCH_ASSOC);
 
-    public function verifyPass($text, $hash) {
-        // I used this function instead of openssl_decrypt method to verify password. The $hash is the generated password_hash() stored in the database
-        return password_verify($text, $hash);
-    }
+		return $result;
+	}
 
-    public function sanitizeMail($mail) {
-        // Boolean ata to na titignan kung valid ba yung email
-        $mail = trim($mail);
-        return filter_var($mail, FILTER_SANITIZE_EMAIL);
-    }
+	public function valRegUser($user) {
+		$sql = "SELECT * FROM `tbl_user` WHERE `u_user` = '$user'";
+		$check = $this->viewer($sql);
 
-    public function checkName($string) {
-        // Removes extra whitespaces, slashes, and converts special characters to html code (ex. ' = &#39;)
-        $string = trim($string);
-        $string = stripslashes ($string);
-        $string = htmlspecialchars($string);
-        return $string;
-    }
+		if (!$check) {
+			if (strlen($user) > 30 || strlen($user) < 4) {
+				echo '
+				<div class="alert alert-danger alert-dismissible fade show my-3" role="alert">
+					Username must be between 4 to 30 characters
+					<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
+				</div>
+				';
+				return false;
+			} elseif (empty($user)) {
+				echo '
+				<div class="alert alert-danger alert-dismissible fade show my-3" role="alert">
+					Please enter a username
+					<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
+				</div>
+				';
+				return false;
+			} else {
+				$user = trim($user);
+				return true;
+			}
+		} else {
+			echo '
+			<div class="alert alert-danger alert-dismissible fade show my-3" role="alert">
+				Username has already been taken
+				<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
+			</div>
+			';
+			return false;
+		}
+	}
 
-    public function sanitizeNum($num) {
-        // Removes other characters except for numbers, + and - signs then converts them into an integer.
-        $num = trim($num);
-        return filter_var($num, FILTER_SANITIZE_NUMBER_INT);
-    }
+	public function valRegPass($pass) {
+		$upper = preg_match('@[A-Z]@',$pass);
+		$lower = preg_match('@[a-z]@',$pass);
+		$num = preg_match('@[0-9]@',$pass);
+		$spec = preg_match('@[^\w]@',$pass);
 
-    public function validLog($lmail, $lpass) {
-        // Validates login information
-        if (!empty($lmail) && !empty($lpass)) {
-            $con = $this->con();
-            $sql = "SELECT * FROM `tbl_user` WHERE `u_email` = '$lmail' OR `u_uname` = '$lmail'";
-            $data = $con->prepare($sql);
-            $data->execute();
-            $result = $data->fetchAll(PDO::FETCH_ASSOC);
+		if (!$upper) {
+			echo '
+			<div class="alert alert-danger alert-dismissible fade show my-3" role="alert">
+				Password should have at least 1 uppercase character
+				<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
+			</div>
+			';
+			return false;
+		} elseif (!$lower) {
+			echo '
+			<div class="alert alert-danger alert-dismissible fade show my-3" role="alert">
+				Password should have at least 1 lowercase character
+				<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
+			</div>
+			';
+			return false;
+		} elseif (!$num) {
+			echo '
+			<div class="alert alert-danger alert-dismissible fade show my-3" role="alert">
+				Password should have at least 1 number
+				<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
+			</div>
+			';
+			return false;
+		} elseif (!$spec) {
+			echo '
+			<div class="alert alert-danger alert-dismissible fade show my-3" role="alert">
+				Password should have at least 1 special character
+				<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
+			</div>
+			';
+			return false;
+		} elseif (strlen($pass) < 8 && strlen($pass) > 16) {
+			echo '
+			<div class="alert alert-danger alert-dismissible fade show my-3" role="alert">
+				Password should be between 8-16 characters
+				<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
+			</div>
+			';
+			return false;
+		} else {
+			return true;
+		}
+	}
 
-            if (!$result) {
-                echo '
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <i class="fa-solid fa-triangle-exclamation"></i> Invalid email or username
-                    <button class="close" type="button" data-dismiss="alert" aria-label="close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                ';
-            } else {
-                foreach ($result as $data) {
-                    if ($this->verifyPass($lpass, $data['u_pass'])) {
-                        session_start();
-                        $_SESSION['user'] = $data['u_uname'];
-                        $_SESSION['user_level'] = $data['u_type'];
-                        $_SESSION['user_f'] = $data['u_fname'] .' '. $data['u_lname'];
-                        $_SESSION['user_mail'] = $data['u_email'];
-                        $_SESSION['user_join'] = $data['u_date_joined'];
+	public function valRegEmail($mail) {
+		$sql = "SELECT * FROM `tbl_user` WHERE `u_email` = '$mail'";
+		$check = $this->viewer($sql);
+		
+		if (!$check) {
+			$mail = trim($mail);
+			$mail = filter_var($mail, FILTER_SANITIZE_EMAIL);
+			if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+				echo '
+				<div class="alert alert-success alert-dismissible fade show my-3" role="alert">
+					Invalid email
+					<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>	
+				</div>
+				';
+				return false;
+			} else {
+				return true;
+			}
+		} else {
+			echo '
+			<div class="alert alert-danger alert-dismissible fade show my-3" role="alert">
+				Email has already been used
+				<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>	
+			</div>
+			';
+			return false;
+		}
+	}
 
-                        if ($_SESSION['user_level'] == 0) {
-                            header('location:home.php');
-                            exit();
-                        } else {
-                            header('location:dashboard.php');
-                            exit();
-                        }
-                    } elseif (!$this->verifyPass($lpass, $data['u_pass'])) {
-                        echo '
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <i class="fa-solid fa-triangle-exclamation"></i> Invalid password
-                            <button class="close" type="button" data-dismiss="alert" aria-label="close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        ';
-                    } else {
-                        echo '
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <i class="fa-solid fa-triangle-exclamation"></i> Invalid email or username
-                            <button class="close" type="button" data-dismiss="alert" aria-label="close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        ';
-                    }
-                }
-            }
-        } elseif (empty($lmail)) {
-            echo '
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <i class="fa-solid fa-triangle-exclamation"></i> Pleaser enter your email or username
-                <button class="close" type="button" data-dismiss="alert" aria-label="close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            ';
-        } elseif (empty($lpass)) {
-            echo '
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <i class="fa-solid fa-triangle-exclamation"></i> Pleaser enter your password
-                <button class="close" type="button" data-dismiss="alert" aria-label="close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            ';
-        } else {
-            echo '
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <i class="fa-solid fa-triangle-exclamation"></i> Invalid information
-                <button class="close" type="button" data-dismiss="alert" aria-label="close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            ';
-        }
-    }
+	public function validLog($user,$pass) {		
+		if (!empty($user) && !empty($pass)) {
+			$sql = "SELECT * FROM `tbl_user` WHERE `u_user` = '$user'";
+			$check = $this->viewer($sql);
 
-    public function validPass($pass) {
-        // Validates passwords during user registration and password update
-        $upper = preg_match('@[A-Z]@', $pass);
-        $lower = preg_match('@[a-z]@', $pass);
-        $num = preg_match('@[0-9]@', $pass);
-        $sp = preg_match ('@[^\w]@', $pass);
+			if ($check) {
+				foreach ($check as $data) {
+					$a = password_verify($pass, $data['u_pass']);
+					if ($a) {
+						session_start();
+						$_SESSION['username'] = $data['u_user'];
+						$_SESSION['user_type'] = $data['u_type'];
+						$_SESSION['user_mail'] = $data['u_email'];
+						$_SESSION['user_date'] = $data['u_join'];
+						
+						if ($data['u_type'] == 1) {
+							header('location:home.php');
+							exit();
+						} else {
+							header('location:dashboard.php');
+							exit();
+						}
+						
+					} elseif (!$a) {
+						echo '
+						<div class="alert alert-danger alert-dismissible fade show my-3" role="alert">
+							Invalid password
+							<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>	
+						</div>
+						';
+					} else {
+						echo '
+						<div class="alert alert-danger alert-dismissible fade show my-3" role="alert">
+							Invalid username
+							<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>	
+						</div>
+						';
+					}
+				}
+			} else {
+				echo '
+				<div class="alert alert-danger alert-dismissible fade show my-3" role="alert">
+					Invalid username or password
+					<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>	
+				</div>
+				';
+			}
+		} elseif (empty($user)) {
+			echo '
+			<div class="alert alert-danger alert-dismissible fade show my-3" role="alert">
+				Please enter your username
+				<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>	
+			</div>
+			';
+		} elseif (empty($pass)) {
+			echo '
+			<div class="alert alert-danger alert-dismissible fade show my-3" role="alert">
+				Please enter your password
+				<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>	
+			</div>
+			';
+		} else {
+			echo '
+			<div class="alert alert-danger alert-dismissible fade show my-3" role="alert">
+				Invalid information
+				<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>	
+			</div>
+			';
+		}
+	}
 
-        if (!$upper) {
-            echo '
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <i class="fa-solid fa-triangle-exclamation"></i> Password should have at least one uppercase letter
-                <button class="close" type="button" data-dismiss="alert" aria-label="close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            ';
-            return false;
-        } elseif (!$lower) {
-            echo '
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <i class="fa-solid fa-triangle-exclamation"></i> Password should have at least one lowercase letter
-                <button class="close" type="button" data-dismiss="alert" aria-label="close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            ';
-            return false;
-        } elseif (!$num) {
-            echo '
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <i class="fa-solid fa-triangle-exclamation"></i> Password should have at least one number
-                <button class="close" type="button" data-dismiss="alert" aria-label="close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            ';
-            return false;
-        } elseif (!$sp) {
-            echo '
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <i class="fa-solid fa-triangle-exclamation"></i> Password should have at leastone special character
-                <button class="close" type="button" data-dismiss="alert" aria-label="close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            ';
-            return false;
-        } elseif (strlen($pass) < 8 && strlen($pass) > 16) {
-            echo '
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <i class="fa-solid fa-triangle-exclamation"></i> Password should have at least 8-16 characters
-                <button class="close" type="button" data-dismiss="alert" aria-label="close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            ';
-        } else {
-            return true;
-        }
-    }
+	public function validReg($user,$mail,$pass,$type) {
+		$date = date('Y-m-d H:i:s');
+		
+		if ($this->valRegEmail($mail) == true && $this->valRegPass($pass) == true && $this->valRegUser($user) == true) {
+			$pass = password_hash($pass, PASSWORD_BCRYPT);
+			$insert = new insertUsr($user,$mail,$pass,$type,$date);
 
-    public function validName($lname, $fname) {
-        // Validates the name during user registration. Wala ng else statement kasi naka required naman ung registration form natin
-        $v_lname = $this->checkName($lname);
-        $v_fname = $this->checkName($fname);
+			if($insert->addUsr()) {
+				echo '
+				<div class="alert alert-success alert-dismissible fade show my-3" role="alert">
+					Successfully added user
+					<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>	
+				</div>
+				';
+			} else {
+				echo '
+				<div class="alert alert-danger alert-dismissible fade show my-3" role="alert">
+					Error adding user
+					<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>	
+				</div>
+				';
+			}
+		}
+	}
 
-        if (!empty($lname)) {
-            // preg_match pattern finds if the word has any upper or lower letters from the alphabet([a-zA-Z])
-            if (!preg_match('/^[a-zA-Z\s-]*$/', $v_lname) && !preg_match('/^[a-zA-Z\s.?]*$/', $v_fname)) {
-                echo '
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <i class="fa-solid fa-triangle-exclamation"></i> The Name shouldn&#39;t contain any numbers
-                    <button class="close" type="button" data-dismiss="alert" aria-label="close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                ';
-                return false;
-            } else {
-                return true;
-            }
-        } else {
-            return false;
-        }
-    }
+	public function validItm($name,$type,$brand,$price,$qty,$status,$date) {
+		$name = trim($name);
+		$type = trim($type);
+		$brand = trim($brand);
+		$date = date('Y-m-d H:i:s', strtotime($date));
+		if (is_int($price) == 1 && is_int($qty) == 1 && is_int($status) == 1) {
+			$insert = new insertItm($name,$type,$brand,$price,$qty,$status,$date);
 
-    public function validEmail($vmail) {
-        // go figure
-        $con = $this->con();
-        $sql = "SELECT * FROM `tbl_user` WHERE `u_email` = '$vmail'";
-        $data = $con->prepare($sql);
-        $data->execute();
-        $result = $data->fetchAll(PDO::FETCH_ASSOC);
-        if ($result) {
-            echo '
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <i class="fa-solid fa-triangle-exclamation"></i> Email has already been taken
-                <button class="close" type="button" data-dismiss="alert" aria-label="close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            ';
-            return false;
-        } else {
-            if (!filter_var($vmail, FILTER_VALIDATE_EMAIL)) {
-                echo '
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <i class="fa-solid fa-triangle-exclamation"></i> Invalid Email
-                    <button class="close" type="button" data-dismiss="alert" aria-label="close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                ';
-                return false;
-            } else {
-                return true;
-            }
-        }
-    }
+			if($insert->addItm()) {
+				echo '
+				<div class="alert alert-success alert-dismissible fade show" role="alert">
+					Item added successfully!
+					<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
+				</div>
+				';
+			} else {
+				echo '
+				<div class="alert alert-danger alert-dismissible fade show" role="alert">
+					Error adding item...
+					<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
+				</div>
+				';
+			}
+		}
+	}
 
-    public function validUname($text) {
-        // lol
-        $con = $this->con();
-        $sql = "SELECT * FROM `tbl_user` WHERE `u_uname` = '$text'";
-        $data = $con->prepare($sql);
-        $data->execute();
-        $result = $data->fetchAll(PDO::FETCH_ASSOC);
-        if ($result) {
-            echo '
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <i class="fa-solid fa-triangle-exclamation"></i> Username has already been taken
-                <button class="close" type="button" data-dismiss="alert" aria-label="close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            ';
-            return false;
-        } else {
-            if (strlen($text) > 30 || strlen($text) < 4) {
-                echo '
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <i class="fa-solid fa-triangle-exclamation"></i> Invalid Username
-                    <button class="close" type="button" data-dismiss="alert" aria-label="close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                ';
-                return false;
-            } elseif (empty($text)) {
-                echo '
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <i class="fa-solid fa-triangle-exclamation"></i> Please enter a username
-                    <button class="close" type="button" data-dismiss="alert" aria-label="close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                ';
-                return false;
-            } else {
-                return true;
-            }
-        }
-    }
+	public function validOrd($cname,$iname,$qty,$total,$status,$order,$receive) {
+		$cname = trim($cname);
+		$iname = trim($iname);
+		$order = date('Y-m-d H:i:s', strtotime($order));
+		$receive = date('Y-m-d H:i:s', strtotime($receive));
 
-    public function validReg($l,$f,$u,$e,$p,$t) {
-        $d = date('Y-m-d H:i:s');
-        $p = $this->secure($p);
+		if (is_int($qty) == 1 && is_int($total) == 1 && is_int($status) == 1) {
+			$insert = new insertOrd($cname,$iname,$qty,$total,$status,$order,$receive);
 
-        if ($this->validEmail($e) == true && $this->validName($l,$f) == true && $this->validUname($u) == true && $this->validPass($p) == true ) {
-            $insert = new insertAcc($l,$f,$u,$e,$p,$t,$d);
-            if ($insert->addAcc()) {
-                echo '
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <i class="fa-solid fa-circle-check"></i> User has been added
-                    <button class="close" type="button" data-dismiss="alert" aria-label="close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                ';
-            } else {
-                echo '
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <i class="fa-solid fa-triangle-exclamation"></i> Error adding user
-                    <button class="close" type="button" data-dismiss="alert" aria-label="close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                ';
-            }
-        }
-    }
+			if ($insert->addOrd()) {
+				echo '
+				<div class="alert alert-success alert-dismissible fade show" role="alert">
+					Order added successfully!
+					<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
+				</div>
+				';
+			} else {
+				echo '
+				<div class="alert alert-danger alert-dismissible fade show" role="alert">
+					Error adding order...
+					<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
+				</div>
+				';
+			}
+		} else {
+			echo '
+			<div class="alert alert-danger alert-dismissible fade show" role="alert">
+				Invalid Values...
+				<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
+			</div>
+			';
+		}
+	}
 
-    public function validNewPass($a, $b) {
-        if ($this->validPass($a) == true && $this->validPass($b) == true) {
-            if ($a == $b) {
-                $a = $this->secure($a);
-                $update = new editPass($a);
+	public function newPass($npass,$cnpass,$user) {
+		if ($npass === $cnpass) {
+			if  ($this->valRegPass($npass) == true && $this->valRegPass($cnpass) == true) {
+				$cnpass = password_hash($cnpass, PASSWORD_BCRYPT);
+				$edit = new edit($user,$cnpass);
 
-                if ($update->editPassword()) {
-                    echo '
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <i class="fa-solid fa-circle-check"></i> Password has been updated
-                        <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
-                    </div>
-                    ';
-                } else {
-                    echo '
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <i class="fa-solid fa-triangle-exclamation"></i> Error updating password
-                        <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
-                    </div>
-                    ';
-                }
-            } else {
-                echo '
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <i class="fa-solid fa-triangle-exclamation"></i> Password does not match
-                    <button class="btn-close" type="button" data-bs-dismiss="alert"></button>
-                </div>
-                ';
-            }
-        }
-    }
-
-    public function validNewItem($a,$b,$c,$d,$e,$f) {
-        $a = trim($a);
-        $b = trim($b);
-        $c = trim($c);
-        if (is_int($d) == 1 && is_int($e) == 1 && is_int($f) == 1) {
-            $insert = new insertItem($a,$b,$c,$d,$e,$f);
-
-            if ($insert->addItem()) {
-                echo '
-                <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
-                    <i class="fa-solid fa-circle-check"></i> Item has been added
-                    <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
-                </div>
-                ';
-            } else {
-                echo '
-                <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
-                    <i class="fa-solid fa-triangle-exclamation"></i> Error adding item
-                    <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
-                </div>
-                ';
-            }
-
-        }
-    }
-    
-    public function validNewOrder($a,$b,$c,$d,$e,$f) {
-        $a = trim($a);
-        $b = trim($b);
-        $f = date('Y-m-d H:i:s', strtotime($f));
-
-        if (is_int($c) == 1 && is_int($d) == 1 && is_int($e) == 1) {
-            $insert = new insertOrder($a,$b,$c,$d,$e,$f);
-
-            if ($insert->addOrder()) {
-                echo '
-                    <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
-                        <i class="fa-solid fa-circle-check"></i> Order has been added
-                        <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
-                    </div>
-                ';
-            } else {
-                echo '
-                <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
-                    <i class="fa-solid fa-triangle-exclamation"></i> Error adding order
-                    <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
-                </div>
-                ';
-            }
-        }
-    }
+				if ($edit->editPass()) {
+					echo '
+					<div class="alert alert-success alert-dismissible fade show" role="alert">
+						Password updated successfully!
+						<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
+					</div>
+					';
+				} else {
+					echo '
+					<div class="alert alert-danger alert-dismissible fade show" role="alert">
+						Erro updating password...
+						<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
+					</div>
+					';
+				}
+			}
+		} else {
+			echo '
+			<div class="alert alert-danger alert-dismissible fade show" role="alert">
+				Password does not match!
+				<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
+			</div>
+			';
+		}
+	}
 }
 ?>

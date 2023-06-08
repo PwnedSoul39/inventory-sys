@@ -1,4 +1,7 @@
 <?php
-require_once './resource/php/init.php';
-logOut();
+session_start();
+session_unset();
+session_destroy();
+header('location:index.php');
+exit();
 ?>

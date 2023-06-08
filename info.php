@@ -1,119 +1,78 @@
 <?php
 require_once './resource/php/init.php';
+session_start();
+logIn();
 ?>
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-        <script src="https://kit.fontawesome.com/9622798f89.js"></script>
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Braah+One&family=Jua&family=Lexend+Deca:wght@300;400&family=Raleway:ital,wght@0,100;0,200;0,400;0,500;0,700;1,100;1,400&family=Roboto+Slab:wght@100;500;600&family=Roboto:ital,wght@0,500;0,700;1,500&family=Rubik&family=Ruda:wght@800;900&family=Sen&family=Sigmar&family=Tilt+Warp&family=Ubuntu:ital,wght@0,500;0,700;1,700&family=Work+Sans&display=swap" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="keyboard.css">
-        <title>Dashboard</title>
-    </head>
-    <body>
-        <header class="row-fluid">
-            <nav class="nav-dash navbar navbar-expand-lg ">
-                <div class="container-fluid">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link text-white active" aria-current="page" href="#home">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="#products">Products</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link text-white dropdown-toggle" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            See more
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Logout</a></li>
-                            <li class="nav-item dropdown">
-                                <button class="btn btn-transparent dropdown-toggle nav-link" type="button"
-                                data-toggle="dropdown" aria-expanded="false">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="./resource/css/main.css">
+		<link rel="icon" type="image/x-icon" href="./resource/img/favicon.ico">
+		<title>Product Info | KriziaWare</title>
+	</head>
+	<body>
+		<header>
+			<nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom shadow">
+				<div class="container-fluid">
+					<a class="navbar-brand" href="home.php">
+						<img class="logo-img img-fluid" src="./resource/img/logo.png" alt="LOGO">
+					</a>
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navStuff" aria-controls="navStuff" aria-expanded="false" aria-label="Toggle Navbar">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="navStuff">
+						<ul class="navList navbar-nav ms-auto">
+							<li class="nav-item">
+								<a class="nav-link link-body-emphasis" href="home.php#home">Home</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link link-body-emphasis fw-bolder" href="#">Products</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link link-body-emphasis" href="home.php#about">About Us</a>
+							</li>
+							<li class="nav-item dropdown">
+								<button class="acc_btn nav-link link-body-emphasis dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Account</button>
+								<ul class="accList dropdown-menu dropdown-menu-end">
+									<li><a class="h5 text-center link-body-emphasis dropdown-item disabled" href="#"><?php echo $_SESSION['username']; ?>/a></li>
+									<li><hr class="dropdown-divider"></li>
+									<li class="link-body-emphasis dropdown-item">
+										<div class="form-check form-switch">
+											<input class="form-check-input" type="checkbox" role="switch" id="theme_switch">
+											<label class="form-check-label" for="theme_switch">Dark Mode</label>
+										</div>
+									</li>
+									<li><a class="text-center link-body-emphasis dropdown-item" href="account.php">Account Detail</a></li>
+									<li><a class="text-center link-body-emphasis dropdown-item" href="logout.php">Logout</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</header>
 
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-right bg-dark mt-1">
-                                <a class="dropdown-item text-muted" href="./logout.php">Log-out</a>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-light" type="submit">Search</button>
-            </form>
-        </div>
-        </div>
-        </nav>
-        </header>
-        <div class="container">
-            <div class="wrapper mt-5">
-                <div class="row">
-                    <div class="col-6 col-sm-4">
-                        <img src="https://c4.wallpaperflare.com/wallpaper/651/727/590/gaming-setup-steelseries-keyboards-headphones-mouse-pad-hd-wallpaper-preview.jpg" class="card-img-top" alt="...">
-                    </div>
-                    <div class="col-6 col-sm-8">
-                        <div class="item-desc">
-                            <h3>Gaming Keyboard And Mouse Combo Bundle Rainbow LED Game Equipment USB Wired PC Laptop T-WOLF TF200.</h3>
-                                <div class="likes-wrapper">
-                                    <div class="stars">
-                                        <div class="starla">
-                                            <i class="fa-solid fa-star" style="color: #ffd152;"></i>
-                                            <i class="fa-solid fa-star" style="color: #ffd152;"></i>
-                                            <i class="fa-solid fa-star" style="color: #ffd152;"></i>
-                                            <i class="fa-solid fa-star" style="color: #ffd152;"></i>
-                                            <i class="fa-regular fa-star" style="color: #ffd333;"></i>
-                                        </div>
-                                        <p class="ratings">458 Ratings</p>
-                                    </div>
-                                    <div class="heart">
-                                        <i class="fa-regular fa-heart"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr />
-                            <div class="item-desc-2">
-                                <h3>₱ 340</h3>
-                                <span>₱ 240</span>
-                            </div>
-                            <hr />
-                            <div class="quantity">
-                                <p class="title-quan">Quantity</p>
-                                <button type="button" class="btn btn-add btn-primary"><i class="fa-solid fa-plus"></i></button>
-                                <h4 class="number">1</h4>
-                                <button type="button" class="btn btn-minus btn-primary"><i
-                                    class="fa-solid fa-minus"></i></button>
-                                </div>
-                            <div class="buttons">
-                                <div class="button-left">
-                                    <form class="mb-2" action="" method="">
-                                        <input class="btn btn-cart mr-5 btn-secondary mx-auto text-light" name="" style="font-size: .875rem;" type="submit" value="Add to Cart">
-                                    </form>
-                                </div>
-                                <div>
-                                    <form class="mb-2" action="" method="">
-                                        <input class="btn btn-buy btn-danger mx-auto text-light" name="" style="font-size: .875rem;" type="submit" value="Buy Now">
-                                    </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+		<footer>
+			<div class="container-fluid bg-body-tertiary border-top py-3">
+				<div class="row d-flex justify-content-center align-content-center">
+					<div class="col-sm-6 col-md-4 col-lg-5">
+						<small class="copyright">Copyright &copy; KriziaWare. <strong>All Rights Reserved 2023</strong></small>
+					</div>
+					<div class="col-sm-6 col-md-4 col-lg-5">
+						<small class="membs">Group 4: Marcus Bustos, Ralph Cruz, Angelique Gabriel, Krizia Lleva, Roderick Nucup Jr, Emman Siva</small>
+					</div>
+				</div>
+			</div>
+		</footer>
 
-        <!-- Bootstrap -->
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
-    </body>
+	<!-- Bootstrap Dependencies -->
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+
+	<!-- Own Script -->
+	<script src="./resource/js/theme-toggle.js"></script>
+	</body>
 </html>

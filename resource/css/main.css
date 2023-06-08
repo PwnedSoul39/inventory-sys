@@ -1,0 +1,262 @@
+/* Main CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+}
+body {
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    min-height: 100vh;
+}
+
+/* Universal Stuff */
+header {
+    min-height: 5vh;
+}
+.logo-img {
+    height: 3em;
+    width: auto;
+}
+.navList, .acc_btn {
+	font-size: 1.25rem;
+	text-transform: uppercase;
+	letter-spacing: 3px;
+}
+.accList {
+	font-size: 1rem;
+	text-transform: none;
+	letter-spacing: normal;
+}
+
+footer {
+	min-height: 5vh;
+}
+
+/* User Stuff */
+#home {
+	min-height: 50vh;
+}
+.c-img {
+	height: 425px;
+	width: auto;
+}
+.abt-text {
+	font-size: 1.5rem;
+	text-align: justify;
+	text-indent: 2em;
+}
+.prod_card {
+	border: none;
+}
+#product {
+	min-height: 70vh;
+}
+
+#about {
+	min-height: 100vh;
+}
+.soclink {
+	height: 4em;
+	width: auto;
+}
+
+/* Admin Stuff */
+#adm-pg {
+	min-height: 100vh;
+}
+.tbl-cont {
+	min-height: 100vh;
+}
+.tbl-cont td {
+	font-size: 1rem;
+}
+.acc-cont {
+	min-height: 85vh;
+}
+.dash-img {
+	width: 480px;
+	height: auto;
+}
+
+/* Background Stuff */
+.psp {
+	width: 100%;
+	height: 15vh;
+	min-height: 100px;
+	max-height: 150px;
+}
+.xmb>use {
+	animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite;
+}
+.xmb>use:nth-child(1) {
+	animation-delay: -2s;
+	animation-duration: 7s;
+}
+.xmb>use:nth-child(2) {
+	animation-delay: -3s;
+	animation-duration: 10s;
+}
+.xmb>use:nth-child(3) {
+	animation-delay: -4s;
+	animation-duration: 13s;
+}
+.xmb>use:nth-child(4) {
+	animation-delay: -5s;
+	animation-duration: 20s;
+}
+
+@keyframes move-forever {
+	0% {
+		transform: translate3d(-90px,0,0);
+	}
+	100% {
+		transform: translate3d(85px,0,0);
+	}
+}
+
+/* Login, Account & Reg */
+.login {
+	border-radius: 3em;
+}
+.register {
+	border-radius: 3em;
+}
+.log-box, .reg-box, .acc-box {
+	border-radius: 2.5em;
+}
+.reg-title, .log-title, .acc-title, .home-title {
+	font-family: 'Norwester';
+	font-size: 3.5em;
+}
+
+/* Breakpoints */
+@media screen and (max-device-width: 480px) {
+	.ins-form {
+		display: none;
+	}
+	.abt-text {
+		font-size: 1rem;
+	}
+	.address {
+		font-size: 1.25rem;
+	}
+	.soclink {
+		height: 2.5em;
+		margin-bottom: 1em;
+		width: auto;
+	}
+	.copyright {
+		font-size: 0.9rem;
+	}
+	.home-title {
+		font-size: 2.5rem;
+	}
+	.membs {
+		font-size: 0.75rem;
+	}
+	.c-img {
+		width: 360px;
+		height: auto;
+	}
+	.acc-title {
+		font-size: 1.5rem;
+	}
+	.acc-cont h4 {
+		font-size: 1.25rem;
+	}
+	.acc-cont h4 span {
+		font-size: 1rem;
+		font-style: normal;
+	}
+	.logo-img {
+		width: auto;
+		height: 2em;
+	}
+	.navList {
+		font-size: 1rem;
+		text-align: center;
+		margin-top: 1em;
+	}
+	.acc_btn {
+		font-size: 1rem;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+/* Fonts */
+@font-face {
+	font-family: Roboto;
+	src: url(../font/Roboto-Thin.ttf);
+	font-weight: 100;
+}
+@font-face {
+	font-family: Roboto;
+	src: url(../font/Roboto-ThinItalic.ttf);
+	font-weight: 100;
+	font-style: italic;
+}
+@font-face {
+	font-family: Roboto;
+	src: url(../font/Roboto-Light.ttf);
+	font-weight: 300;
+}
+@font-face {
+	font-family: Roboto;
+	src: url(../font/Roboto-LightItalic.ttf);
+	font-weight: 300;
+	font-style: italic;
+}
+@font-face {
+	font-family: Roboto;
+	src: url(../font/Roboto-Regular.ttf);
+	font-weight: normal;
+}
+@font-face {
+	font-family: Roboto;
+	src: url(../font/Roboto-Italic.ttf);
+	font-style: italic;
+}
+@font-face {
+	font-family: Roboto;
+	src: url(../font/Roboto-Medium.ttf);
+	font-weight: 500;
+}
+@font-face {
+	font-family: Roboto;
+	src: url(../font/Roboto-MediumItalic.ttf);
+	font-weight: 500;
+	font-style: italic;
+}
+@font-face {
+	font-family: Roboto;
+	src: url(../font/Roboto-Bold.ttf);
+	font-weight: bold;
+}
+@font-face {
+	font-family: Roboto;
+	src: url(../font/Roboto-BoldItalic.ttf);
+	font-weight: bold;
+	font-style: italic;
+}
+@font-face {
+	font-family: Roboto;
+	src: url(../font/Roboto-Black.ttf);
+	font-weight: 900;
+}
+@font-face {
+	font-family: Roboto;
+	src: url(../font/Roboto-BlackItalic.ttf);
+	font-weight: 900;
+	font-style: italic;
+}
+@font-face {
+	font-family: Norwester;
+	src: url(../font/norwester.otf);
+	font-weight: normal;
+}
