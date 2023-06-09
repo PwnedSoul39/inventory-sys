@@ -1,408 +1,434 @@
 <?php
-function insertAccMsg() {
-  // Validation and error messages
-  if (isset($_POST['reg_btn'])) {
-    $validate = new validate();
-    $validate->validReg($_POST['lname_box'], $_POST['fname_box'], $_POST['uname_box'], $_POST['email_box'], $_POST['pass_box'], $_POST['type_choice']);
-  }
+function PrevPage($page) {
+	if ($page == 1) {
+		echo '<li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>';
+	} else {
+		echo '<li class="page-item"><a class="page-link link-body-emphasis" href="?page='.($page-1).'">Previous</a></li>';
+	}
 }
 
-function insertItemMsg() {
-  // Validation and error messages x2
-  if (isset($_POST['item_add'])) {
-    $validate = new validate();
-    $iname = $_POST['iname_box'];
-    $itype = $_POST['itype_box'];
-    $ibrand = $_POST['ibrand_box'];
-    $iprice = intval($_POST['iprice_box']);
-    $iqty = intval($_POST['iqty_box']);
-    $istat = intval($_POST['istat_box']);
-    $validate->validNewItem($iname,$itype,$ibrand,$iprice,$iqty,$istat);
-  }
+function NextPage($page,$pages) {
+	if ($page == $pages) {
+		echo '<li class="page-item disabled"><a class="page-link" href="#">Next</a></li>';
+	} else {
+		echo '<li class="page-item"><a class="page-link link-body-emphasis" href="?page='.($page+1).'">Next</a></li>';
+	}
 }
 
-function loginMsg() {
-  // Validation and error messages x3
-  if (isset($_POST['log_btn'])) {
-    $validate = new validate();
-    $validate->validLog($_POST['email_logbox'], $_POST['pass_logbox']);
-  }
+function regUsrMsg() {
+	if (isset($_POST['reg_btn'])) {
+		$valid = new validate();
+		$user = $_POST['user_reg'];
+		$email = $_POST['email_reg'];
+		$pass = $_POST['pass_reg'];
+		$type = $_POST['type_reg'];
+
+		$valid->validReg($user,$email,$pass,$type);
+	}
+
 }
 
-function newPassMsg() {
-  // Validation and error messages x4
-  if (isset($_POST['edit_btn'])) {
-    $validate = new validate();
-    $validate->validNewPass($_POST['pass_editbox'],$_POST['confirm_pass_editbox']);
-  }
+function logUsrMsg() {
+	if (isset($_POST['log_btn'])) {
+		$valid = new validate();
+		$user = $_POST['user_log'];
+		$pass = $_POST['pass_log'];
+
+		$valid->validLog($user,$pass);
+	}
+}
+
+function UsrEdit($user,$sesh_user,$type,$id) {
+	echo '<td class="d-flex flex-column">';
+
+	if ($user == $sesh_user) {
+		echo '<a class="btn btn-primary p-1 my-1 disabled" href="#">Currently used</a>';
+	} elseif ($type !== 1) {
+		echo '
+		<a class="btn btn-primary p-1 my-1" href="?updUsr='.$id.'">Change to User</a>
+		<a class="btn btn-danger p-1 my-1" href="?delUsr='.$id.'">Delete User</a>    
+		';
+	} else {
+		echo '
+		<a class="btn btn-primary p-1 my-1" href="?updUsr='.$id.'">Change to Admin</a>
+		<a class="btn btn-danger p-1 my-1" href="?delUsr='.$id.'">Delete User</a>    
+		';
+	}
+
+	echo '</td>';
+}
+
+function UsrType($type) {
+	if ($type == 1) {
+		echo '<td>User</td>';
+	} else {
+		echo '<td>Administrator</td>';
+	}
+}
+
+function AccType($type) {
+	if ($type == 1) {
+		echo '<h4 class="fw-bolder">Account Type: <span class="fw-light">User</span></h4>';
+	} else {
+		echo '<h4 class="fw-bolder">Account Type: <span class="fw-light">Administrator</span></h4>';
+	}
+}
+
+function NewPassMsg() {
+	if (isset($_POST['up-pw_btn'])) {
+		$validate = new validate();
+		$npass = $_POST['new_pw'];
+		$cnpass = $_POST['cnew_pw'];
+		$user = $_SESSION['username'];
+		$validate->newPass($npass,$cnpass,$user);
+	}
+}
+
+function UsrMsg() {
+	if (!empty($_GET['updUsr'])) {
+		$user_upd = $_GET['updUsr'];
+		$edit = new edit($user_upd,null);
+
+		if ($edit->editUsrType()) {
+			header('location:user.php?upd=1');
+			exit();
+		}
+	} elseif (!empty($_GET['delUsr'])) {
+		$user_del = $_GET['delUsr'];
+		$del = new delete($user_del);
+		
+		if ($del->delUsr()) {
+			header('location:user.php?obl=1');
+			exit();
+		}
+	}
+}
+
+function ItmEdit($status, $id) {
+	echo '
+	<td class="d-flex flex-column">
+		<div class="dropdown">
+			<a class="btn btn-primary p-1 w-100 my-1 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Change Status</a>
+			<ul class="dropdown-menu">
+	';
+
+	if ($status == 1) {
+		echo '
+		<li><a class="dropdown-item disabled" href="#">Active</a></li>
+		<li><a class="dropdown-item" href="?ItmSt2='.$id.'">Sold Out</a></li>
+		<li><a class="dropdown-item" href="?ItmSt3='.$id.'">On Discount</a></li>
+		';
+	} elseif ($status == 2) {
+		echo '
+		<li><a class="dropdown-item" href="?ItmSt1='.$id.'">Active</a></li>
+		<li><a class="dropdown-item disabled" href="#">Sold Out</a></li>
+		<li><a class="dropdown-item" href="?ItmSt3='.$id.'">On Discount</a></li>
+		';
+	} else {
+		echo '
+		<li><a class="dropdown-item" href="?ItmSt1='.$id.'">Active</a></li>
+		<li><a class="dropdown-item" href="?ItmSt2='.$id.'">Sold Out</a></li>
+		<li><a class="dropdown-item disabled" href="#">On Discount</a></li>
+		';
+	}
+
+	echo '
+			</ul>
+		</div>
+		<a class="btn btn-danger p-1 w-100 my-1" href="?delItm='.$id.'">Delete Item</a>
+	</td>
+	';
+}
+
+function ItmStatus($status) {
+	if ($status == 1) {
+		echo '<td>Active</td>';
+	} elseif ($status == 2) {
+		echo '<td>Sold Out</td>';
+	} else {
+		echo '<td>On Discount</td>';
+	}
+}
+
+function ItmMsg() {
+	if (!empty($_GET['ItmSt1'])) {
+		$item_upd1 = $_GET['ItmSt1'];
+		$edit = new edit($item_upd1, 1);
+
+		if ($edit->editItmStatus()) {
+			header('location:inventory.php?upd=2');
+			exit();
+		}
+	} elseif (!empty($_GET['delItm'])) {
+		$item_del = $_GET['delItm'];
+		$del = new delete($item_del);
+
+		if ($del->delItm()) {
+			header('location:inventory.php?obl=2');
+			exit();
+		}
+	} elseif (!empty($_GET['ItmSt2'])) {
+		$item_upd2 = $_GET['ItmSt2'];
+		$edit = new edit($item_upd2, 2);
+
+		if ($edit->editItmStatus()) {
+			header('location:inventory.php?upd=2');
+			exit();
+		}
+	} elseif (!empty($_GET['ItmSt3'])) {
+		$item_upd3 = $_GET['ItmSt3'];
+		$edit = new edit($item_upd3, 3);
+
+		if ($edit->editItmStatus()) {
+			header('location:inventory.php?upd=2');
+			exit();
+		}
+	}
+}
+
+function InsItmMsg() {
+	if (isset($_POST['itm_add'])) {
+		$validate = new validate();
+		$name = $_POST['inm_box'];
+		$type = $_POST['itp_box'];
+		$brand = $_POST['ibd_box'];
+		$price = intval($_POST['ipr_box']);
+		$qty = intval($_POST['iqt_box']);
+		$status = intval($_POST['ist_box']);
+		$date = $_POST['idt_box'];
+		$validate->validItm($name,$type,$brand,$price,$qty,$status,$date);
+	}
+}
+
+function OrdEdit($status, $id) {
+	echo '
+	<td class="d-flex flex-column">
+		<div class="dropdown">
+			<a class="btn btn-primary p-3 w-100 my-1 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Change Status</a>
+			<ul class="dropdown-menu">
+	';
+
+	if ($status == 1) {
+		echo '
+		<li><a class="dropdown-item disabled" href="#">Ordered</a></li>
+		<li><a class="dropdown-item" href="?OrdSt2='.$id.'">Packaged</a></li>
+		<li><a class="dropdown-item" href="?OrdSt3='.$id.'">Shipped</a></li>
+		<li><a class="dropdown-item" href="?OrdSt4='.$id.'">In Transit</a></li>
+		<li><a class="dropdown-item" href="?OrdSt5='.$id.'">Delivered</a></li>
+		';
+	} elseif ($status == 2) {
+		echo '
+		<li><a class="dropdown-item" href="?OrdSt1='.$id.'">Ordered</a></li>
+		<li><a class="dropdown-item disabled" href="#">Packaged</a></li>
+		<li><a class="dropdown-item" href="?OrdSt3='.$id.'">Shipped</a></li>
+		<li><a class="dropdown-item" href="?OrdSt4='.$id.'">In Transit</a></li>
+		<li><a class="dropdown-item" href="?OrdSt5='.$id.'">Delivered</a></li>
+		';
+	} elseif ($status == 3) {
+		echo '
+		<li><a class="dropdown-item" href="?OrdSt1='.$id.'">Ordered</a></li>
+		<li><a class="dropdown-item" href="?OrdSt2='.$id.'">Packaged</a></li>
+		<li><a class="dropdown-item disabled" href="#">Shipped</a></li>
+		<li><a class="dropdown-item" href="?OrdSt4='.$id.'">In Transit</a></li>
+		<li><a class="dropdown-item" href="?OrdSt5='.$id.'">Delivered</a></li>
+		';
+	} elseif ($status == 4) {
+		echo '
+		<li><a class="dropdown-item" href="?OrdSt1='.$id.'">Ordered</a></li>
+		<li><a class="dropdown-item" href="?OrdSt2='.$id.'">Packaged</a></li>
+		<li><a class="dropdown-item" href="?OrdSt3='.$id.'">Shipped</a></li>
+		<li><a class="dropdown-item disabled" href="#">In Transit</a></li>
+		<li><a class="dropdown-item" href="?OrdSt5='.$id.'">Delivered</a></li>
+		';
+	} else {
+		echo '
+		<li><a class="dropdown-item" href="?OrdSt1='.$id.'">Ordered</a></li>
+		<li><a class="dropdown-item" href="?OrdSt2='.$id.'">Packaged</a></li>
+		<li><a class="dropdown-item" href="?OrdSt3='.$id.'">Shipped</a></li>
+		<li><a class="dropdown-item" href="?OrdSt4='.$id.'">In Transit</a></li>
+		<li><a class="dropdown-item disabled" href="#">Delivered</a></li>
+		';
+	}
+
+	echo '
+			</ul>
+		</div>
+		<a class="btn btn-danger p-1 w-100 my-1" href="?delOrd='.$id.'">Delete Order</a>
+	</td>
+	';
+}
+
+function OrdStatus($status) {
+	if ($status == 1) {
+		echo '<td>Ordered</td>';
+	} elseif ($status == 2) {
+		echo '<td>Packaged</td>';
+	} elseif ($status == 3) {
+		echo '<td>Shipped</td>';
+	} elseif ($status == 4) {
+		echo '<td>In Transit</td>';
+	} else {
+		echo '<td>Delivered</td>';
+	}
+}
+
+function OrdMsg() {
+	if (!empty($_GET['OrdSt1'])) {
+		$order_upd1 = $_GET['OrdSt1'];
+		$edit = new edit($order_upd1,1);
+
+		if ($edit->editOrdStatus()) {
+			header('location:order.php?upd=3');
+			exit();
+		}
+	} elseif (!empty($_GET['delOrd'])) {
+		$order_del = $_GET['delOrd'];
+		$del = new delete($order_del);
+
+		if ($del->delOrd()) {
+			header('location:order.php?obl=3');
+			exit();
+		}
+	} elseif (!empty($_GET['OrdSt2'])) {
+		$order_upd2 = $_GET['OrdSt2'];
+		$edit = new edit($order_upd2,2);
+
+		if ($edit->editOrdStatus()) {
+			header('location:order.php?upd=3');
+			exit();
+		}
+	} elseif (!empty($_GET['OrdSt3'])) {
+		$order_upd3 = $_GET['OrdSt3'];
+		$edit = new edit($order_upd3,3);
+
+		if ($edit->editOrdStatus()) {
+			header('location:order.php?upd=3');
+			exit();
+		}
+	} elseif (!empty($_GET['OrdSt4'])) {
+		$order_upd4 = $_GET['OrdSt4'];
+		$edit = new edit($order_upd4,4);
+
+		if ($edit->editOrdStatus()) {
+			header('location:order.php?upd=3');
+			exit();
+		}
+	} elseif (!empty($_GET['OrdSt5'])) {
+		$order_upd5 = $_GET['OrdSt5'];
+		$edit = new edit($order_upd5,5);
+
+		if ($edit->editOrdStatus()) {
+			header('location:order.php?upd=3');
+			exit();
+		}
+	}
+}
+
+function InsOrdMsg() {
+	if (isset($_POST['ord_add'])) {
+		$validate = new validate();
+		$cname = $_POST['ocn_box'];
+		$iname = $_POST['oin_box'];
+		$qty = intval($_POST['oiq_box']);
+		$total = intval($_POST['otp_box']);
+		$status = intval($_POST['oos_box']);
+		$order = $_POST['odo_box'];
+		$receive = $_POST['odr_box'];
+		$validate->validOrd($cname,$iname,$qty,$total,$status,$order,$receive);
+	}
+}
+
+function AdminMsg() {
+	if (isset($_GET['upd'])) {
+		if ($_GET['upd'] == 1) {
+			echo '
+			<div class="alert alert-success alert-dismissible fade show" role="alert">
+				User updated successfully!
+				<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
+			</div>
+			';
+		} elseif ($_GET['upd'] == 2) {
+			echo '
+			<div class="alert alert-success alert-dismissible fade show" role="alert">
+				Item updated successfully!
+				<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
+			</div>
+			';
+		} elseif ($_GET['upd'] == 3) {
+			echo '
+			<div class="alert alert-success alert-dismissible fade show" role="alert">
+				Order updated successfully!
+				<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
+			</div>
+			';
+		}
+	} elseif (isset($_GET['obl'])) {
+		if ($_GET['obl'] == 1) {
+			echo '
+			<div class="alert alert-warning alert-dismissible fade show" role="alert">
+				User deleted successfully!
+				<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
+			</div>
+			';
+		} elseif ($_GET['obl'] == 2) {
+			echo '
+			<div class="alert alert-warning alert-dismissible fade show" role="alert">
+				Item deleted successfully!
+				<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
+			</div>
+			';
+		} elseif ($_GET['obl'] == 3) {
+			echo '
+			<div class="alert alert-warning alert-dismissible fade show" role="alert">
+				Order deleted successfully!
+				<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
+			</div>
+			';
+		}
+	}
+}
+
+function OrdComboMsg() {
+	OrdMsg();
+	AdminMsg();
+	InsOrdMsg();
+}
+
+function ItmComboMsg() {
+	ItmMsg();
+	AdminMsg();
+	InsItmMsg();
+}
+
+function UsrComboMsg() {
+	UsrMsg();
+	AdminMsg();
 }
 
 function logStatus() {
-  // Boolean function ichecheck ung status mo kung may nakaset ng values sa dalawang to
-  if (isset($_SESSION['user']) && isset($_SESSION['user_level']) && isset($_SESSION['user_f']) && isset($_SESSION['user_mail']) && isset($_SESSION['user_join'])) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
-// Kapag nag lagay ako ng else statement dito magkakaerror ng too many redirects kasi ireredirect ka na nung validation after login
-function logLockUser() {
-  // Will check user role/user level
-  if ($_SESSION['user_level'] == 0) {
-    header('location:home.php');
-    exit();
-  }
-}
-
-function logLockAdmin() {
-  // Will check user role/user level x2
-  if ($_SESSION['user_level'] == 1) {
-    header('location:dashboard.php');
-    exit();
-  }
+	if (isset($_SESSION['username']) && isset($_SESSION['user_type']) && isset($_SESSION['user_mail']) && isset($_SESSION['user_date'])) {
+		return true;
+	} else {
+		return false;
+	}
 }
 
 function logIn() {
-  // Kapag wala kang values ireredirect ka lagi sa index.
-  if (logStatus() == false) {
-    header('location:index.php');
-    exit();
-  }
+	if (logStatus() == false) {
+		header('location:index.php');
+		exit();
+	}
 }
 
-function logOut() {
-  // dedestroy ung session para hindi magcarry out sa susunod na user
-  session_start();
-  session_unset();
-  session_destroy();
-  header('Location:index.php');
-  exit();
+function logLockUsr() {
+	if ($_SESSION['user_type'] == 1) {
+		header('location:home.php');
+		exit();
+	}
 }
 
-function userUpdate() {
-  if (!empty($_GET['update'])) {
-    $edit = new editStuff($_GET['update']);
-
-    if ($edit->editType()) {
-      echo '
-      <div class="alert alert-success alert-dismissible fade show" role="alert">
-      <i class="fa-solid fa-circle-check"></i> User edited successfully
-      <button class="close" type="button" data-dismiss="alert" aria-label="close">
-      <span aria-hidden="true">&times;</span>
-      </button>
-      </div>
-      ';
-    } else {
-      echo '
-      <div class="alert alert-danger alert-dismissible fade show" role="alert">
-      <i class="fa-solid fa-triangle-exclamation"></i> Error while editing user
-      <button class="close" type="button" data-dismiss="alert" aria-label="close">
-      <span aria-hidden="true">&times;</span>
-      </button>
-      </div>
-      ';
-    }
-  }
-}
-
-function userDelete() {
-  if (!empty($_GET['delete'])) {
-    $delete = new deleteStuff($_GET['delete']);
-
-    if ($delete->delUser()) {
-      echo '
-      <div class="alert alert-success alert-dismissible fade show" role="alert">
-      <i class="fa-solid fa-circle-check"></i> User deleted successfully
-      <button class="close" type="button" data-dismiss="alert" aria-label="close">
-      <span aria-hidden="true">&times;</span>
-      </button>
-      </div>
-      ';
-    } else {
-      echo '
-      <div class="alert alert-success alert-dismissible fade show" role="alert">
-      <i class="fa-solid fa-triangle-exclamation"></i> Error while deleting user
-      <button class="close" type="button" data-dismiss="alert" aria-label="close">
-      <span aria-hidden="true">&times;</span>
-      </button>
-      </div>
-      ';
-    }
-  }
-}
-
-function userMsg(){
-  userDelete();
-  userUpdate();
-}
-
-function orderUpdate() {
-  if (!empty($_GET['ordered'])) {
-    $edit = new editStuff($_GET['ordered']);
-
-    if ($edit->editStatusO()) {
-      echo '
-      <div class="alert alert-success alert-dismissible fade show" role="alert">
-      <i class="fa-solid fa-circle-check"></i> Order updated successfully
-      <button class="close" type="button" data-dismiss="alert" aria-label="close">
-      <span aria-hidden="true">&times;</span>
-      </button>
-      </div>
-      ';
-    } else {
-      echo '
-      <div class="alert alert-danger alert-dismissible fade show" role="alert">
-      <i class="fa-solid fa-triangle-exclamation"></i> Error updating order
-      <button class="close" type="button" data-dismiss="alert" aria-label="close">
-      <span aria-hidden="true">&times;</span>
-      </button>
-      </div>
-      ';
-    }
-  } elseif (!empty($_GET['packed'])) {
-    $edit = new editStuff($_GET['packed']);
-
-    if ($edit->editStatusP()) {
-      echo '
-      <div class="alert alert-success alert-dismissible fade show" role="alert">
-      <i class="fa-solid fa-circle-check"></i> Order updated successfully
-      <button class="close" type="button" data-dismiss="alert" aria-label="close">
-      <span aria-hidden="true">&times;</span>
-      </button>
-      </div>
-      ';
-    } else {
-      echo '
-      <div class="alert alert-danger alert-dismissible fade show" role="alert">
-      <i class="fa-solid fa-triangle-exclamation"></i> Error updating order
-      <button class="close" type="button" data-dismiss="alert" aria-label="close">
-      <span aria-hidden="true">&times;</span>
-      </button>
-      </div>
-      ';
-    }
-  } elseif (!empty($_GET['transit'])) {
-    $edit = new editStuff($_GET['transit']);
-
-    if ($edit->editStatusT()) {
-      echo '
-      <div class="alert alert-success alert-dismissible fade show" role="alert">
-      <i class="fa-solid fa-circle-check"></i> Order updated successfully
-      <button class="close" type="button" data-dismiss="alert" aria-label="close">
-      <span aria-hidden="true">&times;</span>
-      </button>
-      </div>
-      ';
-    } else {
-      echo '
-      <div class="alert alert-danger alert-dismissible fade show" role="alert">
-      <i class="fa-solid fa-triangle-exclamation"></i> Error updating order
-      <button class="close" type="button" data-dismiss="alert" aria-label="close">
-      <span aria-hidden="true">&times;</span>
-      </button>
-      </div>
-      ';
-    }
-  } elseif (!empty($_GET['delivered'])) {
-    $edit = new editStuff($_GET['delivered']);
-
-    if ($edit->editStatusD()) {
-      echo '
-      <div class="alert alert-success alert-dismissible fade show" role="alert">
-      <i class="fa-solid fa-circle-check"></i> Order updated successfully
-      <button class="close" type="button" data-dismiss="alert" aria-label="close">
-      <span aria-hidden="true">&times;</span>
-      </button>
-      </div>
-      ';
-    } else {
-      echo '
-      <div class="alert alert-danger alert-dismissible fade show" role="alert">
-      <i class="fa-solid fa-triangle-exclamation"></i> Error updating order
-      <button class="close" type="button" data-dismiss="alert" aria-label="close">
-      <span aria-hidden="true">&times;</span>
-      </button>
-      </div>
-      ';
-    }
-  }
-}
-
-function orderDelete() {
-  if (!empty($_GET['obl'])) {
-    $delete = new deleteStuff($_GET['obl']);
-
-    if ($delete->delOrder()) {
-      echo '
-      <div class="alert alert-success alert-dismissible fade show" role="alert">
-      <i class="fa-solid fa-circle-check"></i> Order deleted successfully
-      <button class="close" type="button" data-dismiss="alert" aria-label="close">
-      <span aria-hidden="true">&times;</span>
-      </button>
-      </div>
-      ';
-    } else {
-      echo '
-      <div class="alert alert-success alert-dismissible fade show" role="alert">
-      <i class="fa-solid fa-triangle-exclamation"></i> Error while deleting order
-      <button class="close" type="button" data-dismiss="alert" aria-label="close">
-      <span aria-hidden="true">&times;</span>
-      </button>
-      </div>
-      ';
-    }
-  }
-}
-
-function orderMsg() {
-  orderUpdate();
-  orderDelete();
-}
-
-function itemDelete() {
-  if (!empty($_GET['remove'])) {
-    $delete = new deleteStuff($_GET['remove']);
-
-    if ($delete->delItem()) {
-      echo '
-      <div class="alert alert-success alert-dismissible fade show" role="alert">
-      <i class="fa-solid fa-circle-check"></i> Item deleted successfully
-      <button class="close" type="button" data-dismiss="alert" aria-label="close">
-      <span aria-hidden="true">&times;</span>
-      </button>
-      </div>
-      ';
-    } else {
-      echo '
-      <div class="alert alert-success alert-dismissible fade show" role="alert">
-      <i class="fa-solid fa-triangle-exclamation"></i> Error while deleting Item
-      <button class="close" type="button" data-dismiss="alert" aria-label="close">
-      <span aria-hidden="true">&times;</span>
-      </button>
-      </div>
-      ';
-    }
-  }
-}
-
-function itemUpdate() {
-  if (!empty($_GET['act'])) {
-    $edit = new editStuff($_GET['act']);
-
-    if ($edit->editStatusAct()) {
-      echo '
-      <div class="alert alert-success alert-dismissible fade show" role="alert">
-      <i class="fa-solid fa-circle-check"></i> Item updated successfully
-      <button class="close" type="button" data-dismiss="alert" aria-label="close">
-      <span aria-hidden="true">&times;</span>
-      </button>
-      </div>
-      ';
-    } else {
-      echo '
-      <div class="alert alert-danger alert-dismissible fade show" role="alert">
-      <i class="fa-solid fa-triangle-exclamation"></i> Error updating item
-      <button class="close" type="button" data-dismiss="alert" aria-label="close">
-      <span aria-hidden="true">&times;</span>
-      </button>
-      </div>
-      ';
-    }
-  } elseif (!empty($_GET['inact'])) {
-    $edit = new editStuff($_GET['inact']);
-
-<<<<<<< HEAD
-    if ($edit->editStatusIna()) {
-      echo '
-      <div class="alert alert-success alert-dismissible fade show" role="alert">
-      <i class="fa-solid fa-circle-check"></i> Item updated successfully
-      <button class="close" type="button" data-dismiss="alert" aria-label="close">
-      <span aria-hidden="true">&times;</span>
-      </button>
-      </div>
-      ';
-    } else {
-      echo '
-      <div class="alert alert-danger alert-dismissible fade show" role="alert">
-      <i class="fa-solid fa-triangle-exclamation"></i> Error updating item
-      <button class="close" type="button" data-dismiss="alert" aria-label="close">
-      <span aria-hidden="true">&times;</span>
-      </button>
-      </div>
-      ';
-    }
-  } elseif (!empty($_GET['disc'])) {
-    $edit = new editStuff($_GET['disc']);
-
-    if ($edit->editStatusDis()) {
-      echo '
-      <div class="alert alert-success alert-dismissible fade show" role="alert">
-      <i class="fa-solid fa-circle-check"></i> Item updated successfully
-      <button class="close" type="button" data-dismiss="alert" aria-label="close">
-      <span aria-hidden="true">&times;</span>
-      </button>
-      </div>
-      ';
-    } else {
-      echo '
-      <div class="alert alert-danger alert-dismissible fade show" role="alert">
-      <i class="fa-solid fa-triangle-exclamation"></i> Error updating item
-      <button class="close" type="button" data-dismiss="alert" aria-label="close">
-      <span aria-hidden="true">&times;</span>
-      </button>
-      </div>
-      ';
-=======
-    function userUpdate() {
-        if (!empty($_GET['update'])) {
-            $edit = new editStuff($_GET['update']);
-
-            if ($edit->editType()) {
-                echo '
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <i class="fa-solid fa-circle-check"></i> User edited successfully
-                        <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
-                    </div>
-                ';
-            } else {
-                echo '
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <i class="fa-solid fa-triangle-exclamation"></i> Error while editing user
-                        <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
-                    </div>
-                ';
-            }
-        }
-    }
-    
-    function userDelete() {
-        if (!empty($_GET['delete'])) {
-            $delete = new deleteStuff($_GET['delete']);
-            
-            if ($delete->delUser()) {
-                echo '
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <i class="fa-solid fa-circle-check"></i> User deleted successfully
-                        <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
-                    </div>
-                ';
-            } else {
-                echo '
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <i class="fa-solid fa-triangle-exclamation"></i> Error while deleting user
-                        <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
-                    </div>
-                ';
-            }
-        }
->>>>>>> 55b51dce8510605d7da017fef97e693f554ef1bf
-    }
-  }
-}
-
-function itemMsg() {
-  itemDelete();
-  itemUpdate();
+function logCombo() {
+	logIn();
+	logLockUsr();
 }
 ?>

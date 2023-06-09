@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
+
+.carousel-inner h1{
+    font-size: 60px;
+}
+.carousel-item .btn{
+    border-color: #fff!important;
+}
+.carousel-item .btn:hover{
+    border-color: #fff;
+}
+
+.active-filter-btn{
+    background-color: #000000;
+    color: #fff!important;
+    border-color: #fff;
+}
+.filter-button-group .btn:hover{
+    color: #fff;
+}
+.collection-img span{
+    top: 20px;
+    right: 20px;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+}
+.img-rel {
+    width: 240px;
+    height: 144px;
+    transition: 0.5s;
+}
+.img-rel:hover {
+    transform: scale(1.5);
+    transition: 0.5s;
+}
+#offers{
+    background: linear-gradient(rgba(10,10,10,0.7), rgba(15,15,15,0.6)), url(../img/product-pages/bg2.jpg) center/cover no-repeat;
+}
+#offers .row{
+    min-height: 60vh;
+}
+.offers-content span{
+    font-size: 28px;
+}
+.offers-content h2{
+    font-size: 60px;
+}
