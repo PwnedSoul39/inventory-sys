@@ -33,11 +33,13 @@ $result = $data->fetchAll(PDO::FETCH_ASSOC);
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+		<script src="https://kit.fontawesome.com/d101948c74.js" crossorigin="anonymous"></script>
+		<link href="https://fonts.googleapis.com/css2?family=Braah+One&family=Jua&family=Lexend+Deca:wght@300;400&family=Raleway:ital,wght@0,100;0,200;0,400;0,500;0,700;1,100;1,400&family=Roboto+Slab:wght@100;500;600&family=Roboto:ital,wght@0,500;0,700;1,500&family=Rubik&family=Ruda:wght@800;900&family=Sen&family=Sigmar&family=Tilt+Warp&family=Ubuntu:ital,wght@0,500;0,700;1,700&family=Work+Sans&display=swap" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="./resource/css/main.css">
 		<link rel="icon" type="image/x-icon" href="./resource/img/favicon.ico">
 		<title>Order | Dashboard</title>
 	</head>
-	<body>
+	<body data-bs-theme="dark">
 		<header>
 			<nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom shadow">
 				<div class="container-fluid">
@@ -48,7 +50,7 @@ $result = $data->fetchAll(PDO::FETCH_ASSOC);
 						<span class="navbar-toggler-icon"></span>
 					</button>
 					<div class="collapse navbar-collapse" id="navStuff">
-						<ul class="navList navbar-nav ms-auto">
+						<ul class="navList navbar-nav me-auto">
 							<li class="nav-item">
 								<a class="nav-link link-body-emphasis" href="dashboard.php">Dashboard</a>
 							</li>
@@ -66,17 +68,17 @@ $result = $data->fetchAll(PDO::FETCH_ASSOC);
 								<ul class="accList dropdown-menu dropdown-menu-end">
 									<li><a class="h5 text-center link-body-emphasis dropdown-item disabled" href="#"><?php echo $_SESSION['username']; ?></a></li>
 									<li><hr class="dropdown-divider"></li>
-									<li class="link-body-emphasis dropdown-item">
-										<div class="form-check form-switch">
-											<input class="form-check-input" type="checkbox" role="switch" id="theme_switch">
-											<label class="form-check-label" for="theme_switch">Dark Mode</label>
-										</div>
-									</li>
 									<li><a class="link-body-emphasis dropdown-item" href="account.php">Account Detail</a></li>
 									<li><a class="link-body-emphasis dropdown-item" href="logout.php">Logout</a></li>
 								</ul>
 							</li>
 						</ul>
+						<form class="nav-link d-flex text-body-emphasis" role="search">
+							<div class="input-group">
+								<input class="input-group-text bg-body text-emphasis-body border border-danger" type="text" placeholder="Search" aria-labelledby="Search" aria-describedby="search">
+								<span class="input-group-text bg-body-secondary border border-danger" id="search"><i class="fa fa-search"></i></span>
+							</div>
+						</form>
 					</div>
 				</div>
 			</nav>
@@ -90,7 +92,7 @@ $result = $data->fetchAll(PDO::FETCH_ASSOC);
 			</div>
 		</div>
 
-		<section class="tbl-cont bg-body py-5">
+		<section class="tbl-cont py-5">
 			<div class="container-fluid h-100">
 				<div class="row d-flex justify-content-center align-items-center h-100">
 					<div class="col-6 col-md-8 col-lg-6 col-xl-5 w-100 table-responsive">
@@ -230,8 +232,5 @@ $result = $data->fetchAll(PDO::FETCH_ASSOC);
 	<!-- Bootstrap Dependencies -->
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
-
-	<!-- Own Script -->
-	<script src="./resource/js/theme-toggle.js"></script>
 	</body>
 </html>

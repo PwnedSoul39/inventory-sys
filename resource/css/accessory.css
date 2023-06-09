@@ -1,0 +1,80 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+}
+body {
+	background-color: #000000;
+	font-family: 'Sen';
+    min-height: 100vh;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{
+	width: 5px;
+}
+::-webkit-scrollbar-track{
+	background-color: #020c1b;
+}
+::-webkit-scrollbar-thumb{
+	background-color: #3F3F3B;
+}
+
+header {
+    min-height: 5vh;
+}
+.logo-img {
+    height: 3em;
+    width: auto;
+}
+.navList, .acc_btn {
+	font-size: 1.25rem;
+	text-transform: uppercase;
+	letter-spacing: 3px;
+}
+.accList {
+	font-size: 1rem;
+	text-transform: none;
+	letter-spacing: normal;
+}
+
+footer {
+	min-height: 5vh;
+}
+
+#sec-1 {
+    min-height: 50vh;
+    background-image: linear-gradient(rgba(10,10,10,0.7), rgba(15,15,15,0.6)), url(../img/product-pages/acc-bg1.jpg);
+    background-size: cover;
+    background-position: center;
+}
+#sec-1 h1 {
+    font-size: 4rem;
+}
+#sec-1 p {
+    font-size: 1.5rem;
+}
+
+#sec-2 {
+    min-height: 100vh;
+}
+#sec-3 {
+    min-height: 50vh;
+    background-image: linear-gradient(rgba(10,10,10,0.7), rgba(15,15,15,0.6)), url(../img/product-pages/acc-bg2.jpg);
+    background-size: cover;
+    background-position: center;
+}
+#item-sec {
+    min-height: 100vh;
+}
+.img-rel {
+    transition: 0.5s;
+}
+.img-rel:hover {
+    transform: scale(1.5);
+    transition: 0.5s;
+}

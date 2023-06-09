@@ -7,16 +7,18 @@ require_once './resource/php/init.php';
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+		<script src="https://kit.fontawesome.com/d101948c74.js" crossorigin="anonymous"></script>
+		<link href="https://fonts.googleapis.com/css2?family=Braah+One&family=Jua&family=Lexend+Deca:wght@300;400&family=Raleway:ital,wght@0,100;0,200;0,400;0,500;0,700;1,100;1,400&family=Roboto+Slab:wght@100;500;600&family=Roboto:ital,wght@0,500;0,700;1,500&family=Rubik&family=Ruda:wght@800;900&family=Sen&family=Sigmar&family=Tilt+Warp&family=Ubuntu:ital,wght@0,500;0,700;1,700&family=Work+Sans&display=swap" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="./resource/css/main.css">
 		<link rel="icon" type="image/x-icon" href="./resource/img/favicon.ico">
 		<title>Login</title>
 	</head>
-	<body class="bg-body-secondary" style="overflow-y:hidden;">
+	<body data-bs-theme="dark" style="overflow-y:hidden;">
 		<section class="vh-100">
 			<div class="container py-5 h-100">
 				<div class="row d-flex justify-content-center align-items-center h-100">
 					<div class="col-12 col-md-8 col-lg-6 col-xl-5">
-						<div class="login card bg-body-tertiary">
+						<div class="login card text-body-emphasis bg-body-tertiary">
 							<div class="card-body p-5 text-center">
 								<?php logUsrMsg(); ?>
 								<h3 class="log-title">Login</h3>
@@ -30,7 +32,7 @@ require_once './resource/php/init.php';
 										<label for="log_input2">Password</label>
 									</div>
 									<div class="mb-3">
-										<input class="btn btn-secondary rounded-pill w-50" type="submit" value="Login" name="log_btn">
+										<input class="btn btn-danger rounded-pill w-50" type="submit" value="Login" name="log_btn">
 									</div>
 									<div class="mb-3">
 										<small>Don't have an account?</small> <br>
@@ -50,9 +52,9 @@ require_once './resource/php/init.php';
 					<path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
 				</defs>
 				<g class="xmb">
-					<use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(122,165,188,1.7)">
-					<use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(122,165,188,1.5)">
-					<use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(122,165,188,1.3)">
+					<use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(220,54,19,1.7)">
+					<use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(220,54,19,1.5)">
+					<use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(220,54,19,1.3)">
 					<use xlink:href="#gentle-wave" x="48" y="7" fill="#fff">
 				</g>
 			</svg>

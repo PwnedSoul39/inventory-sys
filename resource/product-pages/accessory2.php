@@ -12,9 +12,12 @@ logIn();
         integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer">
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-		<link rel="stylesheet" type="text/css" href="../css/laptops.css">
+		<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+		<script src="https://kit.fontawesome.com/d101948c74.js" crossorigin="anonymous"></script>
+		<link href="https://fonts.googleapis.com/css2?family=Braah+One&family=Jua&family=Lexend+Deca:wght@300;400&family=Raleway:ital,wght@0,100;0,200;0,400;0,500;0,700;1,100;1,400&family=Roboto+Slab:wght@100;500;600&family=Roboto:ital,wght@0,500;0,700;1,500&family=Rubik&family=Ruda:wght@800;900&family=Sen&family=Sigmar&family=Tilt+Warp&family=Ubuntu:ital,wght@0,500;0,700;1,700&family=Work+Sans&display=swap" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="../css/accessory.css">
 		<link rel="icon" type="image/x-icon" href="../img/favicon.ico">
-		<title>Laptops | KriziaWare</title>
+		<title>Accessory | KriziaWare</title>
 	</head>
 	<body data-bs-theme="dark">
 		<header>
@@ -64,87 +67,70 @@ logIn();
 			</nav>
 		</header>
 
-		<section class="container-fluid py-5 mb-4">
-			<div class="row d-flex justify-content-center mt-5 py-2">
-				<div class="col-lg-5 col-md-12 col-12">
-					<img src="../img/product-pages/laptop2.png" alt="" class="rounded img-fluid w-100 pb-1">
-					<h4 class="text-light py-3">Related Products</h4>
-					<div class="row d-flex justify-content-between">
-						<div class="col">
-							<a href="laptop3.php">
-								<img class="img-rel rounded" src="../img/product-pages/laptop3.png" alt="">
-							</a>
+		<section class="py-5" id="item-sec">
+			<div class="container-fluid text-light">
+				<div class="row">
+					<div class="col-md-6">
+						<img class="img-fluid" src="../img/product-pages/acc-2.jpg" alt="">
+
+						<div class="row">
+							<h4 class="py-3">Related Products</h4>
+							<div class="col">
+								<a href="accessory1.php">
+									<img class="img-fluid h-100 img-rel" src="../img/product-pages/acc-1.png" alt="">
+								</a>
+							</div>
+							<div class="col">
+								<a href="accessory3.php">
+									<img class="img-fluid h-100 img-rel" src="../img/product-pages/acc-3.jpg" alt="">
+								</a>
+							</div>
+							<div class="col">
+								<a href="accessory4.php">
+									<img class="img-fluid h-100 img-rel" src="../img/prod2.jpg" alt="">
+								</a>
+							</div>
 						</div>
-						<div class="col">
-							<a href="laptop1.php">
-								<img class="img-rel rounded" src="../img/product-pages/laptop1.png" alt="">
-							</a>
+					</div>
+					<div class="col-md-6">
+						<h1 class="display-3 py-2">KriziaWare Genius Bluetooth Speaker</h1>
+						<div class="text-danger fs-2 pb-4">
+							<span><i class='bx bxs-star'></i></span>
+							<span><i class='bx bxs-star'></i></span>
+							<span><i class='bx bxs-star'></i></span>
+							<span><i class='bx bxs-star'></i></span>
+							<span><i class='bx bxs-star'></i></span>
 						</div>
-						<div class="col">
-							<a href="laptop4.php">
-								<img class="img-rel rounded" src="../img/product-pages/laptop4.png" alt="">
-							</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-6 col-md-12 col-12">
-					<h3 class="text-light">KriziaWare Gigabyte XE4</h3>
-					<div class="rating">
-						<span class="text-danger"><i class="fas fa-star"></i></span><span class="text-danger"><i class="fas fa-star"></i></span><span class="text-danger"><i class="fas fa-star"></i></span><span class="text-danger"><i class="fas fa-star"></i></span>
-					</div>
-					<div class="number">
-						<span class="fw-bold text-light">$2350</span>
-					</div>
-					<div class="buttons my-2">
-						<button class="btn btn-success w-25 rounded-pill p-1">Buy Now</button>
-						<button class="btn btn-warning w-25 rounded-pill p-1">Add to Cart</button>
-					</div>
-					<div class="text-light my-5">
-						<h3 class="fw-bolder">Product Details</h3>
-						<p class="text-justify lead fs-5">
-							Experience unmatched portability and versatility with the KriziaWare Gigabyte XE4. Its lightweight design and long battery life make it ideal for travelers and professionals. Equipped with a convertible touchscreen, it effortlessly transforms from a laptop to a tablet, allowing you to work or play in various modes. The powerful AMD Ryzen processor and integrated graphics ensure seamless performance for all your tasks.
+						<h3 class="display-4">$1299.95</h3>
+						<p class="fs-4">
+							Immerse yourself in a symphony of unparalleled audio excellence with our Bluetooth speakers. Feel the pulsating beats and vibrant melodies as they fill the air, elevating every moment into an unforgettable experience. It's time to break free from the confines of wires and unleash the true power of sound.
 						</p>
-					</div>
-					<div class="specs text-light">
-						<h3 class="fw-bolder">Specifications</h3>
-						<ul class="list-unstyled fs-5">
-							<li><span class="fw-bolder">Processor:</span>&nbsp;AMD Ryzen 9 5900HS</li>
-							<li><span class="fw-bolder">GPU:</span>&nbsp;NVIDIA GeForce RTX 3060</li>
-							<li><span class="fw-bolder">RAM:</span>&nbsp;32GB DDR4</li>
-							<li><span class="fw-bolder">Storage:</span>&nbsp;1TB PCIe M.2 SSD</li>
-							<li><span class="fw-bolder">Display:</span>&nbsp;15.6-inch FHD (1920 x 1080) 300Hz
-</li>
-						</ul>
+						
+						<p class="pt-3">Tax included. Shipping calculated at checkout.</p>
+						<hr class="text-light">
+						<a class="btn btn-danger w-100 my-2" href="">Add to Cart</a>
+						<a class="btn btn-danger w-100 my-2" href="">Buy Now</a>
 					</div>
 				</div>
 			</div>
 		</section>
 
-		<footer>
-			<div class="container-fluid bg-body-tertiary border-top py-3">
-				<div class="row d-flex justify-content-center align-content-center">
-					<div class="col-sm-6 col-md-4 col-lg-5">
-						<small class="copyright">Copyright &copy; KriziaWare. <strong>All Rights Reserved 2023</strong></small>
-					</div>
-					<div class="col-sm-6 col-md-4 col-lg-5">
-						<small class="membs">Group 4: Marcus Bustos, Ralph Cruz, Angelique Gabriel, Krizia Lleva, Roderick Nucup Jr, Emman Siva</small>
-					</div>
+		<footer class="row-fluid bg-body-tertiary border-top py-3">
+			<div class="container d-flex justify-content-center align-content-center">
+				<div class="col-sm-6 col-md-4 col-lg-5">
+					<small class="copyright">Copyright &copy; KriziaWare. <strong>All Rights Reserved 2023</strong></small>
+				</div>
+				<div class="col-sm-6 col-md-4 col-lg-5">
+					<small class="membs">Group 4: Marcus Bustos, Ralph Cruz, Angelique Gabriel, Krizia Lleva, Roderick Nucup Jr, Emman Siva</small>
 				</div>
 			</div>
 		</footer>
 
-	<!-- JQuery -->
-	<script src="../js/jquery-3.6.0.js"></script>
-	
 	<!-- Bootstrap Dependencies -->
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
 
-	<!-- Isotope -->
-	<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
-
 	<!-- Own Script -->
-	<script src="../js/laptops.js"></script>
-	<script src="../js/theme-toggle.js"></script>
+	<script src="./resource/js/theme-toggle.js"></script>
 	</body>
 </html>
