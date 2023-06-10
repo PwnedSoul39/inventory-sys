@@ -107,7 +107,7 @@ function UsrMsg($page) {
 function ItmEdit($status,$id,$page) {
 	echo '
 	<td class="d-flex flex-column">
-		<a class="btn btn-success p-1 w-100 my-1">Full Edit</a>
+		<a class="btn btn-success p-1 w-100 my-1" href="editItm.php?id='.$id.'&page='.$page.'">Full Edit</a>
 		<div class="dropdown">
 			<a class="btn btn-primary p-1 w-100 my-1 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Change Status</a>
 			<ul class="dropdown-menu">
@@ -210,7 +210,7 @@ function InsItmMsg() {
 function OrdEdit($status,$id,$page) {
 	echo '
 	<td class="d-flex flex-column">
-		<a class="btn btn-success p-1 w-100 my-1">Full Edit</a>
+		<a class="btn btn-success p-1 w-100 my-1" href="editOrd.php?id='.$id.'&page='.$page.'">Full Edit</a>
 		<div class="dropdown">
 			<a class="btn btn-primary p-1 w-100 my-1 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Change Status</a>
 			<ul class="dropdown-menu">
@@ -442,5 +442,39 @@ function logLockUsr() {
 function logCombo() {
 	logIn();
 	logLockUsr();
+}
+
+function fullOrd($id,$page) {
+	if (isset($_POST['fo_upd'])) {
+		$fe = new fullEdit();
+		$cname = $_POST['focn_box'];
+		$iname = $_POST['foin_box'];
+		$qty = intval($_POST['foiq_box']);
+		$total = intval($_POST['fotp_box']);
+		$status = intval($_POST['foos_box']);
+		$order = date('Y-m-d H:i:s', strtotime($_POST['fodo_box']));
+		$receive = date('Y-m-d H:i:s', strtotime($_POST['fodr_box']));
+
+		$fe->fullEditOrd($id,$cname,$iname,$qty,$total,$status,$order,$receive);
+		header('location:order.php?upd=3&page='.$page.'');
+		exit();
+	}
+}
+
+function fullItm($id,$page) {
+	if (isset($_POST['fi_upd'])) {
+		$fe = new fullEdit();
+		$name = $_POST['finm_box'];
+		$type = $_POST['fitp_box'];
+		$brand = $_POST['fibd_box'];
+		$price = intval($_POST['fipr_box']);
+		$qty = intval($_POST['fiqt_box']);
+		$status = intval($_POST['fist_box']);
+		$date = date('Y-m-d H:i:s', strtotime($_POST['fidt_box']));
+
+		$fe->fullEditItm($id,$name,$type,$brand,$price,$qty,$status,$date);
+		header('location:inventory.php?upd=2&page='.$page.'');
+		exit();
+	}
 }
 ?>

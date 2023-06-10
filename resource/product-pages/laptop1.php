@@ -39,7 +39,7 @@ logIn();
 							</li>
 							<li class="nav-item dropdown">
 								<button class="acc_btn nav-link link-body-emphasis dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Account</button>
-								<ul class="accList dropdown-menu dropdown-menu-end">
+								<ul class="accList dropdown-menu dropdown-menu-end text-center">
 									<li><a class="h5 text-center link-body-emphasis dropdown-item disabled" href="#"><?php echo $_SESSION['username']; ?></a></li>
 									<li><hr class="dropdown-divider"></li>
 									<li><a class="text-center link-body-emphasis dropdown-item" href="../../account.php">Account Detail</a></li>

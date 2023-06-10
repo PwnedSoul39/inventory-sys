@@ -65,7 +65,9 @@ footer {
 	width: 480px;
 	height: auto;
 }
-
+#full-edit {
+	min-height: 100vh;
+}
 /* Background Stuff */
 .psp {
 	width: 100%;

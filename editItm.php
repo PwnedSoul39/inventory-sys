@@ -3,7 +3,8 @@ require_once './resource/php/init.php';
 session_start();
 logCombo();
 
-$view = new view();
+$id = $_GET['id'];
+$page = $_GET['page'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,6 +63,96 @@ $view = new view();
 			</nav>
 		</header>
 		
+		<section id="full-edit">
+			<div class="container-fluid py-5">
+				<div class="row pt-5 d-flex justify-content-center align-content-center">
+					<div class="col">
+						<div class="card bg-body-secondary p-5 text-body-emphasis">
+							<h3 class="card-title text-center acc-title">Edit Order</h3>
+							<h5 class="my-2 text-center">Editing Item No. <?php echo $id; ?></h5>
+							<div class="card-body">
+								<?php fullItm($id,$page); ?>
+								<form method="post">
+									<div class="row">
+										<div class="col">
+											<div class="form-floating">
+												<input class="form-control" type="text" placeholder="Woah" name="finm_box" id="fi_input1" required>
+												<label for="fi_input1">Item Name</label>
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-floating">
+												<select class="form-select" name="fitp_box" id="fi_input2" required>
+													<option value="" disabled selected>Choose a Type</option>
+													<option value="Keyboard">Keyboard</option>
+													<option value="Mouse">Mouse</option>
+													<option value="Controller">Controller</option>
+													<option value="HDD">HDD</option>
+													<option value="SSD">SSD</option>
+													<option value="RAM">RAM</option>
+													<option value="Laptop">Laptop</option>
+													<option value="Desktop">Desktop</option>
+												</select>
+												<label for="fi_input2">Item Type</label>
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-floating">
+												<input class="form-control" type="text" placeholder="Woah" name="fibd_box" id="fi_input3" required>
+												<label for="fi_input3">Item Brand</label>
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-floating">
+												<input class="form-control" type="number" placeholder="Woah" name="fipr_box" id="fi_input4" required>
+												<label for="fi_input4">Item Price</label>
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-floating">
+												<input class="form-control" type="number" placeholder="Woah" name="fiqt_box" id="fi_input5" required>
+												<label for="fi_input5">Item Quantity</label>
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-floating">
+												<select class="form-select" name="fist_box" id="fi_input6">
+													<option value="" disabled selected>Choose a Status</option>
+													<option value="1">Active</option>
+													<option value="2">Sold Out</option>
+													<option value="3">On Discount</option>
+												</select>
+												<label for="fi_input6">Item Status</label>
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-floating">
+												<input class="form-control" type="datetime-local" name="fidt_box" id="fi_input7" required>
+												<label for="fi_input7">Date Added</label>
+											</div>
+										</div>
+										<div class="col text-center">
+											<input class="btn btn-primary w-100 p-1 my-2" type="submit" name="fi_upd" value="Update Item">
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<footer class="row-fluid bg-body-tertiary border-top py-3">
+			<div class="container d-flex justify-content-center align-content-center">
+				<div class="col-sm-6 col-md-4 col-lg-5">
+					<small class="copyright">Copyright &copy; KriziaWare. <strong>All Rights Reserved 2023</strong></small>
+				</div>
+				<div class="col-sm-6 col-md-4 col-lg-5">
+					<small class="membs">Group 4: Marcus Bustos, Ralph Cruz, Angelique Gabriel, Krizia Lleva, Roderick Nucup Jr, Emman Siva</small>
+				</div>
+			</div>
+		</footer>
 		
 	<!-- Bootstrap Dependencies -->
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>

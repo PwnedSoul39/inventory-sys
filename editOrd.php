@@ -3,7 +3,8 @@ require_once './resource/php/init.php';
 session_start();
 logCombo();
 
-$view = new view();
+$id = $_GET['id'];
+$page = $_GET['page'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,7 +42,7 @@ $view = new view();
 							<li class="nav-item">
 								<a class="nav-link link-body-emphasis" href="order.php?page=1">Order</a>
 							</li>
-							<li class="nav-item dropdown">
+							<li class="nav-item dropdown text-center">
 								<button class="acc_btn nav-link link-body-emphasis dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Account</button>
 								<ul class="accList dropdown-menu dropdown-menu-end">
 									<li><a class="h5 text-center link-body-emphasis dropdown-item disabled" href="#"><?php echo $_SESSION['username']; ?></a></li>
@@ -61,43 +62,89 @@ $view = new view();
 				</div>
 			</nav>
 		</header>
-		
-		<section class="py-5" id="admin-pg">
-			<div class="container-fluid h-100">
-				<h1 class="display-1 text-center text-body-emphasis">Welcome to the Dashboard</h1>
-				<div class="row d-flex justify-content-center justify-content-sm-center align-items-sm-center align-items-center h-100">
-					<div class="row row-cols-1 row-cols-md-3 g-3">
-						<div class="col">
-							<div class="card text-center text-body-emphasis bg-secondary" data-aos="flip-down">
-								<div class="card-body">
-									<h1 class="card-title"><?php $view->viewCountUsr(); ?></h1>
-									<p class="card-text">Users</p>
-									<img class="card-img w-50" src="./resource/img/user.png" alt="IMGs">
-								</div>
-							</div>
-						</div>
-						<div class="col">
-							<div class="card text-center text-body-emphasis bg-secondary" data-aos="flip-down">
-								<div class="card-body">
-									<h1 class="card-title"><?php $view->viewCountItm(); ?></h1>
-									<p class="card-text">Items</p>
-									<img class="card-img w-50" src="./resource/img/item.png" alt="IMGs">
-								</div>
-							</div>
-						</div>
-						<div class="col">
-							<div class="card text-center text-body-emphasis bg-secondary" data-aos="flip-down">
-								<div class="card-body">
-									<h1 class="card-title"><?php $view->viewCountOrd(); ?></h1>
-									<p class="card-text">Orders</p>
-									<img class="card-img w-50" src="./resource/img/order.png" alt="IMGs">
-								</div>
+
+		<section id="full-edit">
+			<div class="container-fluid py-5">
+				<div class="row pt-5 d-flex justify-content-center align-content-center">
+					<div class="col">
+						<div class="card bg-body-secondary p-5 text-body-emphasis">
+							<h3 class="card-title text-center acc-title">Edit Order</h3>
+							<h5 class="my-2 text-center">Editing Item No. <?php echo $id; ?></h5>
+							<div class="card-body">
+								<?php fullOrd($id,$page); ?>
+								<form method="post">
+									<div class="row">
+										<div class="col">
+											<div class="form-floating">
+												<input class="form-control" type="text" name="focn_box" placeholder="Customer Name" id="fo_input1" required>
+												<label for="fo_input1">Customer Name</label>
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-floating">
+												<input class="form-control" type="text" name="foin_box" placeholder="Item Name" id="fo_input2" required>
+												<label for="fo_input2">Item Name</label>
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-floating">
+												<input class="form-control" type="number" name="foiq_box" placeholder="Item Quantity" id="fo_input3" required>
+												<label for="fo_input3">Item Quantity</label>
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-floating">
+												<input class="form-control" type="number" name="fotp_box" placeholder="Total Price" id="fo_input4" required>
+												<label for="fo_input4">Total Price</label>
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-floating">
+												<select class="form-select" name="foos_box" id="fo_input5" required>
+													<option value="" disabled selected>Choose a status</option>
+													<option value="1">Ordered</option>
+													<option value="2">Packaged</option>
+													<option value="3">Shipped</option>
+													<option value="4">In Transit</option>
+													<option value="5">Delivered</option>
+												</select>
+												<label for="fo_input5">Order Status</label>
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-floating">
+												<input class="form-control" type="datetime-local" name="fodo_box" placeholder="Date Ordered" id="fo_input6" required>
+												<label for="fo_input6">Date Ordered</label>
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-floating">
+												<input class="form-control" type="datetime-local" name="fodr_box" placeholder="Date Received" id="fo_input7">
+												<label for="fo_input7">Date Received</label>
+											</div>
+										</div>
+										<div class="col text-center">
+											<input class="btn btn-primary w-100 p-1 my-2" type="submit" name="fo_upd" value="Update Item">
+										</div>
+									</div>
+								</form>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</section>
+		
+		<footer class="row-fluid bg-body-tertiary border-top py-3">
+			<div class="container d-flex justify-content-center align-content-center">
+				<div class="col-sm-6 col-md-4 col-lg-5">
+					<small class="copyright">Copyright &copy; KriziaWare. <strong>All Rights Reserved 2023</strong></small>
+				</div>
+				<div class="col-sm-6 col-md-4 col-lg-5">
+					<small class="membs">Group 4: Marcus Bustos, Ralph Cruz, Angelique Gabriel, Krizia Lleva, Roderick Nucup Jr, Emman Siva</small>
+				</div>
+			</div>
+		</footer>
 		
 	<!-- Bootstrap Dependencies -->
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>

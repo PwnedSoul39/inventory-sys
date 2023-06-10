@@ -45,7 +45,7 @@ logIn();
 								<ul class="accList dropdown-menu dropdown-menu-end">
 									<li><a class="h5 text-center link-body-emphasis dropdown-item disabled" href="#"><?php echo $_SESSION['username']; ?></a></li>
 									<li><hr class="dropdown-divider"></li>
-									<li class="link-body-emphasis dropdown-item">
+									<li class="link-body-emphasis dropdown-item text-center">
 										<div class="form-check form-switch">
 											<input class="form-check-input" type="checkbox" role="switch" id="theme_switch">
 											<label class="form-check-label" for="theme_switch">Dark Mode</label>
