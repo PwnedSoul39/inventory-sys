@@ -61,7 +61,7 @@ logIn();
 		<section class="vh-100 carousel slide" data-bs-ride="carousel" id="header">
 			<div class="container-fluid h-100 d-flex align-items center carousel-inner px-0">
 				<div class="text-center carousel-item active">
-					<img class="img-fluid w-100" src="./resource/img/product-pages/caro1.jpg" alt="">
+					<img class="img-rel img-fluid w-100" src="./resource/img/product-pages/caro1.jpg" alt="">
 					<div class="carousel-caption d-none d-md-block">
 						<h2 class="text-capitalize text-light">Ready For a New Era?</h2>
 						<h1 class="text-uppercase py-2 fw-bold text-light">New and Improved</h1>
@@ -69,7 +69,7 @@ logIn();
 					</div>
 				</div>
 				<div class="text-center carousel-item">
-					<img class="img-fluid w-100" src="./resource/img/product-pages/caro2.jpg" alt="">
+					<img class="img-rel img-fluid w-100" src="./resource/img/product-pages/caro2.jpg" alt="">
 					<div class="carousel-caption d-none d-md-block">
 						<h2 class="text-capitalize text-light">Get Some Deals Now</h2>
 						<h1 class="text-uppercase py-2 fw-bold text-light">new season</h1>
@@ -103,7 +103,7 @@ logIn();
 						<div class="col-md-6 col-lg-4 col-xl-4 p-2 best">
 							<div class="collection-img position-relative">
 								<a href="./resource/product-pages/laptop1.php">
-									<img class="w-100" src="./resource/img/product-pages/laptop1.png" alt="">
+									<img class="img-rel w-100" src="./resource/img/product-pages/laptop1.png" alt="">
 								</a>
 								<span class="position-absolute bg-danger text-light d-flex align-items-center justify-content-center">Sale</span>
 							</div>
@@ -120,7 +120,7 @@ logIn();
 						<div class="col-md-6 col-lg-4 col-xl-4 p-2">
 							<div class="collection-img position-relative">
 								<a href="./resource/product-pages/laptop2.php">
-									<img class="w-100" src="./resource/img/product-pages/laptop2.png" alt="">
+									<img class="img-rel w-100" src="./resource/img/product-pages/laptop2.png" alt="">
 								</a>
 							</div>
 							<div class="text-center">
@@ -135,7 +135,7 @@ logIn();
 						<div class="col-md-6 col-lg-4 col-xl-4 p-2 best">
 							<div class="collection-img position-relative">
 								<a href="./resource/product-pages/laptop3.php">
-									<img class="w-100" src="./resource/img/product-pages/laptop3.png" alt="">
+									<img class="img-rel w-100" src="./resource/img/product-pages/laptop3.png" alt="">
 								</a>
 								<span class="position-absolute bg-danger text-light d-flex align-items-center justify-content-center">Sale</span>
 							</div>
@@ -152,7 +152,7 @@ logIn();
 						<div class="col-md-6 col-lg-4 col-xl-4 p-2 featured">
 							<div class="collection-img position-relative">
 								<a href="./resource/product-pages/laptop4.php">
-									<img class="w-100" src="./resource/img/product-pages/laptop4.png" alt="">
+									<img class="img-rel w-100" src="./resource/img/product-pages/laptop4.png" alt="">
 								</a>
 								<span class="position-absolute bg-danger text-light d-flex align-items-center justify-content-center">Sale</span>
 							</div>
@@ -169,7 +169,7 @@ logIn();
 						<div class="col-md-6 col-lg-4 col-xl-4 p-2 new">
 							<div class="collection-img position-relative">
 								<a href="./resource/product-pages/laptop5.php">
-									<img class="w-100" src="./resource/img/product-pages/laptop5.png" alt="">
+									<img class="img-rel w-100" src="./resource/img/product-pages/laptop5.png" alt="">
 								</a>
 							</div>
 							<div class="text-center">
@@ -183,7 +183,7 @@ logIn();
 						<div class="col-md-6 col-lg-4 col-xl-4 p-2 featured">
 							<div class="collection-img position-relative">
 								<a href="./resource/product-pages/laptop6.php">
-									<img class="w-100" src="./resource/img/product-pages/laptop6.png" alt="">
+									<img class="img-rel w-100" src="./resource/img/product-pages/laptop6.png" alt="">
 								</a>
 								<span class="position-absolute bg-danger text-light d-flex align-items-center justify-content-center">Sale</span>
 							</div>
@@ -200,7 +200,7 @@ logIn();
 						<div class="col-md-6 col-lg-4 col-xl-4 p-2">
 							<div class="collection-img position-relative">
 								<a href="./resource/product-pages/laptop7.php">
-									<img class="w-100" src="./resource/img/product-pages/laptop7.png" alt="">
+									<img class="img-rel w-100" src="./resource/img/product-pages/laptop7.png" alt="">
 								</a>
 							</div>
 							<div class="text-center">
@@ -215,7 +215,7 @@ logIn();
 						<div class="col-md-6 col-lg-4 col-xl-4 p-2 best">
 							<div class="collection-img position-relative">
 								<a href="./resource/product-pages/laptop8.php">
-									<img class="w-100" src="./resource/img/product-pages/laptop8.png" alt="">
+									<img class="img-rel w-100" src="./resource/img/product-pages/laptop8.png" alt="">
 								</a>
 							</div>
 							<div class="text-center">

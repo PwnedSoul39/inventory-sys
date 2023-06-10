@@ -65,12 +65,10 @@ body{
     border-radius: 50%;
 }
 .img-rel {
-    width: 240px;
-    height: 144px;
     transition: 0.5s;
 }
 .img-rel:hover {
-    transform: scale(1.5);
+    transform: scale(1.1);
     transition: 0.5s;
 }
 #collection {
@@ -94,4 +92,27 @@ header {
 }
 footer {
 	min-height: 5vh;
+}
+
+@media screen and (max-device-width: 480px) {
+	.logo-img {
+		width: auto;
+		height: 2em;
+	}
+	.navList {
+		font-size: 1rem;
+		text-align: center;
+		margin-top: 1em;
+	}
+	.acc_btn {
+		font-size: 1rem;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.membs {
+		font-size: 0.75rem;
+	}
+	.copyright {
+		font-size: 0.9rem;
+	}
 }
