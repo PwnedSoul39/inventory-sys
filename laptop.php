@@ -16,7 +16,7 @@ logIn();
 		<link rel="icon" type="image/x-icon" href="./resource/img/favicon.ico">
 		<title>Laptop | KriziaWare</title>
 	</head>
-	<body data-bs-theme="dark">
+	<body data-bs-theme="dark" style="overflow-x:hidden;">
 		<header>
 			<nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom shadow">
 				<div class="container-fluid">
@@ -61,7 +61,7 @@ logIn();
 		<section class="vh-100 carousel slide" data-bs-ride="carousel" id="header">
 			<div class="container-fluid h-100 d-flex align-items center carousel-inner px-0">
 				<div class="text-center carousel-item active">
-					<img class="img-rel img-fluid w-100" src="./resource/img/product-pages/caro1.jpg" alt="">
+					<img class="img-fluid w-100" src="./resource/img/product-pages/caro1.jpg" alt="">
 					<div class="carousel-caption d-none d-md-block">
 						<h2 class="text-capitalize text-light">Ready For a New Era?</h2>
 						<h1 class="text-uppercase py-2 fw-bold text-light">New and Improved</h1>
@@ -69,7 +69,7 @@ logIn();
 					</div>
 				</div>
 				<div class="text-center carousel-item">
-					<img class="img-rel img-fluid w-100" src="./resource/img/product-pages/caro2.jpg" alt="">
+					<img class="img-fluid w-100" src="./resource/img/product-pages/caro2.jpg" alt="">
 					<div class="carousel-caption d-none d-md-block">
 						<h2 class="text-capitalize text-light">Get Some Deals Now</h2>
 						<h1 class="text-uppercase py-2 fw-bold text-light">new season</h1>
