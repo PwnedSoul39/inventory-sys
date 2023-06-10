@@ -66,17 +66,17 @@ logIn();
 					<div class="row d-flex justify-content-between">
 						<div class="col">
 							<a href="laptop4.php">
-								<img class="img-rel rounded" src="../img/product-pages/laptop4.png" alt="">
+								<img class="img-rel1 rounded" src="../img/product-pages/laptop4.png" alt="">
 							</a>
 						</div>
 						<div class="col">
 							<a href="laptop6.php">
-								<img class="img-rel rounded" src="../img/product-pages/laptop6.png" alt="">
+								<img class="img-rel1 rounded" src="../img/product-pages/laptop6.png" alt="">
 							</a>
 						</div>
 						<div class="col">
 							<a href="laptop7.php">
-								<img class="img-rel rounded" src="../img/product-pages/laptop7.png" alt="">
+								<img class="img-rel1 rounded" src="../img/product-pages/laptop7.png" alt="">
 							</a>
 						</div>
 					</div>

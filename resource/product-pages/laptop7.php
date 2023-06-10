@@ -66,17 +66,17 @@ logIn();
 					<div class="row d-flex justify-content-between">
 						<div class="col">
 							<a href="laptop8.php">
-								<img class="img-rel rounded" src="../img/product-pages/laptop8.png" alt="">
+								<img class="img-rel1 rounded" src="../img/product-pages/laptop8.png" alt="">
 							</a>
 						</div>
 						<div class="col">
 							<a href="laptop1.php">
-								<img class="img-rel rounded" src="../img/product-pages/laptop1.png" alt="">
+								<img class="img-rel1 rounded" src="../img/product-pages/laptop1.png" alt="">
 							</a>
 						</div>
 						<div class="col">
 							<a href="laptop3.php">
-								<img class="img-rel rounded" src="../img/product-pages/laptop3.png" alt="">
+								<img class="img-rel1 rounded" src="../img/product-pages/laptop3.png" alt="">
 							</a>
 						</div>
 					</div>
@@ -90,8 +90,8 @@ logIn();
 						<span class="fw-bold text-light">$3,599.99</span>
 					</div>
 					<div class="buttons my-2">
-						<button class="btn btn-success w-25 rounded-pill p-1">Buy Now</button>
-						<button class="btn btn-warning w-25 rounded-pill p-1">Add to Cart</button>
+						<button class="btn btn-danger w-25 rounded-pill p-1">Buy Now</button>
+						<button class="btn btn-danger w-25 rounded-pill p-1">Add to Cart</button>
 					</div>
 					<div class="text-light my-5">
 						<h3 class="fw-bolder">Product Details</h3>
