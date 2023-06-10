@@ -1,101 +1,111 @@
 <?php
-	require_once './resource/php/init.php';
-	session_start();
-	logIn();
-    logLockUser();
-    $view = new view();
+require_once './resource/php/init.php';
+session_start();
+logCombo();
+
+$view = new view();
 ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-        <script src="https://kit.fontawesome.com/d101948c74.js" crossorigin="anonymous"></script>
-		<link rel="stylesheet" type="text/css" href="./resource/css/adm_dashboard.css">
-		<title>Admin Dashboard</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+		<script src="https://kit.fontawesome.com/d101948c74.js" crossorigin="anonymous"></script>
+		<link href="https://fonts.googleapis.com/css2?family=Braah+One&family=Jua&family=Lexend+Deca:wght@300;400&family=Raleway:ital,wght@0,100;0,200;0,400;0,500;0,700;1,100;1,400&family=Roboto+Slab:wght@100;500;600&family=Roboto:ital,wght@0,500;0,700;1,500&family=Rubik&family=Ruda:wght@800;900&family=Sen&family=Sigmar&family=Tilt+Warp&family=Ubuntu:ital,wght@0,500;0,700;1,700&family=Work+Sans&display=swap" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="./resource/css/main.css">
+		<link rel="icon" type="image/x-icon" href="./resource/img/favicon.ico">
+		<title>Dashboard | KriziaWare</title>
 	</head>
-	<body>
-    <header class="row-fluid">
-            <nav class="navbar-bar navbar navbar-expand-lg navbar-dark  sticky-top">
-                <span class="navbar-brand mr-auto">KriziaWare</span>
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="./dashboard.php">
-                            <i class="fa-solid fa-table-columns"></i> Dashboard
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./user.php">
-                            <i class="fa-solid fa-users"></i> Users
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./order.php">
-                            <i class="fa-solid fa-truck"></i> Orders
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./inventory.php">
-                            <i class="fa-solid fa-clipboard-list"></i> Inventory
-                        </a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <button class="btn btn-transparent dropdown-toggle nav-link" type="button" data-toggle="dropdown" aria-expanded="false">
-                            <?php
-                                echo '
-                                    <i class="fa-solid fa-user"></i> '.$_SESSION['user'].'
-                                ';
-                            ?>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-right bg-dark mt-1">
-                            <a class="dropdown-item text-muted" href="./logout.php">Log-out</a>
-                        </div>
-                    </li>
-                </ul>
-            </nav>
-        </header>
-		<!-- Card ICONs -->
-        <div class="container mt-5">
-            <div class="card-deck text-center mt-3">
-                <div class="card bg-info">
-                    <div class="card-body">
-                        <h5 class="card-title h1">
-                            <?php
-                                 $view->viewCountUser();
-                            ?>
-                        </h5>
-                        <p class="font-weight-bold card-text">Users</p>
-                        <img class="dash-img mx-auto" src="./resource/img/user.png" alt="SADGE">
-                    </div>
-                </div>
-                <div class="card bg-success">
-                    <div class="card-body">
-                        <h5 class="card-title h1">
-                            <?php
-                                $view->viewCountInv();
-                            ?>
-                        </h5>
-                        <p class="font-weight-bold card-text">Items</p>
-                        <img class="dash-img mx-auto" src="./resource/img/item.png" alt="SADGE">
-                    </div>
-                </div>
-                <div class="card bg-secondary">
-                    <div class="card-body">
-                        <h5 class="card-title h1">
-                            <?php
-                                $view->viewCountOrder();
-                            ?>
-                        </h5>
-                        <p class="font-weight-bold card-text">Orders</p>
-                        <img class="dash-img mx-auto" src="./resource/img/order.png" alt="SADGE">
-                    </div>
-                </div>
-            </div>
-        </div>
-	</body>
+	<body data-bs-theme="dark" style="overflow-x:hidden;">
+		<header>
+			<nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom shadow">
+				<div class="container-fluid">
+					<a class="navbar-brand" href="dashboard.php">
+						<img class="logo-img img-fluid" src="./resource/img/logo.png" alt="LOGO">
+					</a>
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navStuff" aria-controls="navStuff" aria-expanded="false" aria-label="Toggle Navbar">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="navStuff">
+						<ul class="navList navbar-nav me-auto">
+							<li class="nav-item">
+								<a class="nav-link link-body-emphasis fw-bolder" href="dashboard.php">Dashboard</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link link-body-emphasis" href="user.php?page=1">User</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link link-body-emphasis" href="inventory.php?page=1">Inventory</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link link-body-emphasis" href="order.php?page=1">Order</a>
+							</li>
+							<li class="nav-item dropdown">
+								<button class="acc_btn nav-link link-body-emphasis dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Account</button>
+								<ul class="accList dropdown-menu dropdown-menu-end">
+									<li><a class="h5 text-center link-body-emphasis dropdown-item disabled" href="#"><?php echo $_SESSION['username']; ?></a></li>
+									<li><hr class="dropdown-divider"></li>
+									<li><a class="text-center link-body-emphasis dropdown-item" href="account.php">Account Detail</a></li>
+									<li><a class="text-center link-body-emphasis dropdown-item" href="logout.php">Logout</a></li>
+								</ul>
+							</li>
+						</ul>
+						<form class="nav-link d-flex text-body-emphasis" role="search">
+							<div class="input-group">
+								<input class="input-group-text bg-body text-emphasis-body border border-danger" type="text" placeholder="Search" aria-labelledby="Search" aria-describedby="search">
+								<span class="input-group-text bg-body-secondary border border-danger" id="search"><i class="fa fa-search"></i></span>
+							</div>
+						</form>
+					</div>
+				</div>
+			</nav>
+		</header>
+		
+		<section class="py-5" id="admin-pg">
+			<div class="container-fluid h-100">
+				<h1 class="display-1 text-center text-body-emphasis">Welcome to the Dashboard</h1>
+				<div class="row d-flex justify-content-center justify-content-sm-center align-items-sm-center align-items-center h-100">
+					<div class="row row-cols-1 row-cols-md-3 g-3">
+						<div class="col">
+							<div class="card text-center text-body-emphasis bg-secondary" data-aos="flip-down">
+								<div class="card-body">
+									<h1 class="card-title"><?php $view->viewCountUsr(); ?></h1>
+									<p class="card-text">Users</p>
+									<img class="card-img w-50" src="./resource/img/user.png" alt="IMGs">
+								</div>
+							</div>
+						</div>
+						<div class="col">
+							<div class="card text-center text-body-emphasis bg-secondary" data-aos="flip-down">
+								<div class="card-body">
+									<h1 class="card-title"><?php $view->viewCountItm(); ?></h1>
+									<p class="card-text">Items</p>
+									<img class="card-img w-50" src="./resource/img/item.png" alt="IMGs">
+								</div>
+							</div>
+						</div>
+						<div class="col">
+							<div class="card text-center text-body-emphasis bg-secondary" data-aos="flip-down">
+								<div class="card-body">
+									<h1 class="card-title"><?php $view->viewCountOrd(); ?></h1>
+									<p class="card-text">Orders</p>
+									<img class="card-img w-50" src="./resource/img/order.png" alt="IMGs">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+	<!-- Bootstrap Dependencies -->
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
 
-	<!-- Boostrap -->
-	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+	<!-- AOS Dependencies -->
+	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+	<script>AOS.init();</script>
+	</body>
 </html>
