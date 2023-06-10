@@ -34,13 +34,13 @@ $view = new view();
 								<a class="nav-link link-body-emphasis fw-bolder" href="dashboard.php">Dashboard</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link link-body-emphasis" href="user.php">User</a>
+								<a class="nav-link link-body-emphasis" href="user.php?page=1">User</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link link-body-emphasis" href="inventory.php">Inventory</a>
+								<a class="nav-link link-body-emphasis" href="inventory.php?page=1">Inventory</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link link-body-emphasis" href="order.php">Order</a>
+								<a class="nav-link link-body-emphasis" href="order.php?page=1">Order</a>
 							</li>
 							<li class="nav-item dropdown">
 								<button class="acc_btn nav-link link-body-emphasis dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Account</button>

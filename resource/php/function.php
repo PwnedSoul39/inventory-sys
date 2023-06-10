@@ -197,6 +197,9 @@ function InsItmMsg() {
 		$status = intval($_POST['ist_box']);
 		$date = $_POST['idt_box'];
 		$validate->validItm($name,$type,$brand,$price,$qty,$status,$date);
+
+		header('location:inventory.php?page='.$_GET['page'].'');
+		exit();
 	}
 }
 
@@ -335,6 +338,9 @@ function InsOrdMsg() {
 		$order = $_POST['odo_box'];
 		$receive = $_POST['odr_box'];
 		$validate->validOrd($cname,$iname,$qty,$total,$status,$order,$receive);
+
+		header('location:order.php?page='.$_GET['page'].'');
+		exit();
 	}
 }
 

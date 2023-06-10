@@ -55,13 +55,13 @@ $result = $data->fetchAll(PDO::FETCH_ASSOC);
 								<a class="nav-link link-body-emphasis" href="dashboard.php">Dashboard</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link link-body-emphasis" href="user.php">User</a>
+								<a class="nav-link link-body-emphasis" href="user.php?page=1">User</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link link-body-emphasis" href="inventory.php">Inventory</a>
+								<a class="nav-link link-body-emphasis" href="inventory.php?page=1">Inventory</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link link-body-emphasis fw-bolder" href="order.php">Order</a>
+								<a class="nav-link link-body-emphasis fw-bolder" href="order.php?page=1">Order</a>
 							</li>
 							<li class="nav-item dropdown">
 								<button class="acc_btn nav-link link-body-emphasis dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Account</button>
@@ -178,7 +178,7 @@ $result = $data->fetchAll(PDO::FETCH_ASSOC);
 										</td>
 										<td>
 											<div class="form-floating">
-												<input class="form-control" type="datetime-local" name="odr_box" placeholder="Date Received" id="ord_input7" required>
+												<input class="form-control" type="datetime-local" name="odr_box" placeholder="Date Received" id="ord_input7">
 												<label for="ord_input7">Date Received</label>
 											</div>
 										</td>
