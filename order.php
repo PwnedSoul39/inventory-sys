@@ -87,7 +87,7 @@ $result = $data->fetchAll(PDO::FETCH_ASSOC);
 		<div class="container pt-2">
 			<div class="row">
 				<div class="col">
-					<?php OrdComboMsg(); ?>
+					<?php OrdComboMsg($page); ?>
 				</div>
 			</div>
 		</div>
@@ -126,7 +126,7 @@ $result = $data->fetchAll(PDO::FETCH_ASSOC);
 									<td>'.$data['o_order'].'</td>
 									<td>'.$data['o_receive'].'</td>
 									';
-									OrdEdit($data['o_status'],$data['o_id']);
+									OrdEdit($data['o_status'],$data['o_id'],$page);
 									echo '</tr>';
 								}
 								?>

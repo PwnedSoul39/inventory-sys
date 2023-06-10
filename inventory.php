@@ -87,7 +87,7 @@ $result = $data->fetchAll(PDO::FETCH_ASSOC);
 		<div class="container pt-2">
 			<div class="row">
 				<div class="col">
-					<?php ItmComboMsg(); ?>
+					<?php ItmComboMsg($page); ?>
 				</div>
 			</div>
 		</div>
@@ -124,7 +124,7 @@ $result = $data->fetchAll(PDO::FETCH_ASSOC);
 									';
 									ItmStatus($data['i_status']);
 									echo '<td>'.$data['i_added'].'</td>';
-									ItmEdit($data['i_status'],$data['i_id']);
+									ItmEdit($data['i_status'],$data['i_id'],$page);
 									echo '</tr>';
 								}
 								?>
@@ -149,7 +149,6 @@ $result = $data->fetchAll(PDO::FETCH_ASSOC);
 													<option value="RAM">RAM</option>
 													<option value="Laptop">Laptop</option>
 													<option value="Desktop">Desktop</option>
-													<option value="Accessories">Accessories</option>
 												</select>
 												<label for="itm_input2">Item Type</label>
 											</div>

@@ -12,7 +12,7 @@ $count = $con->prepare($query);
 $count->execute();
 $rows = $count->rowCount();
 
-$items = 12;
+$items = 8;
 $pages = ceil($rows/$items);
 
 if (!isset($_GET['page'])) {
@@ -87,7 +87,7 @@ $result = $data->fetchAll(PDO::FETCH_ASSOC);
 		<div class="container pt-2">
 			<div class="row">
 				<div class="col">
-					<?php UsrComboMsg(); ?>
+					<?php UsrComboMsg($page); ?>
 				</div>
 			</div>
 		</div>
@@ -118,7 +118,7 @@ $result = $data->fetchAll(PDO::FETCH_ASSOC);
 									';
 									UsrType($data['u_type']);
 									echo '<td>'.$data['u_join'].'</td>';
-									UsrEdit($data['u_user'],$_SESSION['username'],$data['u_type'],$data['u_id']);
+									UsrEdit($data['u_user'],$_SESSION['username'],$data['u_type'],$data['u_id'],$page);
 									echo '</tr>';
 								}
 								?>

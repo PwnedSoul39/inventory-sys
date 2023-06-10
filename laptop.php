@@ -101,7 +101,7 @@ logIn();
 					</div>
 					<div class="collection-list mt-2 row gx-0 gy-3">
 						<div class="col-md-6 col-lg-4 col-xl-4 p-2 best">
-							<div class="collection-img position-relative">
+							<div class="collection-img h-100 position-relative">
 								<a href="./resource/product-pages/laptop1.php">
 									<img class="img-rel w-100" src="./resource/img/product-pages/laptop1.png" alt="">
 								</a>
@@ -118,7 +118,7 @@ logIn();
 							</div>
 						</div>
 						<div class="col-md-6 col-lg-4 col-xl-4 p-2">
-							<div class="collection-img position-relative">
+							<div class="collection-img h-100 position-relative">
 								<a href="./resource/product-pages/laptop2.php">
 									<img class="img-rel w-100" src="./resource/img/product-pages/laptop2.png" alt="">
 								</a>
@@ -133,7 +133,7 @@ logIn();
 							</div>
 						</div>
 						<div class="col-md-6 col-lg-4 col-xl-4 p-2 best">
-							<div class="collection-img position-relative">
+							<div class="collection-img h-100 position-relative">
 								<a href="./resource/product-pages/laptop3.php">
 									<img class="img-rel w-100" src="./resource/img/product-pages/laptop3.png" alt="">
 								</a>
@@ -150,7 +150,7 @@ logIn();
 							</div>
 						</div>
 						<div class="col-md-6 col-lg-4 col-xl-4 p-2 featured">
-							<div class="collection-img position-relative">
+							<div class="collection-img h-100 position-relative">
 								<a href="./resource/product-pages/laptop4.php">
 									<img class="img-rel w-100" src="./resource/img/product-pages/laptop4.png" alt="">
 								</a>
@@ -167,7 +167,7 @@ logIn();
 							</div>
 						</div>
 						<div class="col-md-6 col-lg-4 col-xl-4 p-2 new">
-							<div class="collection-img position-relative">
+							<div class="collection-img h-100 position-relative">
 								<a href="./resource/product-pages/laptop5.php">
 									<img class="img-rel w-100" src="./resource/img/product-pages/laptop5.png" alt="">
 								</a>
@@ -181,7 +181,7 @@ logIn();
 							</div>
 						</div>
 						<div class="col-md-6 col-lg-4 col-xl-4 p-2 featured">
-							<div class="collection-img position-relative">
+							<div class="collection-img h-100 position-relative">
 								<a href="./resource/product-pages/laptop6.php">
 									<img class="img-rel w-100" src="./resource/img/product-pages/laptop6.png" alt="">
 								</a>
@@ -198,7 +198,7 @@ logIn();
 							</div>
 						</div>
 						<div class="col-md-6 col-lg-4 col-xl-4 p-2">
-							<div class="collection-img position-relative">
+							<div class="collection-img h-100 position-relative">
 								<a href="./resource/product-pages/laptop7.php">
 									<img class="img-rel w-100" src="./resource/img/product-pages/laptop7.png" alt="">
 								</a>
@@ -213,7 +213,7 @@ logIn();
 							</div>
 						</div>
 						<div class="col-md-6 col-lg-4 col-xl-4 p-2 best">
-							<div class="collection-img position-relative">
+							<div class="collection-img h-100 position-relative">
 								<a href="./resource/product-pages/laptop8.php">
 									<img class="img-rel w-100" src="./resource/img/product-pages/laptop8.png" alt="">
 								</a>
