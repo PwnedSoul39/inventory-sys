@@ -138,6 +138,5 @@ logIn();
 
 	<!-- Own Script -->
 	<script src="../js/laptops.js"></script>
-	<script src="../js/theme-toggle.js"></script>
 	</body>
 </html>

@@ -264,8 +264,5 @@ logIn();
 
 	<!-- Isotope -->
 	<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
-
-	<!-- Own Script -->
-	<script src="./resource/js/laptops.js"></script>
 	</body>
 </html>
