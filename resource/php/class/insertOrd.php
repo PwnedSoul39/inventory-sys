@@ -20,9 +20,15 @@ class insertOrd extends config {
 
 	public function addOrd() {
 		$con = $this->con();
-		$sql = "INSERT INTO `tbl_order` (`o_cus`,`o_item`,`o_qty`, `o_total`,`o_status`,`o_order`, `o_receive`) VALUES ('$this->oname','$this->oitm',$this->oqty, $this->total,'$this->ostatus','$this->order','$this->receive')";
-		$data = $con->prepare($sql);
 
+		if ($this->ostatus < 5) {
+			$sql = "INSERT INTO `tbl_order` (`o_cus`,`o_item`,`o_qty`, `o_total`,`o_status`,`o_order`) VALUES ('$this->oname','$this->oitm',$this->oqty, $this->total,'$this->ostatus','$this->order')";
+	
+		} else {
+			$sql = "INSERT INTO `tbl_order` (`o_cus`,`o_item`,`o_qty`, `o_total`,`o_status`,`o_order`, `o_receive`) VALUES ('$this->oname','$this->oitm',$this->oqty, $this->total,'$this->ostatus','$this->order','$this->receive')";
+		}
+		
+		$data = $con->prepare($sql);
 		if ($data->execute()) {
 			return true;
 		} else {

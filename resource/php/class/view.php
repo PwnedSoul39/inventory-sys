@@ -2,10 +2,10 @@
 class view extends config {
 	public function viewCountItm() {
 		$con = $this->con();
-		$sql = "SELECT SUM(`i_qty`) FROM `tbl_item`";
+		$sql = "SELECT * FROM `tbl_item`";
 		$data = $con->prepare($sql);
 		$data->execute();
-		$result = $data->fetchColumn();
+		$result = $data->rowCount();
 
 		echo $result;
 	}

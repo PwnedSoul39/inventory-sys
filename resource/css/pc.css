@@ -1,0 +1,166 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+html {
+	text-rendering: optimizeLegibility;
+	scroll-behavior: smooth;
+}
+
+.logo-img {
+    height: 3em;
+    width: auto;
+}
+.navList, .acc_btn {
+	font-size: 1.25rem;
+	text-transform: uppercase;
+	letter-spacing: 3px;
+}
+.accList {
+	font-size: 1rem;
+	text-transform: none;
+	letter-spacing: normal;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{
+	width: 5px;
+}
+::-webkit-scrollbar-track{
+	background-color: #020c1b;
+}
+::-webkit-scrollbar-thumb{
+	background-color: #3F3F3B;
+}
+
+body{
+	background-color: #000000;
+	font-family: 'Sen';
+}
+#section1{
+	height: 90vh;
+	background-image: url(../img/product-pages/pc3.jpg);
+	background-position: center;
+	background-size: cover;
+}
+#section1 h1{
+	padding-top: 15%;
+	font-size: 4rem;
+}
+#section1 p{
+	font-size: 1.5rem;
+	padding: 5px 15%;
+}
+.nav-dash{
+	height: 10vh;
+	background-color: #1c1c1c;
+	font-size: 15px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-family: 'Sen';
+}
+/* .bg-pc{
+	height: 70vh;
+	width: 100%;
+
+} */
+
+#section2{
+	height: 210vh;
+}
+#section2 span{
+	color: red;
+	text-align: center;
+}
+.card{
+	background-color: #000000;
+	padding: 6% 3%;
+}
+.card img{
+	height: 35vh;
+}
+.btn-submit{
+	width: 35%;
+	padding: 10px;
+	color: white;
+	border: 1px solid white;
+}
+.btn-submit:hover,
+.btn-submit:active{
+	background-color: white;
+	color: #1c1c1c;
+	transition: .5s;
+}
+
+#section3{
+	height: 50vh;
+}
+#section3 i{
+	font-size: 4.5rem;
+	padding-top: 5%;
+}
+
+#section4{
+	height: 90vh;
+	/* background: url(../img/bg-vid.mp4);
+	background-size: cover; */
+}
+#section4 video{
+	width: 100%;
+	height: 80vh;
+	object-fit: cover;
+	position: relative;
+	z-index: 0;
+}
+#section4 .card{
+	width: 40%;
+	font-size: 1.5rem;
+}
+#section4 h2{
+	text-transform: uppercase;
+	font-weight: bold;
+}
+.overlay {
+	position:absolute;
+	top:370%;
+	left:5%;
+	z-index:1;
+}
+
+header {
+	min-height: 5vh;
+}
+footer {
+	min-height: 5vh;
+}
+.img-rel {
+	transition: 0.5s;
+}
+.img-rel:hover {
+	transform: scale(1.1);
+	transition: 0.5s;
+}
+
+@media screen and (max-device-width: 480px) {
+	.logo-img {
+		width: auto;
+		height: 2em;
+	}
+	.navList {
+		font-size: 1rem;
+		text-align: center;
+		margin-top: 1em;
+	}
+	.acc_btn {
+		font-size: 1rem;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.membs {
+		font-size: 0.75rem;
+	}
+	.copyright {
+		font-size: 0.9rem;
+	}
+}

@@ -12,48 +12,47 @@ logIn();
         integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer">
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-		<link rel="stylesheet" type="text/css" href="../css/main.css">
 		<link rel="stylesheet" type="text/css" href="../css/laptops.css">
 		<link rel="icon" type="image/x-icon" href="../img/favicon.ico">
 		<title>Laptops | KriziaWare</title>
 	</head>
-	<body class="bg-body-secondary">
+	<body data-bs-theme="dark">
 		<header>
 			<nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom shadow">
 				<div class="container-fluid">
-					<a class="navbar-brand" href="home.php">
+					<a class="navbar-brand" href="../../home.php">
 						<img class="logo-img img-fluid" src="../img/logo.png" alt="LOGO">
 					</a>
 					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navStuff" aria-controls="navStuff" aria-expanded="false" aria-label="Toggle Navbar">
 						<span class="navbar-toggler-icon"></span>
 					</button>
 					<div class="collapse navbar-collapse" id="navStuff">
-						<ul class="navList navbar-nav ms-auto">
+						<ul class="navList navbar-nav me-auto">
 							<li class="nav-item">
 								<a class="nav-link link-body-emphasis" href="../../home.php">Home</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link link-body-emphasis fw-bolder" href="../../product.php">Products</a>
+								<a class="nav-link link-body-emphasis fw-bolder" href="../../home.php#product">Products</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link link-body-emphasis" href="../../home.php#about">About Us</a>
 							</li>
 							<li class="nav-item dropdown">
 								<button class="acc_btn nav-link link-body-emphasis dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Account</button>
-								<ul class="accList dropdown-menu dropdown-menu-end">
+								<ul class="accList dropdown-menu dropdown-menu-end text-center">
 									<li><a class="h5 text-center link-body-emphasis dropdown-item disabled" href="#"><?php echo $_SESSION['username']; ?></a></li>
 									<li><hr class="dropdown-divider"></li>
-									<li class="link-body-emphasis dropdown-item">
-										<div class="form-check form-switch">
-											<input class="form-check-input" type="checkbox" role="switch" id="theme_switch">
-											<label class="form-check-label" for="theme_switch">Dark Mode</label>
-										</div>
-									</li>
-									<li><a class="text-center link-body-emphasis dropdown-item" href="account.php">Account Detail</a></li>
-									<li><a class="text-center link-body-emphasis dropdown-item" href="logout.php">Logout</a></li>
+									<li><a class="text-center link-body-emphasis dropdown-item" href="../../account.php">Account Detail</a></li>
+									<li><a class="text-center link-body-emphasis dropdown-item" href="../../logout.php">Logout</a></li>
 								</ul>
 							</li>
 						</ul>
+						<form class="nav-link d-flex text-body-emphasis" role="search">
+							<div class="input-group">
+								<input class="input-group-text bg-body text-emphasis-body border border-danger" type="text" placeholder="Search" aria-labelledby="Search" aria-describedby="search">
+								<span class="input-group-text bg-body-secondary border border-danger" id="search"><i class="fa fa-search"></i></span>
+							</div>
+						</form>
 					</div>
 				</div>
 			</nav>
@@ -63,41 +62,41 @@ logIn();
 			<div class="row d-flex justify-content-center mt-5 py-2">
 				<div class="col-lg-5 col-md-12 col-12">
 					<img src="../img/product-pages/laptop5.png" alt="" class="rounded img-fluid w-100 pb-1">
-					<h4 class="text-body-emphasis py-3">Related Products</h4>
+					<h4 class="text-light py-3">Related Products</h4>
 					<div class="row d-flex justify-content-between">
 						<div class="col">
 							<a href="laptop7.php">
-								<img class="img-rel rounded" src="../img/product-pages/laptop7.png" alt="">
+								<img class="img-rel1 rounded" src="../img/product-pages/laptop7.png" alt="">
 							</a>
 						</div>
 						<div class="col">
 							<a href="laptop1.php">
-								<img class="img-rel rounded" src="../img/product-pages/laptop1.png" alt="">
+								<img class="img-rel1 rounded" src="../img/product-pages/laptop1.png" alt="">
 							</a>
 						</div>
 						<div class="col">
 							<a href="laptop3.php">
-								<img class="img-rel rounded" src="../img/product-pages/laptop3.png" alt="">
+								<img class="img-rel1 rounded" src="../img/product-pages/laptop3.png" alt="">
 							</a>
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-6 col-md-12 col-12">
-					<h3 class="text-body-emphasis">KriziaWare NP6271J (CLEVO NP70RNJS) Gaming Laptop</h3>
+					<h3 class="text-light">KriziaWare NP6271J (CLEVO NP70RNJS) Gaming Laptop</h3>
 					<div class="number">
-						<span class="fw-bold text-body-emphasis">$1,119</span>
+						<span class="fw-bold text-light">$1,119</span>
 					</div>
 					<div class="buttons my-2">
-						<button class="btn btn-success w-25 rounded-pill p-1">Buy Now</button>
-						<button class="btn btn-warning w-25 rounded-pill p-1">Add to Cart</button>
+						<button class="btn btn-danger w-25 rounded-pill p-1">Buy Now</button>
+						<button class="btn btn-danger w-25 rounded-pill p-1">Add to Cart</button>
 					</div>
-					<div class="text-body-emphasis my-5">
+					<div class="text-light my-5">
 						<h3 class="fw-bolder">Product Details</h3>
 						<p class="text-justify lead fs-5">
 							The KriziaWare NP6271J (CLEVO NP70RNJS) GAMING LAPTOP combines power and elegance in a compact form factor. Its ultra-thin design and edge-to-edge display provide a premium look and feel. With an Intel Core i5 processor and solid-state drive, it offers quick boot times and responsive performance. The laptop's fingerprint sensor ensures enhanced security, and the long battery life keeps you productive throughout the day.
 						</p>
 					</div>
-					<div class="specs text-body-emphasis">
+					<div class="specs text-light">
 						<h3 class="fw-bolder">Specifications</h3>
 						<ul class="list-unstyled fs-5">
 							<li><span class="fw-bolder">Processor:</span>&nbsp;Intel Core i5-11800H</li>
@@ -136,6 +135,5 @@ logIn();
 
 	<!-- Own Script -->
 	<script src="../js/laptops.js"></script>
-	<script src="../js/theme-toggle.js"></script>
 	</body>
 </html>
