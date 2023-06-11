@@ -20,7 +20,33 @@ if (!isset($_GET['page'])) {
 } else {
 	$page = $_GET['page'];
 }
+require_once './resource/php/init.php';
+session_start();
+logCombo();
 
+$view = new view();
+$config = new config();
+$con = $config->con();
+
+$query = "SELECT * FROM `tbl_order`";
+$count = $con->prepare($query);
+$count->execute();
+$rows = $count->rowCount();
+
+$items = 10;
+$pages = ceil($rows/$items);
+
+if (!isset($_GET['page'])) {
+	$page = 1;
+} else {
+	$page = $_GET['page'];
+}
+
+$start = ($page-1) * $items;
+$sql = "SELECT * FROM `tbl_order` LIMIT $start, $items";
+$data = $con->prepare($sql);
+$data->execute();
+$result = $data->fetchAll(PDO::FETCH_ASSOC);
 $start = ($page-1) * $items;
 $sql = "SELECT * FROM `tbl_order` LIMIT $start, $items";
 $data = $con->prepare($sql);

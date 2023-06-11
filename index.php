@@ -1,6 +1,9 @@
 <?php
 require_once './resource/php/init.php';
 ?>
+<?php
+require_once './resource/php/init.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
