@@ -16,7 +16,7 @@ class fullEdit extends config {
 		$con = $this->con();
 		
 		if ($status < 5) {
-			$sql = "UPDATE `tbl_order` SET `o_cus` = '$cname' ,`o_item` = '$iname' ,`o_qty` = $qty ,`o_total` = $total ,`o_status` = $status ,`o_order` = '$order' ,`o_receive` = '' WHERE `o_id` = '$id'";
+			$sql = "UPDATE `tbl_order` SET `o_cus` = '$cname' ,`o_item` = '$iname' ,`o_qty` = $qty ,`o_total` = $total ,`o_status` = $status ,`o_order` = '$order' ,`o_receive` = NULL WHERE `o_id` = '$id'";
 		} else {
 			$sql = "UPDATE `tbl_order` SET `o_cus` = '$cname' ,`o_item` = '$iname' ,`o_qty` = $qty ,`o_total` = $total ,`o_status` = $status ,`o_order` = '$order' ,`o_receive` = '$receive' WHERE `o_id` = '$id'";
 		}

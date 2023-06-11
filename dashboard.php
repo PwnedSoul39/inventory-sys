@@ -2,11 +2,7 @@
 require_once './resource/php/init.php';
 session_start();
 logCombo();
-require_once './resource/php/init.php';
-session_start();
-logCombo();
 
-$view = new view();
 $view = new view();
 ?>
 <!DOCTYPE html>
