@@ -26,11 +26,6 @@ $sql = "SELECT * FROM `tbl_item` LIMIT $start, $items";
 $data = $con->prepare($sql);
 $data->execute();
 $result = $data->fetchAll(PDO::FETCH_ASSOC);
-$start = ($page-1) * $items;
-$sql = "SELECT * FROM `tbl_item` LIMIT $start, $items";
-$data = $con->prepare($sql);
-$data->execute();
-$result = $data->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en">
