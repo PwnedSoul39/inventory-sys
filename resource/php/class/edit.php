@@ -26,7 +26,7 @@ class edit extends config {
 		if ($this->stat == 5) {
 			$sql = "UPDATE `tbl_order` SET `o_status` = '$this->stat', `o_receive` = NOW() WHERE `o_id` = '$this->id'";
 		} else {
-			$sql = "UPDATE `tbl_order` SET `o_status` = '$this->stat' WHERE `o_id` = '$this->id'";
+			$sql = "UPDATE `tbl_order` SET `o_status` = '$this->stat', `o_receive` = NULL WHERE `o_id` = '$this->id'";
 		}
 
 		$data = $con->prepare($sql);
